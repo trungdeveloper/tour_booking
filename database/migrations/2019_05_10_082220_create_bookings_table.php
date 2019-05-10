@@ -15,19 +15,22 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->bigIncrements('id');
-                        $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('hotel_id');
             $table->unsignedBigInteger('tour_id');
-            $table->foreign('user_id')
-            ->references('id')->on('users')
-            ->onDelete('cascade');
-            $table->foreign('hotel_id')
-            ->references('id')->on('hotels')
-            ->onDelete('cascade');
-            $table->foreign('tour_id')
-            ->references('id')->on('tours')
-            ->onDelete('cascade');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
+            
+            $table->foreign('hotel_id')
+                ->references('id')->on('hotels')
+                ->onDelete('cascade');
+        
+            $table->foreign('tour_id')
+                ->references('id')->on('tours')
+                ->onDelete('cascade');
         });
     }
 
