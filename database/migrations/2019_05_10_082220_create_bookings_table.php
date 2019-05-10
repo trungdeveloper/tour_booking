@@ -18,6 +18,7 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('hotel_id');
             $table->unsignedBigInteger('tour_id');
+            $table->integer('quantity');
             $table->timestamps();
 
             $table->foreign('user_id')
