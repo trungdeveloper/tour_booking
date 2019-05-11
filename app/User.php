@@ -8,12 +8,12 @@ class User extends Model
 {
 	protected $table='users';
     
-    public function titles()
+    public function title()
     {
         return $this->belongsTo('App\Title');
     }
 
-    public function countries()
+    public function country()
     {
         return $this->belongsTo('App\Country');
     }

@@ -8,8 +8,9 @@ class Title extends Model
 {
 	protected $table='titles';
 
-    public function User()
-    {
-        return $this->hasMany('App\User');
-    }
+	public function user(){
+		return $this->hasMany('App\User');
+	}
+
+
 }
