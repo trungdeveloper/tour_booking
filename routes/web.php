@@ -16,19 +16,35 @@ Route::get('/', function () {
 });
 
 Route::resources([
-    'titles' 			=> 'TitleController'
+    'titles' 			=> 'TitleController',
     'bookings' 			=> 'BookingController',
-    'booking_services' 	=> 'BookingServiceController'
-    'countries' 		=> 'CountryController'
-    'destinations'		=> 'DestinationController'
-    'hotels'			=> 'HotelController'
-    'hotel_services' 	=> 'HotelServiceController'
-    'identifications'	=> 'IdentificationController'
-    'images'			=> 'ImageController'
-    'reviews' 			=> 'ReviewController'
-    'services' 			=> 'ServiceController'
-    'users' 			=> 'UserController'
-    'tours' 			=> 'TourController'
-    'tour_services' 	=> 'TourServiceController'
+    // 'booking_services' 	=> 'BookingServiceController',
+    'countries' 		=> 'ContryController',
+    'destinations'		=> 'DestinationController', 
+    'hotels'			=> 'HotelController',
+    // 'hotel_services' 	=> 'HotelServiceController',
+    'identifications'	=> 'IdentificationTypeController',
+    'images'			=> 'ImageController',
+    'reviews' 			=> 'ReviewController',
+    'services' 			=> 'ServiceController',
+    'users' 			=> 'UserController',
+    'tours' 			=> 'TourController',
+    // 'tour_services' 	=> 'TourServiceController'
+]);
+//***********  PROJECT LARAVEL **********************\
+//***********       2019       **********************\
+
+Route::get('Pindex',[
+    'as'=>'Index',
+    'uses'=>'Controller@getindex'
+]);
+
+Route::get('Pfooter',[
+    'as'=>'Footer',
+    'uses'=>'Controller@getfooter'
+]);
+Route::get('Pmainpage',[
+    'as'=>'Mainpage',
+    'uses'=>'Controller@getmainpage'
 ]);
 
