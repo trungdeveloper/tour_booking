@@ -23,7 +23,7 @@ Route::resources([
     'destinations'		=> 'DestinationController',
     'hotels'			=> 'HotelController',
     // 'hotel_services' 	=> 'HotelServiceController',
-    'identifications'	=> 'IdentificationController',
+    'identificationTypes'	=> 'IdentificationTypeController',
     'images'			=> 'ImageController',
     'reviews' 			=> 'ReviewController',
     'services' 			=> 'ServiceController',

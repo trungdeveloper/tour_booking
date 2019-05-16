@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Contry;
+use App\Country;
 use Illuminate\Http\Request;
 
-class ContryController extends Controller
+class CountryController extends Controller
 {
     /**
      * Display a listing of the resource.
