@@ -8,7 +8,7 @@ class Country extends Model
 {
     protected $table='countries';
 
-    public function User()
+    public function user()
     {
         return $this->hasMany('App\User');
     }

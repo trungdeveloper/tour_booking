@@ -8,14 +8,14 @@ class Service extends Model
 {
     protected $table='services';
 
-     public function hotel()
+    public function hotelsService()
     {
-        return $this->hasMany('App\HotelsServices');
+        return $this->hasMany('App\HotelsService');
     }
 
-    public function tour()
+    public function toursService()
     {
-        return $this->hasMany('App\ToursServices');
+        return $this->hasMany('App\ToursService');
     }
 
     public function booking()
