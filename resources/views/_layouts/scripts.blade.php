@@ -3,4 +3,4 @@
 <script src="{{URL::asset('bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{URL::asset('js/filter.js')}}"></script>
 <script src="{{URL::asset('js/entities/country.js')}}"></script>
-<script src="{{URL::asset('js/entities/title.js')}}"></script>
+<script src="{{URL::asset('js/entities/identificationType.js')}}"></script>

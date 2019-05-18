@@ -1,20 +1,20 @@
 $(function(){
 
-  $('.my-title-delete').on('click', function(e) {
+  $('.my-identification-type-delete').on('click', function(e) {
     e.preventDefault();
 
-    $titleDelete = $(this);
-    $title = $titleDelete.closest('.my-title');
-    titleLabel = $title.find('.my-filter-target').text();
+    $identificationTypeDelete = $(this);
+    $identificationType = $identificationTypeDelete.closest('.my-identification-type');
+    identificationTypeLabel = $identificationType.find('.my-filter-target').text();
 
 
     $.ajax({
       
-      url: $titleDelete.attr('data-url'),
+      url: $identificationTypeDelete.attr('data-url'),
       method: 'delete',
       
       data: {
-        _token: $titleDelete.attr('data-token')
+        _token: $identificationTypeDelete.attr('data-token')
       },
       
 
@@ -25,9 +25,9 @@ $(function(){
           $('#my-entity-delete-status')
             .addClass('my-entity-delete-status-ok')
             .removeClass('d-none')
-            .html(`<i>"${titleLabel}"</i> has successfully been deleted`);
+            .html(`<i>"${identificationTypeLabel}"</i> has successfully been deleted`);
 
-          $title.remove();
+          $identificationType.remove();
 
         } 
 
@@ -37,7 +37,7 @@ $(function(){
           $('#my-entity-delete-status')
             .addClass('my-entity-delete-status-ko')
             .removeClass('d-none')
-            .html(`Something went wrong when attempting to delete <i>"${titleLabel}"</i>`);
+            .html(`Something went wrong when attempting to delete <i>"${identificationTypeLabel}"</i>`);
 
         }
 

@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use App\IdentificationType;
 use Illuminate\Http\Request;
+use Validator;
+use Auth;
+use App\Http\Requests\IdentificationTypeRequest;
+use Input,File;
+use DB;     
+use Session;
+
 
 class IdentificationTypeController extends Controller
 {
@@ -14,7 +21,8 @@ class IdentificationTypeController extends Controller
      */
     public function index()
     {
-        //
+      $identificationTypes = IdentificationType::all();
+      return view('identificationType/index', compact('identificationTypes'));
     }
 
     /**
@@ -24,7 +32,8 @@ class IdentificationTypeController extends Controller
      */
     public function create()
     {
-        //
+      $identificationType = new IdentificationType;
+      return view('identificationType/create', compact('identificationType'));
     }
 
     /**
@@ -33,9 +42,10 @@ class IdentificationTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IdentificationTypeRequest $request)
     {
-        //
+        IdentificationType::create($request->all());
+        return redirect()->route('identificationTypes.index')->with('success','Add success!');
     }
 
     /**
@@ -46,7 +56,7 @@ class IdentificationTypeController extends Controller
      */
     public function show(IdentificationType $identificationType)
     {
-        //
+        return view('identificationType/show',compact('identificationType'));
     }
 
     /**
@@ -57,7 +67,7 @@ class IdentificationTypeController extends Controller
      */
     public function edit(IdentificationType $identificationType)
     {
-        //
+        return view('identificationType/edit',compact('identificationType'));
     }
 
     /**
@@ -67,9 +77,10 @@ class IdentificationTypeController extends Controller
      * @param  \App\IdentificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IdentificationType $identificationType)
+    public function update(IdentificationTypeRequest $request, IdentificationType $identificationType)
     {
-        //
+        $identificationType->update($request->all());
+        return redirect()->route('identificationTypes.index')->with('success','Sửa sản phẩm thành công!');
     }
 
     /**
@@ -80,6 +91,7 @@ class IdentificationTypeController extends Controller
      */
     public function destroy(IdentificationType $identificationType)
     {
-        //
+        $identificationType->delete();
+        return "ok";
     }
 }
