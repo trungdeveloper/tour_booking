@@ -21,7 +21,7 @@
   
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="identification_type_label">Identification category label:<label>
+      <label for="identification_type_label">Identification type label:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">

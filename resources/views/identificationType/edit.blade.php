@@ -16,9 +16,9 @@
     'identificationType/_form',
     
     [
-      'errors' => $errors,
-      'action' => URL::action('IdentificationTypeController@update', $identificationType->id),
-      'identificationType' => $identificationType
+      'errors'              =>  $errors,
+      'action'              =>  URL::action('IdentificationTypeController@update', $identificationType->id),
+      'identificationType'  =>  $identificationType
     ]
   )
 
