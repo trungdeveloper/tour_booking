@@ -37,8 +37,9 @@
         </article>
       </main>
 
-      @include('_layouts.scripts')
     </section>
+    
+    @include('_layouts.scripts')
   </body>
 
 </html>
