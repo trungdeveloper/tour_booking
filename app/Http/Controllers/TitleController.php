@@ -39,7 +39,7 @@ class TitleController extends Controller
         $title = new Title; // ten model
         $title->label = $request->label;
         $title->save();
-        return redirect()->route('titles.index')->with('success','Thêm title thành công!'); 
+        return redirect()->route('titles.index')->with('message','Thêm title thành công!'); 
     }
 
     /**
@@ -77,7 +77,7 @@ class TitleController extends Controller
         $title = Title::find($id); 
         $title->label = $request->label;
         $title->save();
-        return redirect()->route('titles.update')->with('success','Sửa sản phẩm thành công!');
+        return redirect()->route('titles.update')->with('message','Sửa sản phẩm thành công!');
     }
 
     /**
@@ -91,6 +91,6 @@ class TitleController extends Controller
         $title = Title::find($id);
         $title->delete();
 
-        return redirect('titles')->with('success', 'Stock has been deleted Successfully');    
+        return redirect('titles')->with('message', 'Stock has been deleted Successfully');    
     }
 }

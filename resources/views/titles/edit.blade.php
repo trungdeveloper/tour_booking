@@ -12,7 +12,7 @@
     <div class="container">
         <h2 class="page-header"> TITLES <small>&hearts; Update &hearts;</small> </h2>
        
-        <form method="post" action="{{ route('titles.update', $title->id) }}">
+        <form method="POST" action="{{ route('titles.update', $title->id) }}">
         @method('PATCH')
         @csrf
             <div class="row">
