@@ -17,6 +17,7 @@
 
   @if($country['id'] != NULL)
     @method('PATCH')
+    <input type="hidden" name="id" value="{!! $country['id'] !!}">
   @endif 
   
   <div class="row my-padding-bottom-19">
