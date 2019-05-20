@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Title;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\TitleRequest;
+
+
 class TitleController extends Controller
 {
     /**
@@ -14,8 +15,8 @@ class TitleController extends Controller
      */
     public function index()
     {
-        $titles = Title::all();
-        return view('titles.index', compact('titles'));
+      $titles = Title::all();
+      return view('title/index', compact('titles'));
     }
 
     /**
@@ -24,77 +25,67 @@ class TitleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-
     {
-        $title = new Title;
-        return view('titles.create', compact('title'));
-    }  
-        
+      $Title = new Title;
+      return view('title/create', compact('Title'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-
-    public function store(Request $request)
+    public function store(TitleRequest $request)
     {
-        $title = new Title; // ten model
-        $title->label = $request->label;
-        $title->save();
-        return redirect()->route('titles.index')->with('message','Thêm title thành công!'); 
+        Title::create($request->all());
+        return redirect()->route('titles.index')->with('success','Add success!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Title  $title
+     * @param  \App\Title  $Title
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Title $Title)
     {
-        return view('titles/show',compact('title'));
+        return view('title/show',compact('Title'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Title  $title
+     * @param  \App\Title  $Title
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Title $Title)
     {
-        $title = Title::find($id);
-        return view('titles.edit', compact('title'));
+        return view('title/edit',compact('Title'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Title  $title
+     * @param  \App\Title  $Title
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TitleRequest $request, Title $Title)
     {
-        $title = Title::find($id); 
-        $title->label = $request->label;
-        $title->save();     
-        return redirect()->route('titles.update')->with('success','Sửa sản phẩm thành công!');     
-
+        $Title->update($request->all());
+        return redirect()->route('titles.index')->with('success','Sửa sản phẩm thành công!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Title  $title
+     * @param  \App\Title  $Title
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Title $title)
+    public function destroy(Title $Title)
     {
-        $title->delete();
-        return "ok";   
+        $Title->delete();
+        return "ok";
     }
 }
-    
