@@ -18,7 +18,7 @@
     [
       'errors'              =>  $errors,
       'action'              =>  URL::action('TitleController@store'),
-      'title'               =>  $Title
+      'title'               =>  $title
     ]
   )
 

@@ -26,8 +26,8 @@ class TitleController extends Controller
      */
     public function create()
     {
-      $Title = new Title;
-      return view('title/create', compact('Title'));
+      $title = new Title;
+      return view('title/create', compact('title'));
     }
 
     /**
@@ -45,47 +45,47 @@ class TitleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Title  $Title
+     * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function show(Title $Title)
+    public function show(Title $title)
     {
-        return view('title/show',compact('Title'));
+        return view('title/show',compact('title'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Title  $Title
+     * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function edit(Title $Title)
+    public function edit(Title $title)
     {
-        return view('title/edit',compact('Title'));
+        return view('title/edit',compact('title'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Title  $Title
+     * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function update(TitleRequest $request, Title $Title)
+    public function update(TitleRequest $request, Title $title)
     {
-        $Title->update($request->all());
+        $title->update($request->all());
         return redirect()->route('titles.index')->with('success','Sửa sản phẩm thành công!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Title  $Title
+     * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Title $Title)
+    public function destroy(Title $title)
     {
-        $Title->delete();
+        $title->delete();
         return "ok";
     }
 }

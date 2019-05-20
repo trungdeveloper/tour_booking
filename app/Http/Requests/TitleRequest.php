@@ -36,8 +36,8 @@ class TitleRequest extends FormRequest
     public function messages()
     {
         return [
-          'label.required' => 'The title type label is required',
-          'label.unique' => 'This title type label has already been taken'
+          'label.required' => 'The title is required',
+          'label.unique' => 'This title has already been taken'
         ];
     }
 }

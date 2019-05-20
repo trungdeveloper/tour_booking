@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.header',
-    ['title' => $Title["label"]]
+    ['title' => $title["label"]]
   )
 
 @endsection
@@ -14,7 +14,7 @@
 
   <div class="my-margin-top-40 my-frame">
     <div class="my-padding-bottom-12">
-      Id: {!! $Title["id"] !!}
+      Id: {!! $title["id"] !!}
     </div>
     
     <div class="d-flex flex-wrap">
@@ -27,7 +27,7 @@
       </div>
       
       <div class="my-padding-bottom-8">
-        <a href="{!! route('titles.edit', $Title["id"]) !!}" class="btn btn-sm btn-outline-primary">
+        <a href="{!! route('titles.edit', $title["id"]) !!}" class="btn btn-sm btn-outline-primary">
           <i class="far fa-edit my-margin-right-12"></i>
           <span>Edit</span>
         </a>
