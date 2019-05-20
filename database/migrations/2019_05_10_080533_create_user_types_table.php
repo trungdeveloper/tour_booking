@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAbcsTable extends Migration
+class CreateUserTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateAbcsTable extends Migration
      */
     public function up()
     {
-        Schema::create('abcs', function (Blueprint $table) {
+        Schema::create('user_types', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('label');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateAbcsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('abcs');
+        Schema::dropIfExists('user_types');
     }
 }

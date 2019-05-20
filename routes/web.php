@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,11 +9,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::resources([
   'titles'                =>  'TitleController',   
   'bookings'              =>  'BookingController',
@@ -27,6 +24,7 @@ Route::resources([
   'services'              =>  'ServiceController',
   'users'                 =>  'UserController',
   'tours'                 =>  'TourController'
+<<<<<<< HEAD
 ]);
 
 // Route::get('add',function(){
@@ -34,3 +32,6 @@ Route::resources([
 //     $table->integer('number_of_night');
 //   });
 // });
+=======
+]);
+>>>>>>> d29d64d54889577371586a2e5d4f103120a1a378

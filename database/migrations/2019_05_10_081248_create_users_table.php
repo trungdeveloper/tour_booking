@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('middle_name');
             $table->string('last_name');
             $table->date('DoB');
+            $table->unsignedBigInteger('user_type_id');
             $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('title_id');
             $table->string('address');        
@@ -27,6 +28,10 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('identification_type_id');
             $table->string('identification_number');
             $table->timestamps();
+
+            $table->foreign('user_type_id')
+                ->references('id')->on('user_types')
+                ->onDelete('cascade');
 
             $table->foreign('country_id')
                 ->references('id')->on('countries')
