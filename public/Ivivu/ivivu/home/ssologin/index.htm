@@ -1,0 +1,57 @@
+
+<!-- jQuery 2.1.4 -->
+<script src="../../assets/vendor/jquery-1.11.2.min.js"></script>
+
+<script type="text/javascript">
+        (function ($) {
+            function getFragment() {
+                if (window.location.hash.indexOf("#") === 0) {
+                    return parseQueryString(window.location.hash.substr(1));
+                } else {
+                    return {};
+                }
+            }
+
+            function parseQueryString(queryString) {
+                var data = {},
+                    pairs, pair, separatorIndex, escapedKey, escapedValue, key, value;
+
+                if (queryString === null) {
+                    return data;
+                }
+
+                pairs = queryString.split("&");
+
+                for (var i = 0; i < pairs.length; i++) {
+                    pair = pairs[i];
+                    separatorIndex = pair.indexOf("=");
+
+                    if (separatorIndex === -1) {
+                        escapedKey = pair;
+                        escapedValue = null;
+                    } else {
+                        escapedKey = pair.substr(0, separatorIndex);
+                        escapedValue = pair.substr(separatorIndex + 1);
+                    }
+
+                    key = decodeURIComponent(escapedKey);
+                    value = decodeURIComponent(escapedValue);
+
+                    data[key] = value;
+                }
+
+                return data;
+            }
+
+            var fragments = getFragment();
+            //it-helpdesk
+            //window.location.href = "/du-lich2/home/ssologin?access_token=" + fragments.access_token;
+            //live
+            window.location.href = "/home/ssologin?access_token=" + fragments.access_token;
+
+            ////test
+            //window.location.href = "/home/ssologin?access_token=" + fragments.access_token;
+
+        }
+        )(jQuery);
+</script>

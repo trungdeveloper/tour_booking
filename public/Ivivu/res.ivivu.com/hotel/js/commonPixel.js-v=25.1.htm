@@ -1,0 +1,233 @@
+﻿
+var getCookie = function (c_name) {
+	if (document.cookie.length > 0) {
+		c_start = document.cookie.indexOf(c_name + "=");
+		if (c_start != -1) {
+			c_start = c_start + c_name.length + 1;
+			c_end = document.cookie.indexOf(";", c_start);
+			if (c_end == -1) {
+				c_end = document.cookie.length;
+			}
+			return unescape(document.cookie.substring(c_start, c_end));
+		}
+	}
+	return "";
+}
+var LocalStorageManager = {
+	setValue: function (key, value) {
+		window.localStorage.setItem(key, JSON.stringify(value));
+	},
+	getValue: function (key) {
+		try {
+			return JSON.parse(window.localStorage.getItem(key));
+		} catch (e) {
+
+		}
+	}
+};
+function doViewContentPixel(value, content_ids, cat_str) {
+	var _username = document.getElementById('hdhdhdhhdhdhdhdhdhd').value != '' ? 'user' : 'kmudivivu';
+	if (uatMode == 'true' && _username == "kmudivivu") {
+		console.log('ViewContent');
+		value = parseFloat(value);
+		var storage = LocalStorageManager.getValue('datakey');
+		var adults = storage != null ? storage.FilterRooms.RoomsRequest[0].Adults.value : 2;
+		var childs = storage != null ? storage.FilterRooms.RoomsRequest[0].Child.value : 0;
+		var cki = Static.convertDate(getCookie('di'));
+		var cko = Static.convertDate(getCookie('do'));
+		var country = document.getElementById('countryAddress').value;
+		var city = document.getElementById('cityAddress').value;
+		var region = document.getElementById('regionAddress').value;
+		//var customData = { value: value, currency: 'VND', content_name: content_name, content_type: content_type, content_ids: content_ids };
+		var customData = { value: value, currency: 'VND', content_type: 'hotel', content_category: cat_str, checkin_date: cki, checkout_date: cko, content_ids: content_ids, city: city, region: region, country: country, num_adults: adults, num_children: childs };
+		if (value == NaN || value == 0 || value == undefined || value == null || value == "") {
+			customData = {  content_type: 'hotel', content_category: cat_str, checkin_date: cki, checkout_date: cko, content_ids: content_ids, city: city, region: region, country: country, num_adults: adults, num_children: childs };
+		}
+		//console.log(JSON.stringify(customData));
+		fbq('track', 'ViewContent', customData);
+		//for google  
+		var totalV = '' + value;
+		gtag('event', 'page_view', {
+			'send_to': 'AW-952773342', 
+			'hrental_id': content_ids,
+			'hrental_pagetype': 'offerdetail', 
+			'hrental_totalvalue': totalV
+		});
+
+	}
+}
+function doSearchPixel(content_ids, cat_str, country, city, region) {
+	var _username = document.getElementById('hdhdhdhhdhdhdhdhdhd').value != '' ? 'user' : 'kmudivivu';
+	if (uatMode == 'true' && _username == "kmudivivu") {
+		var storage = LocalStorageManager.getValue('datakey');
+		var adults = storage != null ? storage.FilterRooms.RoomsRequest[0].Adults.value : 2;
+		var childs = storage != null ? storage.FilterRooms.RoomsRequest[0].Child.value : 0;
+		var cki = Static.convertDate(getCookie('di'));
+		var cko = Static.convertDate(getCookie('do'));
+		if (country == undefined || country == '') country = document.getElementById('countryAddress').value;
+		if (city == undefined || city == '') city = document.getElementById('cityAddress').value;
+		if (region == undefined || region == '') region = document.getElementById('regionAddress').value;
+		//content_ids: '["123", "234", "345", "456", "567"]',
+		var customData = { content_type: 'hotel', content_category: cat_str, checkin_date: cki, checkout_date: cko, content_ids: content_ids, city: city, region: region, country: country, num_adults: adults, num_children: childs };
+		//console.log(JSON.stringify(customData));
+		fbq('track', 'Search', customData);
+
+	}
+}
+
+
+function doInitiateCheckoutPixel(content_ids, cat_str, value) {
+	var _username = document.getElementById('hdhdhdhhdhdhdhdhdhd').value != '' ? 'user' : 'kmudivivu';
+
+	if (uatMode == 'true' && _username == "kmudivivu") {
+		console.log('InitiateCheckout');
+		var storage = LocalStorageManager.getValue('datakey');
+		var adults = storage != null ? storage.FilterRooms.RoomsRequest[0].Adults.value : 2;
+		var childs = storage != null ? storage.FilterRooms.RoomsRequest[0].Child.value : 0;
+		var cki = Static.convertDate(getCookie('di'));
+		var cko = Static.convertDate(getCookie('do'));
+		var country = document.getElementById('countryAddress').value;
+		var city = document.getElementById('cityAddress').value;
+		var region = document.getElementById('regionAddress').value;
+		if (cat_str == 'request combo') {
+			value = parseFloat(value) * adults;
+		}
+		//var customData = { value: value, currency: 'VND', content_name: content_name, content_category: content_category, content_ids: content_ids, num_items: num_items };
+		var customData = { content_type: 'hotel', currency: 'VND', content_category: cat_str, checkin_date: cki, checkout_date: cko, content_ids: content_ids, city: city, region: region, country: country, num_adults: adults, num_children: childs, value: value };
+		if (value == NaN ||value == 0 || value == undefined || value == null || value == "") {
+			customData = { content_type: 'hotel', content_category: cat_str, checkin_date: cki, checkout_date: cko, content_ids: content_ids, city: city, region: region, country: country, num_adults: adults, num_children: childs };
+		}
+		//console.log(JSON.stringify(customData));
+		fbq('track', 'InitiateCheckout', customData);
+		//for google  
+		var totalV = '' + value;
+		gtag('event', 'page_view', {
+			'send_to': 'AW-952773342',
+			'hrental_id': content_ids,
+			'hrental_pagetype': 'conversionintent',
+			'hrental_totalvalue': totalV
+		});
+	}
+}
+//function doAddPaymentInfoPixel(value, content_category, content_ids) {
+//	var _username = document.getElementById('hdhdhdhhdhdhdhdhdhd').value != '' ? dataLogin.username : 'kmudivivu';
+//	if (uatMode == 'true' && _username == "kmudivivu") {
+//		console.log('AddPaymentInfo');
+//		var customData = { value: value, currency: 'VND', content_category: content_category, content_ids: content_ids };
+//		//console.log(JSON.stringify(customData));
+//		fbq('track', 'AddPaymentInfo', customData);
+//	}
+//}
+function doPurchasePixel(value, content_ids, cat_str) {
+	var _username = document.getElementById('hdhdhdhhdhdhdhdhdhd').value != '' ? 'user' : 'kmudivivu';
+	if (uatMode == 'true' && _username == "kmudivivu") {
+		console.log('Purchase');
+		var storage = LocalStorageManager.getValue('datakey');
+		var adults = storage != null ? storage.FilterRooms.RoomsRequest[0].Adults.value : 2;
+		var childs = storage != null ? storage.FilterRooms.RoomsRequest[0].Child.value : 0;
+		var cki = Static.convertDate(getCookie('di'));
+		var cko = Static.convertDate(getCookie('do'));
+		var country = document.getElementById('countryAddress').value;
+		var city = document.getElementById('cityAddress').value;
+		var region = document.getElementById('regionAddress').value;
+		if (cat_str == 'request combo') {
+			value = parseFloat(value) * adults;
+		}
+		//var customData = { value: value, currency: 'VND', content_name: content_name, content_type: content_type, content_ids: content_ids, num_items: num_items };
+		var customData = { value: value, currency: 'VND', content_type: 'hotel', content_category: cat_str, checkin_date: cki, checkout_date: cko, content_ids: content_ids, city: city, region: region, country: country, num_adults: adults, num_children: childs, currency: 'VND' };
+		//console.log(JSON.stringify(customData));
+		fbq('track', 'Purchase', customData);
+		//for google  
+		var totalV = '' + value;
+		gtag('event', 'page_view', {
+			'send_to': 'AW-952773342',
+			'hrental_id': content_ids,
+			'hrental_pagetype': 'conversion',
+			'hrental_totalvalue': totalV
+		});
+	}
+}
+document.addEventListener("DOMContentLoaded", function (event) {
+	if (typeof runInitPixel !== 'undefined' && typeof customData !== 'undefined') {
+		switch (runInitPixel) {
+			case 'ViewContent':
+				doViewContentPixel(customData.value, customData.content_ids, customData.cat_str);
+				break;
+			case 'InitiateCheckout':
+				doInitiateCheckoutPixel(customData.content_ids, customData.cat_str, customData.value);
+				break;
+			case 'Purchase':
+				doPurchasePixel(customData.value, customData.content_ids, customData.cat_str);
+				break;
+			case 'Search':
+				doSearchPixel(customData.content_ids, customData.cat_str, customData.country, customData.city, customData.region);
+				break;
+		}
+	}
+});
+
+/************************************FLASH SALE************************************/
+function doInitiateCheckoutPixelFS(content_ids, cat_str, value) {
+	var scope = angular.element(".htdt-container").scope();
+	var _username = document.getElementById('hdhdhdhhdhdhdhdhdhd').value != '' ? 'user' : 'kmudivivu';
+	if (uatMode == 'true' && _username == "kmudivivu") {
+		console.log('InitiateCheckoutFS');
+		//var storage = LocalStorageManager.getValue('datakey');
+		var adults = scope.FSAdults != null ? scope.FSAdults.value : 2;
+		var childs = scope.FSChild != null ? scope.FSChild.value : 0;
+		var cki = Static.convertDate(scope.fsDateCheckinStr);
+		var cko = Static.convertDate(scope.fsDateCheckoutStr);
+		var country = document.getElementById('countryAddress').value;
+		var city = document.getElementById('cityAddress').value;
+		var region = document.getElementById('regionAddress').value;
+		if (cat_str == 'request combo') {
+			value = parseFloat(value) * adults;
+		}
+		var customData = { content_type: 'hotel', currency: 'VND', content_category: cat_str, checkin_date: cki, checkout_date: cko, content_ids: content_ids, city: city, region: region, country: country, num_adults: adults, num_children: childs, value: value };
+		if (value == 0) {
+			customData = { content_type: 'hotel', content_category: cat_str, checkin_date: cki, checkout_date: cko, content_ids: content_ids, city: city, region: region, country: country, num_adults: adults, num_children: childs };
+		}
+		console.log(JSON.stringify(customData));
+		fbq('track', 'InitiateCheckout', customData);
+	}
+}
+function doSearchPixelFS(content_ids, cat_str) {
+	var scope = angular.element(".htdt-container").scope();
+	var _username = document.getElementById('hdhdhdhhdhdhdhdhdhd').value != '' ? 'user' : 'kmudivivu';
+	if (uatMode == 'true' && _username == "kmudivivu") {
+		console.log('SearchFS');
+		var adults = scope.FSAdults != null ? scope.FSAdults.value : 2;
+		var childs = scope.FSChild != null ? scope.FSChild.value : 0;
+		var cki = Static.convertDate(scope.fsDateCheckinStr);
+		var cko = Static.convertDate(scope.fsDateCheckoutStr);
+		var country = document.getElementById('countryAddress').value;
+		var city = document.getElementById('cityAddress').value;
+		var region = document.getElementById('regionAddress').value;
+		var customData = { content_type: 'hotel', content_category: cat_str, checkin_date: cki, checkout_date: cko, content_ids: content_ids, city: city, region: region, country: country, num_adults: adults, num_children: childs };
+		// console.log(JSON.stringify(customData));
+		fbq('track', 'Search', customData);
+	}
+}
+
+function doPurchasePixelFS(value, content_ids, cat_str) {
+	var scope = angular.element(".htdt-container").scope();
+	var _username = document.getElementById('hdhdhdhhdhdhdhdhdhd').value != '' ? 'user' : 'kmudivivu';
+	if (uatMode == 'true' && _username == "kmudivivu") {
+		console.log('PurchaseFS');
+		var adults = scope.FSAdults != null ? scope.FSAdults.value : 2;
+		var childs = scope.FSChild != null ? scope.FSChild.value : 0;
+		var cki = Static.convertDate(scope.fsDateCheckinStr);
+		var cko = Static.convertDate(scope.fsDateCheckoutStr);
+		var country = document.getElementById('countryAddress').value;
+		var city = document.getElementById('cityAddress').value;
+		var region = document.getElementById('regionAddress').value;
+		if (cat_str == 'request combo') {
+			value = parseFloat(value) * adults;
+		}
+		var customData = { value: value, currency: 'VND', content_type: 'hotel', content_category: cat_str, checkin_date: cki, checkout_date: cko, content_ids: content_ids, city: city, region: region, country: country, num_adults: adults, num_children: childs, currency: 'VND' };
+		//console.log(JSON.stringify(customData));
+		fbq('track', 'Purchase', customData);
+
+	}
+}
+/************************************END FLASH SALE********************************/

@@ -1,0 +1,1 @@
+$(function(){setTimeout(function(){$(".workingTime").fadeIn();},200);$("span.input-group-addon").click(function(){var input=$(this).parent().find("input:text");if(input!==undefined){input.click();}});});

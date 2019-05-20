@@ -9,5 +9,18 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+     // PROJECT LARAVEL 
+
+    public function getindex(){
+        return view('layout.index');
+    }
+    public function gettop(){
+        return view('layout.page.top');
+    }
+    public function getfooter(){
+        return view('layout.page.footer');
+    }
+    public function getmainpage(){
+        return view('layout.page.mainPage');
+    }
 }
