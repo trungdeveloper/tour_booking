@@ -15,7 +15,7 @@ class TitleController extends Controller
     public function index()
     {
         $titles = Title::all();
-        return view('title.index', compact('titles'));
+        return view('titles.index', compact('titles'));
     }
 
     /**
@@ -24,23 +24,26 @@ class TitleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        $title = Title::all();
-        return view('title.create', compact('title'));
-    }
 
+    {
+        $title = new Title;
+        return view('titles.create', compact('title'));
+    }  
+        
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(Request $request)
     {
         $title = new Title; // ten model
         $title->label = $request->label;
         $title->save();
-        return redirect()->route('title.index')->with('message','Thêm title thành công!'); 
+        return redirect()->route('titles.index')->with('message','Thêm title thành công!'); 
     }
 
     /**
@@ -51,7 +54,7 @@ class TitleController extends Controller
      */
     public function show($id)
     {
-        // return view('titles/show', compact('title'));
+        return view('titles/show',compact('title'));
     }
 
     /**
@@ -63,7 +66,7 @@ class TitleController extends Controller
     public function edit($id)
     {
         $title = Title::find($id);
-        return view('title.edit', compact('title'));
+        return view('titles.edit', compact('title'));
     }
 
     /**
@@ -77,8 +80,9 @@ class TitleController extends Controller
     {
         $title = Title::find($id); 
         $title->label = $request->label;
-        $title->save();
-        return redirect()->route('title.update')->with('message','Sửa sản phẩm thành công!');
+        $title->save();     
+        return redirect()->route('titles.update')->with('success','Sửa sản phẩm thành công!');     
+
     }
 
     /**
@@ -87,11 +91,10 @@ class TitleController extends Controller
      * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Title $title)
     {
-        $title = Title::find($id);
         $title->delete();
-
-        return redirect('title')->with('message', 'Stock has been deleted Successfully');    
+        return "ok";   
     }
 }
+    

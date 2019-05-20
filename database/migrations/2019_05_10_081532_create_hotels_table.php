@@ -19,13 +19,12 @@ class CreateHotelsTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('email');
-            $table->string('website');
+            $table->string('website')->nullable();
             $table->integer('price');
             $table->integer('rating');
             $table->unsignedBigInteger('destination_id');
-            $table->integer('number_of_day');
             $table->integer('number_of_night');        
-            $table->string('desciption');
+            $table->string('description')->nullable();
             $table->timestamps();
             
             $table->foreign('destination_id')

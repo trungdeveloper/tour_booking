@@ -5,9 +5,9 @@
   @include(
     '_layouts.indexHeader',
     [
-      'title'         =>  "Title",
-      'route'         =>  route('titles.create'),
-      'buttonLabel'   =>  "Add a title"
+      'title'         =>  "User categories",
+      'route'         =>  route('userTypes.create'),
+      'buttonLabel'   =>  "Add a user category"
     ]
   )
 
@@ -18,25 +18,25 @@
 
   <div class="row">
 
-    @foreach($titles as $title)
+    @foreach($userTypes as $userType)
 
-      <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-identification-type">
+      <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-user-type">
         <div class="my-frame">
           <div class="my-padding-bottom-12 my-filter-target">
-            {!! $title["label"] !!}
+            {!! $userType["label"] !!}
           </div>
           
           <div class="d-flex flex-wrap">
 
             <div class="my-padding-right-8 my-padding-bottom-8">
-              <a href="{!! route('titles.show', $title["id"]) !!}" class="btn btn-sm btn-outline-dark">
+              <a href="{!! route('userTypes.show', $userType["id"]) !!}" class="btn btn-sm btn-outline-dark">
                 <i class="fas fa-eye my-margin-right-12"></i>
                 <span>Detail</span>
               </a>
             </div>
             
             <div class="my-padding-right-8 my-padding-bottom-8">
-              <a href="{!! route('titles.edit', $title["id"]) !!}" class="btn btn-sm btn-outline-primary">
+              <a href="{!! route('userTypes.edit', $userType["id"]) !!}" class="btn btn-sm btn-outline-primary">
                 <i class="far fa-edit my-margin-right-12"></i>
                 <span>Edit</span>
               </a>
@@ -44,9 +44,9 @@
 
             <div class="my-padding-bottom-8">
               <button
-                class="btn btn-sm btn-danger my-identification-type-delete"
+                class="btn btn-sm btn-danger my-user-type-delete"
                 data-token="{!! csrf_token() !!}"
-                data-url="{!! route('titles.destroy', $title['id']) !!}"
+                data-url="{!! route('userTypes.destroy', $userType['id']) !!}"
               >
                 <i class="far fa-trash-alt my-margin-right-12"></i>
                 <span>Delete</span>

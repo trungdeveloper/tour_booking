@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Destination;
 use Illuminate\Http\Request;
+use App\Http\Requests\DestinationRequest;
 
 class DestinationController extends Controller
 {
@@ -14,7 +15,8 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        //
+        $destination =  Destination::all();
+        return view('Destinations.index', compact('destination'));
     }
 
     /**
@@ -24,7 +26,8 @@ class DestinationController extends Controller
      */
     public function create()
     {
-        //
+        $destination = new Destination;
+        return view('Destinations.create', compact('destination'));
     }
 
     /**
@@ -35,7 +38,8 @@ class DestinationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Destination::create($request->all());
+        return redirect()->route('destinations.index')->with('success','Add success!');
     }
 
     /**
@@ -46,7 +50,7 @@ class DestinationController extends Controller
      */
     public function show(Destination $destination)
     {
-        //
+        return view('Destinations/show',compact('destination'));
     }
 
     /**
@@ -57,7 +61,7 @@ class DestinationController extends Controller
      */
     public function edit(Destination $destination)
     {
-        //
+        return view('Destinations/edit',compact('destination'));
     }
 
     /**
@@ -69,7 +73,8 @@ class DestinationController extends Controller
      */
     public function update(Request $request, Destination $destination)
     {
-        //
+        $destination->update($request->all());
+        return redirect()->route('destinations.index')->with('success','Update Successfully!');
     }
 
     /**
@@ -80,6 +85,7 @@ class DestinationController extends Controller
      */
     public function destroy(Destination $destination)
     {
-        //
+        $destination->delete();
+        return "ok";
     }
 }
