@@ -23,7 +23,5 @@ Route::resources([
   'reviews'               =>  'ReviewController',
   'services'              =>  'ServiceController',
   'users'                 =>  'UserController',
-  'tours'                 =>  'TourController',
-  'userTypes'             =>  'UserTypeController'
+  'tours'                 =>  'TourController'
 ]);
-

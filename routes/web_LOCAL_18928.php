@@ -26,4 +26,3 @@ Route::resources([
   'tours'                 =>  'TourController',
   'userTypes'             =>  'UserTypeController'
 ]);
-

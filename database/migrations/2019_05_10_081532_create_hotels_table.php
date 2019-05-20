@@ -23,7 +23,6 @@ class CreateHotelsTable extends Migration
             $table->integer('price');
             $table->integer('rating');
             $table->unsignedBigInteger('destination_id');
-            $table->integer('number_of_day');
             $table->integer('number_of_night');        
             $table->string('desciption');
             $table->timestamps();

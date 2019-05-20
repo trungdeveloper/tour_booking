@@ -23,7 +23,15 @@ Route::resources([
   'reviews'               =>  'ReviewController',
   'services'              =>  'ServiceController',
   'users'                 =>  'UserController',
-  'tours'                 =>  'TourController',
-  'userTypes'             =>  'UserTypeController'
+  'tours'                 =>  'TourController'
+<<<<<<< HEAD
 ]);
 
+// Route::get('add',function(){
+//   Schema::table('hotels',function($table){
+//     $table->integer('number_of_night');
+//   });
+// });
+=======
+]);
+>>>>>>> d29d64d54889577371586a2e5d4f103120a1a378

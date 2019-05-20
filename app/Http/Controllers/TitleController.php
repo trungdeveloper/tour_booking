@@ -24,9 +24,15 @@ class TitleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+<<<<<<< HEAD
+    {
+        $title = new Title;
+        return view('titles/create', compact('title'));
+=======
     {   
         $title = Title::all();
         return view('title.create', compact('title'));
+>>>>>>> d29d64d54889577371586a2e5d4f103120a1a378
     }
 
     /**
@@ -51,7 +57,7 @@ class TitleController extends Controller
      */
     public function show($id)
     {
-        // return view('titles/show', compact('title'));
+        return view('titles/show',compact('title'));
     }
 
     /**
@@ -78,7 +84,12 @@ class TitleController extends Controller
         $title = Title::find($id); 
         $title->label = $request->label;
         $title->save();
+<<<<<<< HEAD
+          
+        return redirect()->route('titles.update')->with('success','Sửa sản phẩm thành công!');
+=======
         return redirect()->route('title.update')->with('message','Sửa sản phẩm thành công!');
+>>>>>>> d29d64d54889577371586a2e5d4f103120a1a378
     }
 
     /**
