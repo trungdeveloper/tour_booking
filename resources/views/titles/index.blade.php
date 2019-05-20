@@ -1,49 +1,60 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>LIST OF TITLE</title>
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="{{ asset('public/bootstrap-4.0/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-	<!-- CSS user -->
-	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/style.css') }}">
+@extends('_layouts.app')
 
-</head>
-<body>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="bang">
-					<table class="table table-striped table-bordered table-hover">
-	                    <thead>
-	                      	<tr>
-	                        	<th>ID</th>
-	                        	<th>Label</th>
-	                        	<th style="width: 20%">Tools</th>
-	                      	</tr>
-	                    </thead>
-	                    <tbody>
-       	@foreach($title as $value)      
-          	<tr>
-                <td> {!! $value["id"] !!} </td>
-                <td> {!! $value["label"] !!} </td>         
-                <td>
-                <a href="{{ route('titles.create')}}" class="btn btn-primary">Create</a>
-                <a href="{{ route('titles.edit',$value->id)}}" class="btn btn-primary">Edit</a>
-                <a href="{{ route('titles.destroy', $value->id)}}" class="btn btn-danger" type="submit">Delete</a></td>
+@section('header')
 
-          	</tr>	
-      	@endforeach
-	                    </tbody>
-                  	</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+  @include(
+    '_layouts.indexHeader',
+    ['title' => "titles", 'route' => route('titles.create'), 'buttonLabel' => "Add a new Title"]
+  )
+
+@endsection
+
+
+@section('content')
+
+  <div class="row">
+
+    @foreach($title as $ti)
+
+      <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-title">
+        <div class="my-frame">
+          <div class="my-padding-bottom-12 my-filter-target">
+            {!! $ti["label"] !!}
+          </div>
+          
+          <div class="d-flex flex-wrap">
+
+            <div class="my-padding-right-8 my-padding-bottom-8">
+              <a href="{!! route('titles.show', $ti["id"]) !!}" class="btn btn-sm btn-outline-dark">
+                <i class="fas fa-eye my-margin-right-12"></i>
+                <span>Detail</span>
+              </a>
+            </div>
+            
+            <div class="my-padding-right-8 my-padding-bottom-8">
+              <a href="{!! route('titles.edit', $ti["id"]) !!}" class="btn btn-sm btn-outline-primary">
+                <i class="far fa-edit my-margin-right-12"></i>
+                <span>Edit</span>
+              </a>
+            </div>
+
+            <div class="my-padding-bottom-8">
+              <button
+                class="btn btn-sm btn-danger my title-delete"
+                data-token="{!! csrf_token() !!}"
+                data-url="{!! route('titles.destroy', $ti['id']) !!}"
+              >
+                <i class="far fa-trash-alt my-margin-right-12"></i>
+                <span>Delete</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    @endforeach
+
+  </div>
+
+@endsection

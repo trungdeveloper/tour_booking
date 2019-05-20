@@ -25,7 +25,8 @@ class TitleController extends Controller
      */
     public function create()
     {
-        return view('titles.create', compact('title'));
+        $title = new Title;
+        return view('titles/create', compact('title'));
     }
 
     /**
@@ -50,7 +51,7 @@ class TitleController extends Controller
      */
     public function show($id)
     {
-        // return view('titles/show', compact('title'));
+        return view('titles/show',compact('title'));
     }
 
     /**
@@ -77,6 +78,7 @@ class TitleController extends Controller
         $title = Title::find($id); 
         $title->label = $request->label;
         $title->save();
+          
         return redirect()->route('titles.update')->with('success','Sửa sản phẩm thành công!');
     }
 

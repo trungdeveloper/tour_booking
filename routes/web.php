@@ -29,3 +29,8 @@ Route::resources([
   'tours'                 =>  'TourController'
 ]);
 
+// Route::get('add',function(){
+//   Schema::table('hotels',function($table){
+//     $table->integer('number_of_night');
+//   });
+// });
