@@ -4,3 +4,4 @@
 <script src="{{URL::asset('js/filter.js')}}"></script>
 <script src="{{URL::asset('js/entities/country.js')}}"></script>
 <script src="{{URL::asset('js/entities/identificationType.js')}}"></script>
+<script src="{{URL::asset('js/entities/userType.js')}}"></script>

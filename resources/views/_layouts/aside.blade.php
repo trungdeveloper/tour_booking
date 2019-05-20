@@ -74,6 +74,13 @@
         </a>
       </li>
 
+      <li>
+        <a href="{!! url('userTypes') !!}">
+          <i class="fas fa-sitemap my-margin-right-12"></i>
+          <span>User Types</span>
+        </a>
+      </li>
+
     </ul>
 
   </div>
