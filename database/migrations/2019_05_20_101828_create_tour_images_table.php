@@ -35,4 +35,5 @@ class CreateTourImagesTable extends Migration
     {
         Schema::dropIfExists('tour_images');
     }
+    
 }

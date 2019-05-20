@@ -12,4 +12,5 @@ class HotelImage extends Model
     {
         return $this->belongsTo('App\hotel');
     }
+    
 }

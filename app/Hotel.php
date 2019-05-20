@@ -32,4 +32,5 @@ class Hotel extends Model
     {
         return $this->hasMany('App\Booking');
     }
+    
 }

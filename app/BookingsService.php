@@ -17,4 +17,5 @@ class BookingsService extends Model
     {
         return $this->belongsTo('App\Service');
     }
+    
 }

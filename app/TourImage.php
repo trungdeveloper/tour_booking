@@ -12,4 +12,5 @@ class TourImage extends Model
     {
         return $this->belongsTo('App\tour');
     }
+    
 }

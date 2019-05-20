@@ -24,4 +24,5 @@ class Country extends Model
         'label'   =>  'required|unique:countries,label,'.$id
       ];
     }
+    
 }

@@ -35,4 +35,5 @@ class CreateHotelImagesTable extends Migration
     {
         Schema::dropIfExists('hotel_images');
     }
+    
 }

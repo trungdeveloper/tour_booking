@@ -32,4 +32,5 @@ class Tour extends Model
     {
         return $this->hasMany('App\Booking');
     }
+    
 }
