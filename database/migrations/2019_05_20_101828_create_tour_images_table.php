@@ -15,9 +15,9 @@ class CreateTourImagesTable extends Migration
     {
         Schema::create('tour_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('label');
+            $table->string('image_path');
             $table->unsignedBigInteger('tour_id');
-            $table->boolean('is_main');
+            $table->boolean('is_main')->default(false);
             $table->timestamps();
             
             $table->foreign('tour_id')
