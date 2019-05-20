@@ -23,7 +23,11 @@ Route::resources([
   'reviews'               =>  'ReviewController',
   'services'              =>  'ServiceController',
   'users'                 =>  'UserController',
+<<<<<<< HEAD
+  'tours'                 =>  'TourController'
+=======
   'tours'                 =>  'TourController',
   'userTypes'             =>  'UserTypeController'
+>>>>>>> d89f00bc29f3892b81ff7d51cb7e587398486702
 ]);
 
