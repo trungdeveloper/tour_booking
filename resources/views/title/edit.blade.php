@@ -1,3 +1,6 @@
+<<<<<<< HEAD:resources/views/titles/edit.blade.php
+@extends('_layouts.app')
+=======
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,25 +26,28 @@
                         <!-- //old:lấy giá trị cũ ra -->
                 </div>
             </div>
+>>>>>>> d29d64d54889577371586a2e5d4f103120a1a378:resources/views/title/edit.blade.php
 
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="form-group col-md-4">
-                    <label for="label">Lable:</label>
-                    <input type="text" class="form-control" placeholder="Input the name of title ..."  name="label" value="{{ $title->label }}">
-                </div>
-            </div>
-            </div>
+@section('header')
 
-            <!-- button save -->
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success" style="margin-left: 15px">Save</button>
-                </div>
-            </div>
-        </form>
+  @include(
+    '_layouts.header',
+    ['title' => "Edit {$title['label']}"]
+  )
+
+@endsection
+
+
+@section('content')
+
+  @include(
+    'titles/_form',
     
-    </div>
-</body>
-</html>
+    [
+      'errors'              =>  $errors,
+      'action'              =>  URL::action('TitleController@update', $title->id),
+      'titles'  =>  $title
+    ]
+  )
+
+@endsection
