@@ -14,8 +14,8 @@ class TitleController extends Controller
      */
     public function index()
     {
-        $title = Title::all();
-        return view('titles.index', compact('title'));
+        $titles = Title::all();
+        return view('title.index', compact('titles'));
     }
 
     /**
@@ -24,8 +24,9 @@ class TitleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('titles.create', compact('title'));
+    {   
+        $title = Title::all();
+        return view('title.create', compact('title'));
     }
 
     /**
@@ -39,7 +40,7 @@ class TitleController extends Controller
         $title = new Title; // ten model
         $title->label = $request->label;
         $title->save();
-        return redirect()->route('titles.index')->with('success','Thêm title thành công!'); 
+        return redirect()->route('title.index')->with('message','Thêm title thành công!'); 
     }
 
     /**
@@ -62,7 +63,7 @@ class TitleController extends Controller
     public function edit($id)
     {
         $title = Title::find($id);
-        return view('titles.edit', compact('title'));
+        return view('title.edit', compact('title'));
     }
 
     /**
@@ -77,7 +78,7 @@ class TitleController extends Controller
         $title = Title::find($id); 
         $title->label = $request->label;
         $title->save();
-        return redirect()->route('titles.update')->with('success','Sửa sản phẩm thành công!');
+        return redirect()->route('title.update')->with('message','Sửa sản phẩm thành công!');
     }
 
     /**
@@ -91,6 +92,6 @@ class TitleController extends Controller
         $title = Title::find($id);
         $title->delete();
 
-        return redirect('titles')->with('success', 'Stock has been deleted Successfully');    
+        return redirect('title')->with('message', 'Stock has been deleted Successfully');    
     }
 }

@@ -13,6 +13,11 @@ class User extends Model
         return $this->belongsTo('App\Title');
     }
 
+    public function userType()
+    {
+        return $this->belongsTo('App\UserType');
+    }
+
     public function country()
     {
         return $this->belongsTo('App\Country');
