@@ -18,7 +18,7 @@
     [
       'errors'              =>  $errors,
       'action'              =>  URL::action('UserTypeController@update', $userType->id),
-      'userType'  =>  $userType
+      'userType'            =>  $userType
     ]
   )
 

@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.header',
-    ['title' => "Add a new user type"]
+    ['title' => "Add a new user category"]
   )
 
 @endsection
@@ -18,7 +18,7 @@
     [
       'errors'              =>  $errors,
       'action'              =>  URL::action('UserTypeController@store'),
-      'userType'  =>  $userType
+      'userType'            =>  $userType
     ]
   )
 

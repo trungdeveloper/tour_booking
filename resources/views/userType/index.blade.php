@@ -5,9 +5,9 @@
   @include(
     '_layouts.indexHeader',
     [
-      'title'         =>  "User types",
+      'title'         =>  "User categories",
       'route'         =>  route('userTypes.create'),
-      'buttonLabel'   =>  "Add an user type"
+      'buttonLabel'   =>  "Add a user category"
     ]
   )
 

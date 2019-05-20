@@ -77,7 +77,7 @@
       <li>
         <a href="{!! url('userTypes') !!}">
           <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>User Types</span>
+          <span>User categories</span>
         </a>
       </li>
 

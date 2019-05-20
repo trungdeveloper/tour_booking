@@ -22,7 +22,7 @@
       <div class="my-padding-right-8 my-padding-bottom-8">
         <a href="{!! route('userTypes.index') !!}" class="btn btn-sm btn-outline-dark">
           <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
-          <span>Back to list of user types</span>
+          <span>Back to list of user categories</span>
         </a>
       </div>
       
