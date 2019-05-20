@@ -5,11 +5,7 @@ namespace App\Http\Controllers;
 use App\Country;
 use Illuminate\Http\Request;
 use Validator;
-use Auth;
-use App\Http\Requests\TableRequest;
-use Input,File;
-use DB;     
-use Session;
+
 
 class CountryController extends Controller
 {
@@ -45,7 +41,7 @@ class CountryController extends Controller
     {
         $country = new Country; // ten model
 
-        $validator = Validator::make($request->all(), $country->rules, $country->messages);
+        $validator = Validator::make($request->all(), $country->rules($country->id), $country->messages);
 
         if ($validator->fails()) {
           return redirect()->route('countries.create')->withErrors($validator)->withInput();
@@ -87,7 +83,7 @@ class CountryController extends Controller
      */
     public function update(Request $request, Country $country)
     {
-        $validator = Validator::make($request->all(), $country->rules, $country->messages);
+        $validator = Validator::make($request->all(), $country->rules($country->id), $country->messages);
 
         if ($validator->fails()) {
           return redirect()->route('countries.edit', $country->id)->withErrors($validator)->withInput();

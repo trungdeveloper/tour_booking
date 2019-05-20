@@ -17,6 +17,7 @@
 
   @if($identificationType['id'] != NULL)
     @method('PATCH')
+    <input type="hidden" name="id" value="{!! $identificationType['id'] !!}">
   @endif 
   
   <div class="row my-padding-bottom-19">

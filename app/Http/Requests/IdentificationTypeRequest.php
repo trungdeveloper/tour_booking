@@ -24,7 +24,7 @@ class IdentificationTypeRequest extends FormRequest
     public function rules()
     {
         return [
-          'label' => 'required|unique:identification_types'
+          'label' => 'required|unique:identification_types,label,'.$this->get('id')
         ];
     }
 
