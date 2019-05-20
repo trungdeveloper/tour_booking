@@ -42,7 +42,7 @@
     <div class="col-md-3 col-lg-4"></div>
 
     <div class="col-md-9 col-lg-8">
-      <a href="{!! route('destination.index') !!}" class="btn btn-sm btn-outline-dark my-padding-right-8">
+      <a href="{!! route('destinations.index') !!}" class="btn btn-sm btn-outline-dark my-padding-right-8">
         <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
         <span>Back to list of destination</span>
       </a>
