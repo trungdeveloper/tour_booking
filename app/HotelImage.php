@@ -4,17 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class HotelImage extends Model
 {
-    protected $table='images';
+   protected $table='hotel_images';
     
     public function hotel()
     {
         return $this->belongsTo('App\hotel');
-    }
-
-    public function tour()
-    {
-        return $this->belongsTo('App\tour');
     }
 }

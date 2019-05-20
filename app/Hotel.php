@@ -13,9 +13,9 @@ class Hotel extends Model
         return $this->belongsTo('App\Destination');
     }
 
-    public function image()
+    public function hotelImage()
     {
-        return $this->hasMany('App\Image');
+        return $this->hasMany('App\HotelImage');
     }
 
     public function review()

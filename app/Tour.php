@@ -13,9 +13,9 @@ class Tour extends Model
         return $this->belongsTo('App\Destination');
     }
 
-    public function image()
+    public function tourImage()
     {
-        return $this->hasMany('App\Image');
+        return $this->hasMany('App\TourImage');
     }
 
     public function review()
