@@ -3,13 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\IdentificationType;
-use Illuminate\Http\Request;
-use Validator;
-use Auth;
 use App\Http\Requests\IdentificationTypeRequest;
-use Input,File;
-use DB;     
-use Session;
 
 
 class IdentificationTypeController extends Controller
