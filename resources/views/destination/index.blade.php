@@ -5,7 +5,7 @@
   @include(
     '_layouts.indexHeader',
     [
-      'title'       => "Destination",
+      'title'       => "Destinations",
       'route'       => route('destinations.create'),
       'buttonLabel' => "Add a new destination"
     ]

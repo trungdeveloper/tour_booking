@@ -31,8 +31,8 @@ class DestinationRequest extends FormRequest
     public function messages()
     {
         return [
-          'label.required' => 'The destinations label is required',
-          'label.unique' => 'This destinations label has already been taken'
+          'label.required' => 'Destination is required',
+          'label.unique' => 'This destination already exists'
         ];
     }
 }
