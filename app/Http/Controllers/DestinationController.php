@@ -15,7 +15,7 @@ class DestinationController extends Controller
     public function index()
     {
         $destination =  Destination::all();
-        return view('destinations/index', compact('destination'));
+        return view('destination/index', compact('destination'));
     }
 
     /**
@@ -26,7 +26,7 @@ class DestinationController extends Controller
     public function create()
     {
         $destination = new Destination;
-        return view('destinations/create', compact('destination'));
+        return view('destination/create', compact('destination'));
     }
 
     /**
@@ -49,7 +49,7 @@ class DestinationController extends Controller
      */
     public function show(Destination $destination)
     {
-        return view('destinations/show',compact('destination'));
+        return view('destination/show',compact('destination'));
     }
 
     /**
@@ -60,7 +60,7 @@ class DestinationController extends Controller
      */
     public function edit(Destination $destination)
     {
-        return view('destinations/edit',compact('destination'));
+        return view('destination/edit',compact('destination'));
     }
 
     /**

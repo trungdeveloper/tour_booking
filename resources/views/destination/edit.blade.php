@@ -13,7 +13,7 @@
 @section('content')
 
   @include(
-    'destinations/_form',
+    'destination/_form',
     [
     'errors'        =>   $errors,
     'action'        =>   URL::action('DestinationController@update',$destination->id), 
