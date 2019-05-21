@@ -4,7 +4,11 @@
 
   @include(
     '_layouts.indexHeader',
-    ['title' => "Destination", 'route' => route('destinations.create'), 'buttonLabel' => "Add a new country"]
+    [
+      'title'       => "Destination",
+      'route'       => route('destinations.create'),
+      'buttonLabel' => "Add a new destination"
+    ]
   )
 
 @endsection
@@ -16,7 +20,7 @@
 
     @foreach($destination as $destina)
 
-      <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-country">
+      <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-destination">
         <div class="my-frame">
           <div class="my-padding-bottom-12 my-filter-target">
             {!! $destina["label"] !!}
@@ -40,7 +44,7 @@
 
             <div class="my-padding-bottom-8">
               <button
-                class="btn btn-sm btn-danger my-identification-type-delete"
+                class="btn btn-sm btn-danger my-destination-delete"
                 data-token="{!! csrf_token() !!}"
                 data-url="{!! route('destinations.destroy', $destina['id']) !!}"
               >

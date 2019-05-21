@@ -15,9 +15,9 @@ class CreateHotelImagesTable extends Migration
     {
         Schema::create('hotel_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('label');
+            $table->string('image_path');
             $table->unsignedBigInteger('hotel_id');
-            $table->boolean('is_main');
+            $table->boolean('is_main')->default(false);
             $table->timestamps();
             
             $table->foreign('hotel_id')

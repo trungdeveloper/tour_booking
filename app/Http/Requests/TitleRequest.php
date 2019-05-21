@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DestinationRequest extends FormRequest
+class TitleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,20 @@ class DestinationRequest extends FormRequest
     public function rules()
     {
         return [
-            'label' => 'required|unique:destinations,label,'.$this->get('id')
-          ];
+          'label' => 'required|unique:titles,label,'.$this->get('id')
+        ];
     }
 
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [
-          'label.required' => 'The destinations label is required',
-          'label.unique' => 'This destinations label has already been taken'
+          'label.required' => 'The title is required',
+          'label.unique' => 'This title has already been taken'
         ];
     }
 }
