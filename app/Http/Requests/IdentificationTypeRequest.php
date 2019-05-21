@@ -36,8 +36,8 @@ class IdentificationTypeRequest extends FormRequest
     public function messages()
     {
         return [
-          'label.required' => 'The identification type label is required',
-          'label.unique' => 'This identification type label has already been taken'
+          'label.required'   => 'The identification type label is required',
+          'label.unique'     => 'This identification type label has already been taken'
         ];
     }
 }

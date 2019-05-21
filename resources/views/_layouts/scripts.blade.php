@@ -6,3 +6,4 @@
 <script src="{{URL::asset('js/entities/identificationType.js')}}"></script>
 <script src="{{URL::asset('js/entities/userType.js')}}"></script>
 <script src="{{URL::asset('js/entities/title.js')}}"></script>
+<script src="{{URL::asset('js/entities/destination.js')}}"></script>

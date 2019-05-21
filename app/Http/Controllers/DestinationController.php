@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Destination;
-use Illuminate\Http\Request;
 use App\Http\Requests\DestinationRequest;
 
 class DestinationController extends Controller
@@ -16,7 +15,7 @@ class DestinationController extends Controller
     public function index()
     {
         $destination =  Destination::all();
-        return view('Destinations.index', compact('destination'));
+        return view('destinations/index', compact('destination'));
     }
 
     /**
@@ -27,7 +26,7 @@ class DestinationController extends Controller
     public function create()
     {
         $destination = new Destination;
-        return view('Destinations.create', compact('destination'));
+        return view('destinations/create', compact('destination'));
     }
 
     /**
@@ -36,7 +35,7 @@ class DestinationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DestinationRequest $request)
     {
         Destination::create($request->all());
         return redirect()->route('destinations.index')->with('success','Add success!');
@@ -50,7 +49,7 @@ class DestinationController extends Controller
      */
     public function show(Destination $destination)
     {
-        return view('Destinations/show',compact('destination'));
+        return view('destinations/show',compact('destination'));
     }
 
     /**
@@ -61,7 +60,7 @@ class DestinationController extends Controller
      */
     public function edit(Destination $destination)
     {
-        return view('Destinations/edit',compact('destination'));
+        return view('destinations/edit',compact('destination'));
     }
 
     /**
@@ -71,7 +70,7 @@ class DestinationController extends Controller
      * @param  \App\Destination  $destination
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Destination $destination)
+    public function update(DestinationRequest $request, Destination $destination)
     {
         $destination->update($request->all());
         return redirect()->route('destinations.index')->with('success','Update Successfully!');
