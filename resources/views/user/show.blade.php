@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.header',
-    ['title' => $user["first_name"].' '.$user["middle_name"].' '.$user["last_name"]]
+    ['title' => $user["title"]["label"].' '.$user["first_name"].' '.$user["middle_name"].' '.$user["last_name"]]
   )
 
 @endsection
@@ -17,6 +17,9 @@
       Id: {!! $user["id"] !!}
     </div>
     <div class="my-padding-bottom-12">
+      Title: {!! $user->title->label !!}
+    </div>
+    <div class="my-padding-bottom-12">
       First name: {!! $user["first_name"] !!}
     </div>
     <div class="my-padding-bottom-12">
@@ -26,16 +29,16 @@
       Last name: {!! $user["last_name"] !!}
     </div>
     <div class="my-padding-bottom-12">
-      DoB: {!! $user["DoB"] !!}
+      Date of birth: {!! $user["date_of_birth"] !!}
     </div>
     <div class="my-padding-bottom-12">
-      Address: {!! $user["address"] !!}
+      Address: {!! str_replace("\n","<br>", $user->address) !!}
     </div>
     <div class="my-padding-bottom-12">
-      phone: {!! $user["phone"] !!}
+      Phone: {!! $user["phone"] !!}
     </div>
     <div class="my-padding-bottom-12">
-      email: {!! $user["email"] !!}
+      Email: {!! $user["email"] !!}
     </div>
     <div class="my-padding-bottom-12">
       Identification number: {!! $user["identification_number"] !!}
@@ -45,9 +48,6 @@
     </div>
     <div class="my-padding-bottom-12">
       Country: {!! $user->Country->label !!}
-    </div>
-    <div class="my-padding-bottom-12">
-      Title: {!! $user->Title->label !!}
     </div>
     <div class="my-padding-bottom-12">
       User category: {!! $user->userType->label !!}

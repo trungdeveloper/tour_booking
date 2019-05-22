@@ -95,17 +95,17 @@
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="DoB">Date of birth:<label>
+      <label for="date_of_birth">Date of birth:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input
-        id="DoB"
+        id="date_of_birth"
         type="text"
         class="form-control"
-        name="DoB"
+        name="date_of_birth"
         placeholder="yyyy-mm-dd"
-        value="{!! old ('DoB',isset($user)?$user['DoB']:NULL) !!}"
+        value="{!! old ('date_of_birth',isset($user)?$user['date_of_birth']:NULL) !!}"
       >
     </div>
   </div>
@@ -134,7 +134,7 @@
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input
         id="phone"
-        type="number"
+        type="tel"
         class="form-control"
         name="phone"
         value="{!! old ('phone',isset($user)?$user['phone']:NULL) !!}"
