@@ -22,6 +22,63 @@
   
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="title_id">Title:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <select name="title_id" class="form-control" id="title_id">
+        
+        @foreach ($titles as $title)
+          <option
+            value="{!! $title['id'] !!}"
+            {!!
+                old (
+                  'title_id',
+                  isset($user) && $user['title_id'] == $title['id'] ? 'selected' : NULL )
+            !!}
+          >
+            {!! $title['label'] !!}
+          </option>
+        @endforeach
+
+      </select>
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="last_name">Last name:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input
+        id="last_name"
+        type="text"
+        class="form-control"
+        name="last_name"
+        value="{!! old ('last_name',isset($user)?$user['last_name']:NULL) !!}"
+      >
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="middle_name">Middle name:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input
+        id="middle_name"
+        type="text"
+        class="form-control"
+        name="middle_name"
+        value="{!! old ('middle_name',isset($user)?$user['middle_name']:NULL) !!}"
+      >
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
       <label for="first_name">First Name:<label>
     </div>
     
@@ -38,39 +95,7 @@
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="middle_name">Middle Name:<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <input
-        id="middle_name"
-        type="text"
-        class="form-control"
-        name="middle_name"
-        value="{!! old ('middle_name',isset($user)?$user['middle_name']:NULL) !!}"
-      >
-    </div>
-  </div>
-
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="last_name">Last Name:<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <input
-        id="last_name"
-        type="text"
-        class="form-control"
-        name="last_name"
-        value="{!! old ('last_name',isset($user)?$user['last_name']:NULL) !!}"
-      >
-    </div>
-  </div>
-
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="DoB">Date of Birth:<label>
+      <label for="DoB">Date of birth:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -81,22 +106,6 @@
         name="DoB"
         placeholder="yyyy-mm-dd"
         value="{!! old ('DoB',isset($user)?$user['DoB']:NULL) !!}"
-      >
-    </div>
-  </div>
-
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="address">Address:<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <input
-        id="address"
-        type="text"
-        class="form-control"
-        name="address"
-        value="{!! old ('address',isset($user)?$user['address']:NULL) !!}"
       >
     </div>
   </div>
@@ -135,48 +144,22 @@
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="identification_number">Identification number:<label>
+      <label for="address">Address:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <input
-        id="identification_number"
-        type="number"
+      <textarea
+        rows="4"
+        id="address"
         class="form-control"
-        name="identification_number"
-        value="{!! old ('identification_number',isset($user)?$user['identification_number']:NULL) !!}"
-      >
+        name="address"
+      >{!! old ('address',isset($user)?$user['address']:NULL) !!}</textarea>
     </div>
   </div>
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="user_type_id">User category:<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <select name="user_type_id" class="form-control" id="user_type_id">
-        
-        @foreach ($userTypes as $userType)
-          <option
-            value="{!! $userType['id'] !!}"
-            {!!
-                old (
-                  'user_type_id',
-                  isset($user) && $user['user_type_id'] == $userType['id'] ? 'selected' : NULL )
-            !!}
-          >
-            {!! $userType['label'] !!}
-          </option>
-        @endforeach
-
-      </select>
-    </div>
-  </div>
-
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="country_id">country:<label>
+      <label for="country_id">Country:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -201,22 +184,22 @@
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="title_id">Title:<label>
+      <label for="user_type_id">User category:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <select name="title_id" class="form-control" id="title_id">
+      <select name="user_type_id" class="form-control" id="user_type_id">
         
-        @foreach ($titles as $title)
+        @foreach ($userTypes as $userType)
           <option
-            value="{!! $title['id'] !!}"
+            value="{!! $userType['id'] !!}"
             {!!
                 old (
-                  'title_id',
-                  isset($user) && $user['title_id'] == $title['id'] ? 'selected' : NULL )
+                  'user_type_id',
+                  isset($user) && $user['user_type_id'] == $userType['id'] ? 'selected' : NULL )
             !!}
           >
-            {!! $title['label'] !!}
+            {!! $userType['label'] !!}
           </option>
         @endforeach
 
@@ -248,7 +231,24 @@
       </select>
     </div>
   </div>
-  
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="identification_number">Identification number:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input
+        id="identification_number"
+        type="text"
+        class="form-control"
+        name="identification_number"
+        value="{!! old ('identification_number',isset($user)?$user['identification_number']:NULL) !!}"
+      >
+    </div>
+  </div>
+
+
   <!-- button Save -->
   <div class="row">
     <div class="col-md-3 col-lg-4"></div>
