@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HotelsService extends Model
+class TourService extends Model
 {
-    protected $table='hotels_services';
+    protected $table='tour_services';
 
-    public function hotel()
+    public function tour()
     {
-        return $this->belongsTo('App\Hotel');
+        return $this->belongsTo('App\Tour');
     }
 
     public function service()
