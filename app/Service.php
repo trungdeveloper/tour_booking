@@ -7,19 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     protected $table='services';
+    protected $guarded = ['id']; // fields in the table
+    protected $fillable = ['label','price']; // fields in the table
 
-    public function hotelsService()
+    public $timestamps=true;
+
+    public function hotelServices()
     {
-        return $this->hasMany('App\HotelsService');
+        return $this->hasMany('App\HotelService');
     }
 
-    public function toursService()
+    public function tourServices()
     {
-        return $this->hasMany('App\ToursService');
+        return $this->hasMany('App\TourService');
     }
 
-    public function booking()
+    public function bookings()
     {
-        return $this->hasMany('App\BookingsService');
+        return $this->hasMany('App\BookingService');
     }
 }

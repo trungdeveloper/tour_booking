@@ -12,6 +12,11 @@ class Country extends Model
 
     public $timestamps=true; // set timestamp, allow to use
 
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
+
     public $messages = [
         'label.required' => 'The name of the country is required',
         'label.unique' => 'This country name has already been taken'
