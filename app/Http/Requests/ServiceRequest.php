@@ -24,8 +24,8 @@ class ServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'label' => 'required|unique:service,label,'.$this->get('id'),
-            'price' => 'required|numeric:service,price,'.$this->get('id')
+            'label' => 'required|unique:services,label,'.$this->get('id'),
+            'price' => 'required|numeric:services,price,'.$this->get('id')
 
         ];
     }
@@ -38,8 +38,8 @@ class ServiceRequest extends FormRequest
     public function messages()
     {
         return [
-          'label.required'  => 'The price is required',
-          'label.unique'    => 'This price has already been taken',
+          'label.required'  => 'The label is required',
+          'label.unique'    => 'This label has already been taken',
           'price.required'  => 'The price is required',
           'price.numeric'   => 'The price is number'
 

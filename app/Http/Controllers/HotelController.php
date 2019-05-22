@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Hotel;
 use Illuminate\Http\Request;
+use App\Http\Requests\HotelRequest;
 
 class HotelController extends Controller
 {
@@ -14,7 +15,8 @@ class HotelController extends Controller
      */
     public function index()
     {
-        //
+        $hotels = Hotel::all();
+        return view('hotel/index', compact('hotels'));
     }
 
     /**
@@ -24,7 +26,8 @@ class HotelController extends Controller
      */
     public function create()
     {
-        //
+        $hotel = new Hotel;
+        return view('hotel/create', compact('hotel'));
     }
 
     /**
@@ -35,7 +38,8 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Hotel::create($request->all());
+        return redirect()->route('hotels.index')->with('success','Add success!');
     }
 
     /**
@@ -46,7 +50,7 @@ class HotelController extends Controller
      */
     public function show(Hotel $hotel)
     {
-        //
+        return view('hotel/show',compact('hotel'));
     }
 
     /**
@@ -57,7 +61,7 @@ class HotelController extends Controller
      */
     public function edit(Hotel $hotel)
     {
-        //
+        return view('hotel/edit',compact('hotel'));
     }
 
     /**
@@ -69,7 +73,8 @@ class HotelController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
-        //
+        $hotel->update($request->all());
+        return redirect()->route('hotels.index')->with('success','Sửa sản phẩm thành công!');
     }
 
     /**
@@ -80,6 +85,7 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
-        //
+        $hotel->delete();
+        return "ok";
     }
 }
