@@ -11,12 +11,13 @@ class Destination extends Model
     protected $fillable = ['label']; // fields in the table
     
     public $timestamps=true; // set timestamp, allow to use
-    public function hotel()
+    
+    public function hotels()
     {
         return $this->hasMany('App\Hotel');
     }
 
-    public function tour()
+    public function tours()
     {
         return $this->hasMany('App\Tour');
     }

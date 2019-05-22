@@ -13,22 +13,22 @@ class Tour extends Model
         return $this->belongsTo('App\Destination');
     }
 
-    public function tourImage()
+    public function tourImages()
     {
         return $this->hasMany('App\TourImage');
     }
 
-    public function review()
+    public function reviews()
     {
         return $this->hasMany('App\Review');
     }
 
-    public function toursServices()
+    public function tourServices()
     {
-        return $this->hasMany('App\ToursService');
+        return $this->hasMany('App\TourService');
     }
 
-    public function booking()
+    public function bookings()
     {
         return $this->hasMany('App\Booking');
     }

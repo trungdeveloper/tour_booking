@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BookingsService extends Model
+class BookingService extends Model
 {
-    protected $table='bookings_services';
+    protected $table='booking_services';
 
     public function booking()
     {

@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Service;
 use Illuminate\Http\Request;
+use App\Service;
+use App\Http\Requests\ServiceRequest;
 
 class ServiceController extends Controller
 {
@@ -14,7 +14,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services = Service::all();
+        return view('service/index', compact('services'));
     }
 
     /**
@@ -24,7 +25,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        $service = new Service;
+        return view('service/create', compact('service'));
     }
 
     /**
@@ -35,7 +37,8 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Service::create($request->all());
+        return redirect()->route('services.index')->with('success','Add success!');
     }
 
     /**
@@ -46,7 +49,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        return view('service/show',compact('service'));
     }
 
     /**
@@ -57,7 +60,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view('service/edit',compact('service'));
     }
 
     /**
@@ -69,7 +72,8 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $service->update($request->all());
+        return redirect()->route('services.index')->with('success','updated!');
     }
 
     /**
@@ -80,6 +84,7 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        return "ok";    
     }
 }
