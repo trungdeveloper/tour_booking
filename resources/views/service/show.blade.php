@@ -15,9 +15,13 @@
   <div class="my-margin-top-40 my-frame">
     <div class="my-padding-bottom-12">
       Id: {!! $service["id"] !!}
-      <p>{!! $service["price"] !!}</p>
     </div>
-    
+
+    <div class="my-padding-bottom-12">
+      <b>VNĐ {!! $service->price !!}</b>
+    </div>
+
+
     <div class="d-flex flex-wrap">
 
       <div class="my-padding-right-8 my-padding-bottom-8">

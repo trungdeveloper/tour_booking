@@ -22,7 +22,7 @@
   
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="service_label">service label:<label>
+      <label for="service_label">Label:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -37,7 +37,7 @@
   </div>
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="service_price">service price:<label>
+      <label for="service_price">Price:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">

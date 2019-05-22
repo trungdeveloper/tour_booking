@@ -41,7 +41,7 @@ class ServiceRequest extends FormRequest
           'label.required'  => 'The label is required',
           'label.unique'    => 'This label has already been taken',
           'price.required'  => 'The price is required',
-          'price.numeric'   => 'The price is number'
+          'price.numeric'   => 'The price must be a numeric value'
 
         ];
     }
