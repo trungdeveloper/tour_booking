@@ -16,8 +16,10 @@
     'user/_form',
     [
       'errors'      =>  $errors,
-      'action'      =>  URL::action('UserController@store'),
-      'user'        =>  $user
+      'action'      =>  URL::action('UserController@update', $user->id),
+      'user'        =>  $user,
+      'userTypes'   =>  $userTypes,
+      'countries'   =>  $countries
     ]
   )
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Title;
+use App\IdentificationType;
 use App\UserType;
 use App\Country;
 use App\Http\Requests\UserRequest;
@@ -32,7 +34,9 @@ class UserController extends Controller
         $user = new User;
         $userTypes = UserType::orderBy('id')->get();
         $countries = Country::orderBy('id')->get();
-        return view('user/create', compact('user'))->with('userTypes', $userTypes, 'countries', $countries);
+        $titles = Title::orderBy('id')->get();
+        $identificationTypes = IdentificationType::orderBy('id')->get();
+        return view('user/create', compact('user', 'userTypes', 'countries', 'identificationTypes', 'titles'));
     }
 
     /**
@@ -67,7 +71,10 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $userTypes = UserType::orderBy('id')->get();
-        return view('user/edit',compact('user'))->with('userTypes', $userTypes);
+        $countries = Country::orderBy('id')->get();
+        $titles = Title::orderBy('id')->get();
+        $identificationTypes = IdentificationType::orderBy('id')->get();
+        return view('user/edit', compact('user', 'userTypes', 'countries', 'identificationTypes', 'titles'));
     }
 
     /**

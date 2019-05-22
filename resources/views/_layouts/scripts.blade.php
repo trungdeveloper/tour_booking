@@ -8,3 +8,4 @@
 <script src="{{URL::asset('js/entities/title.js')}}"></script>
 <script src="{{URL::asset('js/entities/destination.js')}}"></script>
 <script src="{{URL::asset('js/entities/service.js')}}"></script>
+<script src="{{URL::asset('js/entities/user.js')}}"></script>
