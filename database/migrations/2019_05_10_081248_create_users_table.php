@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
-            $table->date('DoB');
+            $table->date('date_of_birth');
             $table->unsignedBigInteger('user_type_id');
             $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('title_id');
