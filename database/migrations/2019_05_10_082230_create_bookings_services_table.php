@@ -13,7 +13,7 @@ class CreateBookingsServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookings_services', function (Blueprint $table) {
+        Schema::create('booking_services', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('booking_id');
             $table->unsignedBigInteger('service_id');
@@ -36,6 +36,6 @@ class CreateBookingsServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookings_services');
+        Schema::dropIfExists('booking_services');
     }
 }

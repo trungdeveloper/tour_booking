@@ -17,22 +17,22 @@ class Hotel extends Model
         return $this->belongsTo('App\Destination');
     }
 
-    public function hotelImage()
+    public function hotelImages()
     {
         return $this->hasMany('App\HotelImage');
     }
 
-    public function review()
+    public function reviews()
     {
         return $this->hasMany('App\Review');
     }
 
-    public function hotelsServices()
+    public function hotelServices()
     {
-        return $this->hasMany('App\HotelsService');
+        return $this->hasMany('App\HotelService');
     }
 
-    public function booking()
+    public function bookings()
     {
         return $this->hasMany('App\Booking');
     }

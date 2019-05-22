@@ -12,18 +12,18 @@ class Service extends Model
 
     public $timestamps=true;
 
-    public function hotelsService()
+    public function hotelServices()
     {
-        return $this->hasMany('App\HotelsService');
+        return $this->hasMany('App\HotelService');
     }
 
-    public function toursService()
+    public function tourServices()
     {
-        return $this->hasMany('App\ToursService');
+        return $this->hasMany('App\TourService');
     }
 
-    public function booking()
+    public function bookings()
     {
-        return $this->hasMany('App\BookingsService');
+        return $this->hasMany('App\BookingService');
     }
 }

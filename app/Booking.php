@@ -8,9 +8,9 @@ class Booking extends Model
 {
     protected $table='booking';
 
-    public function bookingsServices()
+    public function bookingServices()
     {
-        return $this->hasMany('App\BookingsService');
+        return $this->hasMany('App\BookingService');
     }
 
     public function hotel()

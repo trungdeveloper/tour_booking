@@ -58,3 +58,12 @@
   </div>
 
 @endsection
+
+@section('scripts')
+
+  @include(
+    '_layouts.scripts',
+    ['ajax' => URL::asset('js/entities/country.js')]
+  )
+
+@endsection
