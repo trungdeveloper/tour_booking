@@ -35,7 +35,7 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ServiceRequest $request)
     {
         Service::create($request->all());
         return redirect()->route('services.index')->with('success','Add success!');
@@ -70,7 +70,7 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(ServiceRequest $request, Service $service)
     {
         $service->update($request->all());
         return redirect()->route('services.index')->with('success','updated!');
@@ -87,4 +87,5 @@ class ServiceController extends Controller
         $service->delete();
         return "ok";    
     }
+    
 }

@@ -22,10 +22,13 @@
 
       <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-service">
         <div class="my-frame">
-          <div class="my-padding-bottom-12 my-filter-target">
+
+          <div class="my-padding-bottom-4 my-filter-target">
             {!! $service["label"] !!}
-            <p>{!! $service["price"] !!}</p>
-            
+          </div>
+          
+          <div class="my-padding-bottom-12">
+            <i>VNĐ {!! $service->price !!}</i>  
           </div>
           
           <div class="d-flex flex-wrap">
