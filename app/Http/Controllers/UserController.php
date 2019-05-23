@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
+use App\Title;
+use App\IdentificationType;
+use App\UserType;
+use App\Country;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -14,7 +18,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $userTypes = UserType::with(['users' => function ($user) { $user->orderBy('first_name'); }])
+        ->orderBy('id')
+        ->get();
+        return view('user/index', compact('userTypes'));
     }
 
     /**
@@ -24,7 +31,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $user = new User;
+        $userTypes = UserType::orderBy('id')->get();
+        $countries = Country::orderBy('id')->get();
+        $titles = Title::orderBy('id')->get();
+        $identificationTypes = IdentificationType::orderBy('id')->get();
+        return view('user/create', compact('user', 'userTypes', 'countries', 'identificationTypes', 'titles'));
     }
 
     /**
@@ -33,9 +45,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        User::create($request->all());
+        return redirect()->route('users.index')->with('success','Add success!');
     }
 
     /**
@@ -46,7 +59,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('user/show', compact('user'));
     }
 
     /**
@@ -57,7 +70,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $userTypes = UserType::orderBy('id')->get();
+        $countries = Country::orderBy('id')->get();
+        $titles = Title::orderBy('id')->get();
+        $identificationTypes = IdentificationType::orderBy('id')->get();
+        return view('user/edit', compact('user', 'userTypes', 'countries', 'identificationTypes', 'titles'));
     }
 
     /**
@@ -67,9 +84,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        $user->update($request->all());
+        return redirect()->route('users.index')->with('success','Sửa sản phẩm thành công!');
     }
 
     /**
@@ -80,6 +98,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return 'ok';
     }
 }

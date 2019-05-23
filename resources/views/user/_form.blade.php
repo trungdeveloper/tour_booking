@@ -15,139 +15,239 @@
 >
   @csrf
 
-  @if($dish['id'] != NULL)
+  @if($user['id'] != NULL)
     @method('PATCH')
-    <input type="hidden" name="id" value="{!! $dish['id'] !!}">
+    <input type="hidden" name="id" value="{!! $user['id'] !!}">
   @endif 
   
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="dish_name">Name of the dish:<label>
+      <label for="title_id">Title:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <input
-        id="dish_name"
-        type="text"
-        class="form-control"
-        name="name"
-        value="{!! old ('name',isset($dish)?$dish['name']:NULL) !!}"
-      >
-    </div>
-  </div>
-
-
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="dish_dish_type_id">Dish category:<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <select name="dish_type_id" class="form-control" id="dish_dish_type_id">
+      <select name="title_id" class="form-control" id="title_id">
         
-        @foreach ($dishTypes as $dishType)
+        @foreach ($titles as $title)
           <option
-            value="{!! $dishType['id'] !!}"
+            value="{!! $title['id'] !!}"
             {!!
                 old (
-                  'dish_type_id',
-                  isset($dish) && $dish['dish_type_id'] == $dishType['id'] ? 'selected' : NULL )
+                  'title_id',
+                  isset($user) && $user['title_id'] == $title['id'] ? 'selected' : NULL )
             !!}
           >
-            {!! $dishType['label'] !!}
+            {!! $title['label'] !!}
           </option>
         @endforeach
 
       </select>
     </div>
   </div>
-  
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="dish_description">Description:<label>
+      <label for="last_name">Last name:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input
+        id="last_name"
+        type="text"
+        class="form-control"
+        name="last_name"
+        value="{!! old ('last_name',isset($user)?$user['last_name']:NULL) !!}"
+      >
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="middle_name">Middle name:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input
+        id="middle_name"
+        type="text"
+        class="form-control"
+        name="middle_name"
+        value="{!! old ('middle_name',isset($user)?$user['middle_name']:NULL) !!}"
+      >
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="first_name">First Name:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input
+        id="first_name"
+        type="text"
+        class="form-control"
+        name="first_name"
+        value="{!! old ('first_name',isset($user)?$user['first_name']:NULL) !!}"
+      >
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="date_of_birth">Date of birth:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input
+        id="date_of_birth"
+        type="text"
+        class="form-control datepicker"
+        name="date_of_birth"
+        placeholder="yyyy-mm-dd"
+        autocomplete="off"
+        value="{!! old ('date_of_birth',isset($user)?$user['date_of_birth']:NULL) !!}"
+      >
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="email">Email:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input
+        id="email"
+        type="email"
+        class="form-control"
+        name="email"
+        value="{!! old ('email',isset($user)?$user['email']:NULL) !!}"
+      >
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="phone">Phone:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input
+        id="phone"
+        type="tel"
+        class="form-control"
+        name="phone"
+        value="{!! old ('phone',isset($user)?$user['phone']:NULL) !!}"
+      >
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="address">Address:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <textarea
         rows="4"
-        id="dish_description"
+        id="address"
         class="form-control"
-        name="description"
-      >{!! old ('description',isset($dish)?$dish['description']:NULL) !!}</textarea>
+        name="address"
+      >{!! old ('address',isset($user)?$user['address']:NULL) !!}</textarea>
     </div>
   </div>
-  
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="dish_price">Price:<label>
+      <label for="country_id">Country:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <select name="country_id" class="form-control" id="country_id">
+        
+        @foreach ($countries as $country)
+          <option
+            value="{!! $country['id'] !!}"
+            {!!
+                old (
+                  'country_id',
+                  isset($user) && $user['country_id'] == $country['id'] ? 'selected' : NULL )
+            !!}
+          >
+            {!! $country['label'] !!}
+          </option>
+        @endforeach
+
+      </select>
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="user_type_id">User category:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <select name="user_type_id" class="form-control" id="user_type_id">
+        
+        @foreach ($userTypes as $userType)
+          <option
+            value="{!! $userType['id'] !!}"
+            {!!
+                old (
+                  'user_type_id',
+                  isset($user) && $user['user_type_id'] == $userType['id'] ? 'selected' : NULL )
+            !!}
+          >
+            {!! $userType['label'] !!}
+          </option>
+        @endforeach
+
+      </select>
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="identification_type_id">Identification type:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <select name="identification_type_id" class="form-control" id="identification_type_id">
+        
+        @foreach ($identificationTypes as $identificationType)
+          <option
+            value="{!! $identificationType['id'] !!}"
+            {!!
+                old (
+                  'identification_type_id',
+                  isset($user) && $user['identification_type_id'] == $identificationType['id'] ? 'selected' : NULL )
+            !!}
+          >
+            {!! $identificationType['label'] !!}
+          </option>
+        @endforeach
+
+      </select>
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="identification_number">Identification number:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input
-        id="dish_price"
-        type="number"
+        id="identification_number"
+        type="text"
         class="form-control"
-        name="price"
-        value="{!! old ('price',isset($dish)?$dish['price']:NULL) !!}"
+        name="identification_number"
+        value="{!! old ('identification_number',isset($user)?$user['identification_number']:NULL) !!}"
       >
     </div>
   </div>
-
-
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="dish_is_available">Dish is available?<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <input
-        type="checkbox"
-        id="dish_is_available"
-        name="is_available"
-        @if (isset($dish) && $dish->is_available)
-          checked="checked"
-        @endif
-        value="1"
-      >
-    </div>
-  </div>
-
-
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="dish_image">Upload a picture<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <input type="file" id="dish_image" name="image">
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-md-3 col-lg-4"></div>
-    
-    <div class="col-md-9 col-lg-8">
-      <div class="d-none my-margin-bottom-19" id="my-dish-discard-picture-status"></div>
-    </div>
-  </div>
-
-
-  @isset($dish['image'])
-
-    <div class="row my-padding-bottom-19 my-dish-image">
-      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-        <label>Current picture<label>
-      </div>
-      
-      <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-        <img src="{!! Storage::url($dish['image']) !!}">
-      </div>
-    </div>
-
-  @endisset
 
 
   <!-- button Save -->
@@ -156,32 +256,21 @@
 
     <div class="col-md-9 col-lg-8">
       <a
-        href="{!! route('dishes.index') !!}"
+        href="{!! route('users.index') !!}"
         class="btn btn-sm btn-outline-dark my-margin-right-8 my-margin-bottom-8"
       >
         <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
-        <span>Back to list of dishes</span>
+        <span>Back to list of users</span>
       </a>
 
       <button
         type="submit"
-        class="btn btn-sm btn-success {!! isset($dish['image']) ? ' my-margin-right-8 ' : '' !!}my-margin-bottom-8"
+        class="btn btn-sm btn-success {!! isset($user['image']) ? ' my-margin-right-8 ' : '' !!}my-margin-bottom-8"
       >
         <i class="fas fa-check-circle my-margin-right-12"></i>
         <span>Save</span>
       </button>
 
-      @isset($dish['image'])    
-        <button
-          class="btn btn-sm btn-danger my-dish-discard-picture my-margin-bottom-8"
-          data-token="{!! csrf_token() !!}"
-          data-url="{!! route('dishes.discardPicture', $dish['id']) !!}"
-        >
-          <i class="far fa-trash-alt"></i>
-          <i class="far fa-image my-margin-right-12"></i>
-          <span>Discard picture</span>
-        </button>
-      @endisset
     </div>
   </div>
 

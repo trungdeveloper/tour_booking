@@ -24,17 +24,17 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name'        => 'required',
-            'last_name'         => 'required',
-            'DoB'               => 'required',
-            'address'           => 'required',
-            'user_type_id'      => 'required',
-            'country_id'        => 'required',
-            'title_id'          => 'required',
-            'identification_type_id'    => 'required',
-            'email'             => 'required|unique:users,email,'.$this->get('id'),
-            'phone'             => 'required|unique:users,phone,'.$this->get('id'),
-            'identification_number'       => 'required|numeric|unique:users,identification_number,'.$this->get('id')
+            'first_name'              =>  'required',
+            'last_name'               =>  'required',
+            'date_of_birth'           =>  'required',
+            'address'                 =>  'required',
+            'user_type_id'            =>  'required',
+            'country_id'              =>  'required',
+            'title_id'                =>  'required',
+            'email'                   =>  'required|unique:users,email,'.$this->get('id'),
+            'phone'                   =>  'required|unique:users,phone,'.$this->get('id'),
+            'identification_type_id'  =>  'required',
+            'identification_number'   =>  'required|unique:users,identification_number,'.$this->get('id')
         ];
     }
 
@@ -43,18 +43,17 @@ class UserRequest extends FormRequest
         return [
           'first_name.required'     => 'The first name is required',
           'last_name.required'      => 'The last name is required',
-          'DoB.required'            => 'The DoB is required',
+          'date_of_birth.required'  => 'The date of birth is required',
           'address.required'        => 'The address is required',
           'user_type_id.required'   => 'The user category is required',
           'title_id.required'       => 'The title is required',
           'identification_type_id.required'  => 'The identification is required',
           'email.required'          => 'The email is required',
-          'email.unique'            => 'This email has already been taken',
+          'email.unique'            => 'This email has already been registered',
           'phone.required'          => 'The phone number is required',
-          'phone.unique'            => 'This phone number has already been taken',
+          'phone.unique'            => 'This phone number has already been registered',
           'identification_number.required'  => 'The identification number is required',
-          'identification_number.unique'    => 'This identification number has already been taken',
-          'identification_number.nummeric'  => 'The identification number is number',
+          'identification_number.unique'    => 'This identification number has already been registered'
         ];
     }
 }
