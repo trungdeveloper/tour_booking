@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Tour;
-use Illuminate\Http\Request;
+use App\Destination;
+use App\Http\Requests\TourRequest;
+use App\Http\Requests\DestinationRequest;
 
 class TourController extends Controller
 {
@@ -14,7 +16,9 @@ class TourController extends Controller
      */
     public function index()
     {
-        //
+      $tours = Tour::all();
+      $destinations = Destination::all();
+      return view('tour/index', compact('tours', 'destinations'));
     }
 
     /**
@@ -24,7 +28,9 @@ class TourController extends Controller
      */
     public function create()
     {
-        //
+      $tour = new Tour; 
+      $destination = Destination::orderBy('id')->get();
+      return view('tour/create', compact('tour', 'destination'));
     }
 
     /**
@@ -33,53 +39,60 @@ class TourController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TourRequest $request)
     {
-        //
+        Tour::create($request->all());
+
+        return redirect()->route('tours.index')->with('success','Add success!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tour  $tour
+     * @param  \App\tour  $tour
      * @return \Illuminate\Http\Response
      */
     public function show(Tour $tour)
     {
-        //
+        return view('tour/show',compact('tour'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tour  $tour
+     * @param  \App\tour  $tour
      * @return \Illuminate\Http\Response
      */
     public function edit(Tour $tour)
     {
-        //
+        $tour = new Tour;
+        $destination = new Destination;
+        return view('tour/edit', compact('tour', 'destination'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tour  $tour
+     * @param  \App\tour  $tour
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tour $tour)
+    public function update(TourRequest $request, Tour $tour)
     {
-        //
+        $tour->update($request->all());
+
+        return redirect()->route('tours.index')->with('success','Update success');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tour  $tour
+     * @param  \App\tour  $tour
      * @return \Illuminate\Http\Response
      */
     public function destroy(Tour $tour)
     {
-        //
+        $tour->delete();
+        return "ok";
     }
 }

@@ -80,6 +80,13 @@
           <span>User categories</span>
         </a>
       </li>
+      <li>
+        <a href="{!! url('tours') !!}">
+          <i class="fas fa-sitemap my-margin-right-12"></i>
+          <span>Tours</span>
+        </a>
+      </li>
+
 
     </ul>
 
