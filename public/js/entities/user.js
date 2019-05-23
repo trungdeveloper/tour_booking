@@ -55,9 +55,7 @@ $(function(){
   
       });
     });
-    $( "#DoB" ).datepicker({
-        dateFormat: "yy-mm-dd"
-      });
+    
   });
   
   

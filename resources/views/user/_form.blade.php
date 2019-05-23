@@ -102,9 +102,10 @@
       <input
         id="date_of_birth"
         type="text"
-        class="form-control"
+        class="form-control datepicker"
         name="date_of_birth"
         placeholder="yyyy-mm-dd"
+        autocomplete="off"
         value="{!! old ('date_of_birth',isset($user)?$user['date_of_birth']:NULL) !!}"
       >
     </div>
