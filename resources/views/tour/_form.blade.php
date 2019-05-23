@@ -78,9 +78,9 @@
           class="form-control" 
           name="destination_id" >
 
-        @foreach ($destination as $des)
+        @foreach ($destinations as $destination)
          <option
-            value="{!! $des['id'] !!}" {!! $des['id'] == $tour['destination_id']?'selected' : '' !!}>-- {!! $des['label'] !!} 
+            value="{!! $destination['id'] !!}" {!! $destination['id'] == $tour['destination_id']?'selected' : '' !!}>-- {!! $destination['label'] !!} 
          </option>
         @endforeach
 
