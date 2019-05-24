@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Hotel;
-use Illuminate\Http\Request;
+use App\Destination;
 use App\Http\Requests\HotelRequest;
+use App\Http\Requests\DestinationRequest;
 
-class HotelController extends Controller
+class hotelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,9 @@ class HotelController extends Controller
      */
     public function index()
     {
-        $hotels = Hotel::all();
-        return view('hotel/index', compact('hotels'));
+      $hotels = Hotel::all();
+      $destinations = Destination::all();
+      return view('hotel/index', compact('hotels', 'destinations'));
     }
 
     /**
@@ -26,8 +28,9 @@ class HotelController extends Controller
      */
     public function create()
     {
-        $hotel = new Hotel;
-        return view('hotel/create', compact('hotel'));
+      $hotel = new Hotel; 
+      $destinations = Destination::orderBy('label')->get();
+      return view('hotel/create', compact('hotel', 'destinations'));
     }
 
     /**
@@ -36,16 +39,17 @@ class HotelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HotelRequest $request)
     {
         Hotel::create($request->all());
+
         return redirect()->route('hotels.index')->with('success','Add success!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Hotel  $hotel
+     * @param  \App\hotel  $hotel
      * @return \Illuminate\Http\Response
      */
     public function show(Hotel $hotel)
@@ -56,31 +60,41 @@ class HotelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Hotel  $hotel
+     * @param  \App\hotel  $hotel
      * @return \Illuminate\Http\Response
      */
     public function edit(Hotel $hotel)
     {
-        return view('hotel/edit',compact('hotel'));
+        $destinations = Destination::get();
+        return view('hotel/edit', compact('hotel', 'destinations'));
+
+        $hotel = new Hotel;
+        $destination = new Destination;
+        return view('hotel/edit', compact('hotel', 'destination'));
+
+        $destinations = Destination::orderBy('label')->get();
+        return view('hotel/edit', compact('hotel', 'destinations'));
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Hotel  $hotel
+     * @param  \App\hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(HotelRequest $request, hotel $hotel)
     {
         $hotel->update($request->all());
-        return redirect()->route('hotels.index')->with('success','Sửa sản phẩm thành công!');
+
+        return redirect()->route('hotels.index')->with('success','Update success');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Hotel  $hotel
+     * @param  \App\hotel  $hotel
      * @return \Illuminate\Http\Response
      */
     public function destroy(Hotel $hotel)
