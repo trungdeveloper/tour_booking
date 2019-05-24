@@ -18,7 +18,8 @@
     [
       'errors'              =>  $errors,
       'action'              =>  URL::action('TourController@store'),
-      'tour'                =>  $tour
+      'tour'                =>  $tour,
+      'destinations'        =>  $destinations
     ]
   )
 

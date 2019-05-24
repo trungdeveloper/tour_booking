@@ -19,31 +19,6 @@
     @method('PATCH')
     <input type="hidden" name="id" value="{!! $tour['id'] !!}">
   @endif 
-  
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="destination_id">Destination:<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <select name="destination_id" class="form-control" id="destination_id">
-        
-        @foreach ($destinations as $destination)
-          <option
-            value="{!! $destination['id'] !!}"
-            {!!
-                old (
-                  'destination_id',
-                  isset($tour) && $tour['destination_id'] == $destination['id'] ? 'selected' : NULL )
-            !!}
-          >
-            {!! $destination['label'] !!}
-          </option>
-        @endforeach
-
-      </select>
-    </div>
-  </div>
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
@@ -123,8 +98,31 @@
           value="{!! old ('label',isset($tour)?$tour['desciption']:NULL) !!}" > 
       </div>
     </div>
-  
-  <!-- button Save -->
+    
+    <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="destination_id">Destination:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <select name="destination_id" class="form-control" id="destination_id">
+        <option value="">Choose destination:</option>
+        @foreach ($destinations as $destination)
+          <option
+            value="{!! $destination['id'] !!}"
+            {!!
+                old (
+                  'destination_id',
+                  isset($tour) && $tour['destination_id'] == $destination['id'] ? 'selected' : NULL )
+            !!}
+          >
+            {!! $destination['label'] !!}
+          </option>
+        @endforeach
+
+      </select>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-3 col-lg-4"></div>
 

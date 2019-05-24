@@ -29,8 +29,8 @@ class TourController extends Controller
     public function create()
     {
       $tour = new Tour; 
-      $destination = Destination::orderBy('id')->get();
-      return view('tour/create', compact('tour', 'destination'));
+      $destinations = Destination::orderBy('label')->get();
+      return view('tour/create', compact('tour', 'destinations'));
     }
 
     /**
@@ -67,6 +67,14 @@ class TourController extends Controller
     {
         $destinations = Destination::get();
         return view('tour/edit', compact('tour', 'destinations'));
+
+        $tour = new Tour;
+        $destination = new Destination;
+        return view('tour/edit', compact('tour', 'destination'));
+
+        $destinations = Destination::orderBy('label')->get();
+        return view('tour/edit', compact('tour', 'destinations'));
+
     }
 
     /**
