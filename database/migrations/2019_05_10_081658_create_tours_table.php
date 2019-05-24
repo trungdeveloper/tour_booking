@@ -20,7 +20,7 @@ class CreateToursTable extends Migration
             $table->integer('price');
             $table->integer('number_of_days');
             $table->integer('number_of_nights');        
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
             
             $table->foreign('destination_id')
