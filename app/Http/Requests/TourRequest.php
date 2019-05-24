@@ -24,7 +24,7 @@ class TourRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'                       => 'required|unique:tours,name',
+            'name'                       => 'required|unique:tours,name,'.$this->get('id'),
             'price'                      => 'required|numeric',
             'number_of_day'              => 'required|numeric',
             'number_of_night'            => 'required|numeric',

@@ -65,8 +65,16 @@ class TourController extends Controller
      */
     public function edit(Tour $tour)
     {
+        $destinations = Destination::get();
+        return view('tour/edit', compact('tour', 'destinations'));
+
+        $tour = new Tour;
+        $destination = new Destination;
+        return view('tour/edit', compact('tour', 'destination'));
+
         $destinations = Destination::orderBy('label')->get();
         return view('tour/edit', compact('tour', 'destinations'));
+
     }
 
     /**
