@@ -14,12 +14,24 @@
 
   <div class="my-margin-top-40 my-frame">
     <div class="my-padding-bottom-12">
-      Id: {!! $tour["id"] !!}<br>
-      Name: {!! $tour["name"] !!}<br>
-      Price: {!! $tour["price"] !!}<br>
-      Number_of_day: {!! $tour["number_of_days"] !!}<br>
-      Number_of_night: {!! $tour["number_of_nights"] !!}<br>
-      Description: {!! $tour["description"] !!}<br>
+      Id: {!! $tour["id"] !!}
+    </div>
+    <div class="my-padding-bottom-12">
+      Name: {!! $tour["name"] !!}
+    </div>
+    <div class="my-padding-bottom-12">
+      Price: {!! $tour["price"] !!}
+    </div>
+    <div class="my-padding-bottom-12">
+      Number_of_day: {!! $tour["number_of_days"] !!}
+    </div>
+    <div class="my-padding-bottom-12">
+      Number_of_night: {!! $tour["number_of_nights"] !!}
+    </div>
+    <div class="my-padding-bottom-12">
+      Description: {!! $tour["description"] !!}
+    </div>
+    <div class="my_padding-bootom-12">
       Destination: {!! $tour->destination->label !!}
     </div>
     
