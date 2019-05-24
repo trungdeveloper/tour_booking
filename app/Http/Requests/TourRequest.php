@@ -26,24 +26,25 @@ class TourRequest extends FormRequest
         return [
             'name'                       => 'required|unique:tours,name,'.$this->get('id'),
             'price'                      => 'required|numeric',
-            'number_of_day'              => 'required|numeric',
-            'number_of_night'            => 'required|numeric',
-            'desciption'                 => 'required',
+            'number_of_days'              => 'required|numeric',
+            'number_of_nights'            => 'required|numeric',
+            'description'                 => 'required',
             'destination_id'             => 'required'
         ];
     }
 
     public function messages() {
         return [
-            'name.required'              => 'The name is required',
-            'name.unique'                => 'This name has already been taken',
+            'name.required'              => 'Tour name is required',
+            'name.unique'                => 'Tour name has already been taken',
+            'destination_id.required'    => 'The destination is required',
+            'description.required'        => 'The description is required',
+            'number_of_days.required'     => 'The number of days is required',
+            'number_of_days.numeric'      => 'The number of days must be numeric',
+            'number_of_nights.required'   => 'The number of nights is required',
+            'number_of_nights.numeric'   => 'The number of nights must be numeric',
             'price.required'             => 'The price is required',
-            'price.numeric'              => 'The price is numeric',
-            'number_of_day.required'     => 'The number of day is required',
-            'number_of_day.numeric'      => 'The price is numeric',
-            'number_of_night.required'   => 'The number of night is required',
-            'desciption.required'        => 'The desciption is required',
-            'destination_id.required'    => 'The destination is required'
+            'price.numeric'              => 'The price must be numeric'
         ];
     }
 }

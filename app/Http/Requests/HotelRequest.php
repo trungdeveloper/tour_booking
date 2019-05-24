@@ -32,7 +32,7 @@ class HotelRequest extends FormRequest
             'price'                 => 'required|numeric',
             'rating'                => 'required',
             'destination_id'        => 'required',
-            'number_of_night'       => 'required|numeric',
+            'number_of_nights'       => 'required|numeric',
             'description'           => 'required'
         ];
     }
@@ -58,8 +58,8 @@ class HotelRequest extends FormRequest
           'price.numeric'             => 'This hotel price is number',
           'rating.required'           => 'The hotel rating is required',
           'destination_id.required'   => 'The hotel description_id is required',
-          'number_of_night.required'  => 'The hotel number_of_night is required',
-          'number_of_night.numeric'   => 'This hotel number_of_nightis number',
+          'number_of_nights.required'  => 'The hotel number_of_nights is required',
+          'number_of_nights.numeric'   => 'This hotel number_of_nightsis number',
           'description.required'      => 'The hotel description is required'
         ];
     }

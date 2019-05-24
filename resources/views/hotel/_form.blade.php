@@ -137,16 +137,16 @@
     
     <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="hotel_number_of_night">Number_of_night:</label> 
+      <label for="hotel_number_of_nights">Number_of_night:</label> 
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
         <input 
-          id="hotel_number_of_night"
+          id="hotel_number_of_nights"
           type="text" 
           class="form-control" 
-          name="number_of_night"
-          value="{!! old ('label',isset($hotel)?$hotel['number_of_night']:NULL) !!}" >   
+          name="number_of_nights"
+          value="{!! old ('label',isset($hotel)?$hotel['number_of_nights']:NULL) !!}" >   
       </div>
     </div>
 

@@ -8,7 +8,7 @@ class Tour extends Model
 {
     protected $table='tours';
     protected $guarded = ['id']; // fields in the table
-    protected $fillable = ['name', 'price', 'number_of_day', 'number_of_night', 'desciption', 'destination_id']; // fields in the table
+    protected $fillable = ['name', 'price', 'number_of_days', 'number_of_nights', 'description', 'destination_id']; // fields in the table
    
     public function destination()
     {

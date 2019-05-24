@@ -17,9 +17,9 @@
       Id: {!! $tour["id"] !!}<br>
       Name: {!! $tour["name"] !!}<br>
       Price: {!! $tour["price"] !!}<br>
-      Number_of_day: {!! $tour["number_of_day"] !!}<br>
-      Number_of_night: {!! $tour["number_of_night"] !!}<br>
-      Desciption: {!! $tour["desciption"] !!}<br>
+      Number_of_day: {!! $tour["number_of_days"] !!}<br>
+      Number_of_night: {!! $tour["number_of_nights"] !!}<br>
+      Description: {!! $tour["description"] !!}<br>
       Destination: {!! $tour->destination->label !!}
     </div>
     

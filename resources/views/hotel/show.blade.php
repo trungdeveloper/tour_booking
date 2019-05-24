@@ -22,7 +22,7 @@
       Website: {!! $hotel["website"] !!}<br>
       Price: {!! $hotel["price"] !!}<br>
       Rating: {!! $hotel["rating"] !!}<br>
-      Number_of_night: {!! $hotel["number_of_night"] !!}<br>
+      Number_of_night: {!! $hotel["number_of_nights"] !!}<br>
       Description: {!! $hotel["description"] !!}<br>
       Destination: {!! $hotel->destination->label !!}
     </div>

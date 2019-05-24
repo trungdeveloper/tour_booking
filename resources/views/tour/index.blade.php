@@ -32,7 +32,7 @@
             <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-tour">
               <div class="my-frame">
                 <div class="my-padding-bottom-12 my-filter-target">
-                  {!! $tour["title"]["label"].' '.$tour["name"].' '.$tour["price"].' '.$tour["desciption"] !!}
+                  {!! $tour["name"] !!}
                 </div>
                 
                 <div class="d-flex flex-wrap">

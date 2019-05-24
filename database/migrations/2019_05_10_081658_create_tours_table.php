@@ -18,9 +18,9 @@ class CreateToursTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('destination_id'); 
             $table->integer('price');
-            $table->integer('number_of_day');
-            $table->integer('number_of_night');        
-            $table->string('desciption');
+            $table->integer('number_of_days');
+            $table->integer('number_of_nights');        
+            $table->string('description');
             $table->timestamps();
             
             $table->foreign('destination_id')
