@@ -21,38 +21,83 @@
   @endif 
   
   <div class="row my-padding-bottom-19">
-      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-          <label for="tour_name">Tour name:</label>  
-          <input 
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="destination_id">Destination:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <select name="destination_id" class="form-control" id="destination_id">
+        
+        @foreach ($destinations as $destination)
+          <option
+            value="{!! $destination['id'] !!}"
+            {!!
+                old (
+                  'destination_id',
+                  isset($tour) && $tour['destination_id'] == $destination['id'] ? 'selected' : NULL )
+            !!}
+          >
+            {!! $destination['label'] !!}
+          </option>
+        @endforeach
+
+      </select>
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="tour_name">Tour name:</label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input 
           id="tour_name"
           type="text"
           class="form-control"
           name="name"
-          value="{!! old ('label',isset($tour)?$tour['name']:NULL) !!}" >      
-      </div>
-   
-      <div class="col-md-3 col-lg-4 my-padding-bottom-8">  
-          <label for="tour_price">Price:</label>   
+          value="{!! old ('label',isset($tour)?$tour['name']:NULL) !!}" >
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="tour_price">Price:</label>   
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
           <input 
           id="tour_price"
-          type="text" 
+          type="number" 
           class="form-control" 
           name="price"
-          value="{!! old ('label',isset($tour)?$tour['price']:NULL) !!}" >    
-      </div>
+          value="{!! old ('label',isset($tour)?$tour['price']:NULL) !!}" > 
+    </div>
+  </div>
 
-      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-          <label for="tour_number_of_day">Number_of_day:</label>      
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+            <label for="tour_number_of_day">Number_of_day:</label> 
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+     
           <input 
           id="tour_number_of_day"
           type="text" 
           class="form-control" 
           name="number_of_day"
-          value="{!! old ('label',isset($tour)?$tour['number_of_day']:NULL) !!}" >   
-      </div>
+          value="{!! old ('label',isset($tour)?$tour['number_of_day']:NULL) !!}" >  
+    </div>
+  </div>
 
-      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-        <label for="tour_number_of_night">Number_of_night:</label>   
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+            <label for="tour_number_of_night">Number_of_night:</label> 
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+  
         <input 
           id="tour_number_of_night"
           type="text" 
@@ -60,9 +105,16 @@
           name="number_of_night"
           value="{!! old ('label',isset($tour)?$tour['number_of_night']:NULL) !!}" >   
       </div>
+    </div>
+  </div>
 
-      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="tour_desciption">Desciption:</label>         
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+            <label for="tour_desciption">Desciption:</label>  
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+       
       <input 
           id="desciption"
           type="text" 
@@ -70,25 +122,9 @@
           name="desciption"
           value="{!! old ('label',isset($tour)?$tour['desciption']:NULL) !!}" > 
       </div>
-
-      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="tour_destination">Destination:</label>
-          <select 
-          id="destination_id"
-          class="form-control" 
-          name="destination_id" >
-
-        @foreach ($destination as $des)
-         <option
-            value="{!! $des['id'] !!}" {!! $des['id'] == $tour['destination_id']?'selected' : '' !!}>-- {!! $des['label'] !!} 
-         </option>
-        @endforeach
-
-          </select>
-      </div>
-
-  </div>  
-
+    </div>
+  
+  <!-- button Save -->
   <div class="row">
     <div class="col-md-3 col-lg-4"></div>
 
@@ -102,8 +138,8 @@
         <i class="fas fa-check-circle my-margin-right-12"></i>
         <span>Save</span>
       </button>
+
     </div>
   </div>
-
 
 </form>
