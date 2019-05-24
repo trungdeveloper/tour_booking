@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.header',
-    ['title' => $tour["label"]]
+    ['title' => $tour["name"]]
   )
 
 @endsection
