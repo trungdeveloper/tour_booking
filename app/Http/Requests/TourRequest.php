@@ -28,7 +28,6 @@ class TourRequest extends FormRequest
             'price'                      => 'required|numeric',
             'number_of_days'              => 'required|numeric',
             'number_of_nights'            => 'required|numeric',
-            'description'                 => 'required',
             'destination_id'             => 'required'
         ];
     }
@@ -38,7 +37,6 @@ class TourRequest extends FormRequest
             'name.required'              => 'Tour name is required',
             'name.unique'                => 'Tour name has already been taken',
             'destination_id.required'    => 'The destination is required',
-            'description.required'        => 'The description is required',
             'number_of_days.required'     => 'The number of days is required',
             'number_of_days.numeric'      => 'The number of days must be numeric',
             'number_of_nights.required'   => 'The number of nights is required',

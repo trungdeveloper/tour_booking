@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.header',
-    ['title' => "Edit {$hotel['label']}"]
+    ['title' => "Edit {$hotel['name']}"]
   )
 
 @endsection

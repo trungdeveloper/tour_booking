@@ -8,7 +8,18 @@ class Hotel extends Model
 {
     protected $table='hotels';
     protected $guarded = ['id']; // fields in the table
-    protected $fillable = ['name','address','phone','email','website','price','rating','destination_id','number_of_nights','description']; // fields in the table
+
+    protected $fillable = [
+      'name',
+      'address',
+      'phone',
+      'email',
+      'website',
+      'price',
+      'rating',
+      'destination_id',
+      'description'
+    ];
   
     public $timestamps=true; // set timestamp, allow to use
     

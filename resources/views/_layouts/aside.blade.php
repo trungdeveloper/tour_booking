@@ -90,14 +90,14 @@
       <li>
         <a href="{!! url('users') !!}">
           <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>User</span>
+          <span>Users</span>
         </a>
       </li>
 
       <li>
         <a href="{!! url('hotels') !!}">
           <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Hotel</span>
+          <span>Hotels</span>
         </a>
       </li>
 

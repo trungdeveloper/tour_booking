@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.indexHeader',
-    ['title' => "hotels", 'route' => route('hotels.create'), 'buttonLabel' => "Add a hotel"]
+    ['title' => "Hotels", 'route' => route('hotels.create'), 'buttonLabel' => "Add a hotel"]
   )
 
 @endsection
@@ -32,7 +32,7 @@
             <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-hotel">
               <div class="my-frame">
                 <div class="my-padding-bottom-12 my-filter-target">
-                  {!! $hotel["title"]["label"].' '.$hotel["name"].' '.$hotel["price"].' '.$hotel["description"] !!}
+                  {!! $hotel["name"] !!}
                 </div>
                 
                 <div class="d-flex flex-wrap">
