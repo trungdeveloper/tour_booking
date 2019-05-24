@@ -74,7 +74,7 @@ class TitleController extends Controller
     public function update(TitleRequest $request, Title $title)
     {
         $title->update($request->all());
-        return redirect()->route('titles.index')->with('success','Sửa sản phẩm thành công!');
+        return redirect()->route('titles.index')->with('success','Update success!');
     }
 
     /**
