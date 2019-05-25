@@ -4,7 +4,16 @@
 
   @include(
     '_layouts.header',
-    ['title' => "Add a new user"]
+    [
+      'title' => "Edit "
+          .$user["title"]["label"]
+          .' '
+          .$user["first_name"]
+          .' '
+          .$user["last_name"]
+          .' '
+          .$user["middle_name"]
+    ]
   )
 
 @endsection
