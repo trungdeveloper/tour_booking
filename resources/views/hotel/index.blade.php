@@ -16,7 +16,7 @@
 
     @if (count($destination->hotels) > 0)
 
-      <div class="my-hotel-type">
+      <div class="my-destination">
 
         <h4 class="my-margin-bottom-19 my-margin-top-40 my-border-bottom">
           <strong>
