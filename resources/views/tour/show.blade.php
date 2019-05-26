@@ -3,7 +3,7 @@
 @section('header')
 
   @include(
-    '_layouts.header',
+    '_layouts.showHeader',
     ['title' => $tour["name"]]
   )
 
@@ -12,7 +12,7 @@
 
 @section('content')
 
-  <div class="my-margin-top-40 my-frame">
+  <div class="my-frame">
     <div class="my-padding-bottom-12">
       Id: {!! $tour["id"] !!}
     </div>

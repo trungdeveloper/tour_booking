@@ -56,6 +56,11 @@ $(function(){
           .removeClass('d-none')
           .text(error);
       
+      },
+
+
+      complete: function () {
+        resizeLayout();
       }
 
     });
