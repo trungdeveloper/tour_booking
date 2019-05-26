@@ -1,14 +1,51 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 
+@font-face {
+  font-family: "my-font";
+  src: url("../fonts/Sriracha-Regular.ttf");
+}
 
-body { margin: 0 15px 0 15px; }
-aside, main { padding: 19px; }
-main { min-height: 100vh; }
+body {
+  margin: 0 15px 0 15px;
+  font-family: "my-font";
+  background-image: url("../images/wallpaper.jpg");
+}
+
+aside {
+  padding-top: 15px; 
+  padding-bottom: 15px; 
+  background-image: url("../images/wood-oil-bk.jpg");
+}
+
+body > header {
+  margin: 0 -15px 0 -15px;
+  padding: 19px;
+  background-image: url("../images/wood-texture.jpg");
+  position: fixed;
+  width: 100%;
+  color: #ccc;
+}
+
+body, body > header, aside {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+main > header { padding-top: 15px; }
+main > article { padding-bottom: 15px; }
+main > header, main > article { padding-right: 15px; }
+
+aside, main > header, main > article { position: fixed; }
+aside, main > article { overflow: auto; }
+
+
+img { max-width: 100%; }
+
+.my-website-logo { max-height: 40px; }
 
 @media screen and (min-width: 768px) {
-  aside {
-    min-height: 100vh;
-  }
+  .my-website-logo { max-height: 77px; }
 }
 
 
