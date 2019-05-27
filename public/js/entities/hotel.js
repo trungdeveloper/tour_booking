@@ -3,18 +3,19 @@ $(function(){
   $('.my-hotel-delete').on('click', function(e) {
     e.preventDefault();
 
-    $$hotelDelete = $(this);
-    $$hotel = $$hotelDelete.closest('.my-hotel');
-    $hotelLabel = $$hotel.find('.my-filter-target').text();
+    $hotelDelete = $(this);
+    $hotel = $hotelDelete.closest('.my-hotel');
+    $destination = $hotel.closest('.my-destination');
+    $hotelLabel = $hotel.find('.my-filter-target').text();
 
 
     $.ajax({
       
-      url: $$hotelDelete.attr('data-url'),
+      url: $hotelDelete.attr('data-url'),
       method: 'delete',
       
       data: {
-        _token: $$hotelDelete.attr('data-token')
+        _token: $hotelDelete.attr('data-token')
       },
       
 
@@ -22,12 +23,16 @@ $(function(){
 
         if(data === "ok") {
           
+          $hotel.remove();
+
+          if($destination.find('.my-hotel').length < 1) {
+            $destination.remove();
+          }
+
           $('#my-entity-delete-status')
             .addClass('my-entity-delete-status-ok')
             .removeClass('d-none')
             .html(`<i>"${$hotelLabel}"</i> has successfully been deleted`);
-
-          $$hotel.remove();
 
         } 
 
@@ -51,6 +56,11 @@ $(function(){
           .removeClass('d-none')
           .text(error);
       
+      },
+
+
+      complete: function () {
+        resizeLayout();
       }
 
     });

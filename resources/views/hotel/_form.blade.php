@@ -11,7 +11,6 @@
   action="{!! $action !!}"
   method="post"
   enctype="multipart/form-data"
-  class="my-margin-top-40"
 >
   @csrf
 

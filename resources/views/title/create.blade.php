@@ -3,7 +3,7 @@
 @section('header')
 
   @include(
-    '_layouts.header',
+    '_layouts.showHeader',
     ['title' => "Add a new title"]
   )
 

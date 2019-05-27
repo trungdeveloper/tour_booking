@@ -1,12 +1,18 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark py-2">
+<nav class="navbar navbar-expand-md navbar-dark py-2">
 
   <div class="d-md-none">
     <a href="{!! url('/') !!}">
-      <i class="fas fa-home my-margin-right-12"></i>
-      
-      <strong>
-        <em>HOME</em>
-      </strong>
+      <div class="d-flex align-items-center">
+        <div class="my-padding-right-19 my-sidebar-action-icon">
+          <i class="fas fa-home"></i>
+        </div>
+        
+        <div>
+          <strong>
+            <em>HOME</em>
+          </strong>
+        </div>
+      </div>
     </a>
   </div>
   
@@ -31,75 +37,39 @@
       
       <li class="d-none d-md-block">
         <a href="{!! url('/') !!}">
-          <i class="fas fa-home my-margin-right-12"></i>
-          
-          <strong>
-            <em>HOME</em>
-          </strong>
+          <div class="d-flex align-items-center">
+            <div class="my-padding-right-19 my-sidebar-action-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            
+            <div class="my-sidebar-action-label">
+              <strong>
+                <em>HOME</em>
+              </strong>
+            </div>
+          </div>
         </a>
       </li>
 
-      <li class="my-margin-top-19">
-        <a href="{!! url('countries') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Countries</span>
-        </a>
-      </li>
+      <div class="d-flex flex-wrap">
 
-      <li>
-        <a href="{!! url('destinations') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Destinations</span>
-        </a>
-      </li>
+        @foreach(myLayoutHelperSidebarActions() as $action)
+          <li class="my-margin-top-8">
+            <a href="{!! url($action['url']) !!}">
+              <div class="d-flex align-items-center">
+                <div class="my-padding-right-19 my-sidebar-action-icon">
+                  <i class="fas fa-sitemap"></i>
+                </div>
+                
+                <div class="my-padding-right-19 my-sidebar-action-label">
+                  {!! $action['label'] !!}
+                </div>
+              </div>
+            </a>
+          </li>
+        @endforeach
 
-      <li>
-        <a href="{!! url('identificationTypes') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Identification types</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('services') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Services</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('titles') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Titles</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('userTypes') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>User categories</span>
-        </a>
-      </li>
-      <li>
-        <a href="{!! url('tours') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Tours</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('users') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Users</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('hotels') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Hotels</span>
-        </a>
-      </li>
+      </div>
 
     </ul>
 
