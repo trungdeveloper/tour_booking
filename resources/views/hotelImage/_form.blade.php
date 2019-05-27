@@ -18,11 +18,22 @@
   @if($hotelImage['id'] != NULL)
     @method('PATCH')
     <input type="hidden" name="id" value="{!! $hotelImage['id'] !!}">
+
+    <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="image_path_name">Image:</label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <img src="{!! Storage::url($hotelImage['image_path']) !!}">
+    </div>
+  </div>
+
   @endif 
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="image_path_name">Image:</label>
+      <label for="image_path_name">Image Path:</label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -31,7 +42,7 @@
           type="file"
           class="form-control"
           name="image_path"
-          value="{!! old ('image_path',isset($hotelImage)?$hotelImage['image_path']:NULL) !!}" >
+      >
     </div>
   </div>
     
@@ -67,10 +78,12 @@
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input 
           id="image_is_main"
-          type="text"
-          class="form-control"
+          type="checkbox"
           name="is_main"
-          value="{!! old ('label',isset($hotelImage)?$hotelImage['is_main']:NULL) !!}" >
+          @if(isset($hotelImage)&& $hotelImage->is_main)
+            checked="checked"
+          @endif
+          value="1" >
     </div>
   </div>
 

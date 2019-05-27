@@ -17,7 +17,7 @@
     
     [
       'errors'              =>  $errors,
-      'action'              =>  URL::action('Hotel_imageController@update', $hotelImage->id),
+      'action'              =>  URL::action('HotelImageController@update', $hotelImage->id),
       'hotelImage'          =>  $hotelImage,
       'hotels'              =>  $hotels
     ]

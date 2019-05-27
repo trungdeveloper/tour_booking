@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.indexHeader',
-    ['title' => "Hotel_images", 'route' => route('hotelImages.create'), 'buttonLabel' => "Add a hotelImage"]
+    ['title' => "Hotel Images", 'route' => route('hotelImages.create'), 'buttonLabel' => "Add an image for hotel"]
   )
 
 @endsection
@@ -16,7 +16,7 @@
 
     @if (count($hotel->hotelImages) > 0)
 
-      <div class="my-hotelImage-type">
+      <div class="my-hotel">
 
         <h4 class="my-margin-bottom-19 my-margin-top-40 my-border-bottom">
           <strong>
@@ -32,7 +32,7 @@
             <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-hotelImage">
               <div class="my-frame">
                 <div class="my-padding-bottom-12 my-filter-target">
-                  <img src="{!! asset('storage/app/public/images/hotel/'.$hotelImage["image_path"]) !!}">
+                  <img src="{!! Storage::url($hotelImage["image_path"]) !!}">
                 </div>
                 
                 <div class="d-flex flex-wrap">

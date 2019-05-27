@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\HotelImage;
 use App\Hotel;
 use App\Http\Requests\HotelImageRequest;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HotelImageController extends Controller
 {
@@ -41,11 +41,16 @@ class HotelImageController extends Controller
      */
     public function store(HotelImageRequest $request)
     {      
-        $hotelImage = HotelImage::create($request->all());
-        $image = $request->file('image_path');      
-        $hotelImage->image = $image->store('public/images/hotel');
+        $hotelImage = new HotelImage($request->all());
+        if ($request->hasFile('image_path')) {
+            $image = $request->file('image_path');        
+            if ($image->isValid()) {
+                $hotelImage->image_path = $image->store('public/images/hotel');
+            }
+        }
+        $hotelImage->save();
         return redirect()->route('hotelImages.index')->with('success','Add success!');
-  }
+    }
 
     /**
      * Display the specified resource.
@@ -66,7 +71,8 @@ class HotelImageController extends Controller
      */
     public function edit(HotelImage $hotelImage)
     {
-        return view('hotelImage/edit', compact('hotelImage'));
+        $hotels = Hotel::all();
+        return view('hotelImage/edit', compact('hotelImage', 'hotels'));
     }
 
     /**
@@ -78,15 +84,20 @@ class HotelImageController extends Controller
      */
     public function update(HotelImageRequest $request, HotelImage $hotelImage)
     {
-        Storage::delete($dish->image);
+        if (!$request->is_main) {
+            $request->merge(['is_main' => false]);
+        }
+        if ($request->hasFile('image_path')) {
         
-        $image = $request->file('image_path');
-        $dish->image = $image->store('public/images/hotel');
-
-        $dish->update($request->all());
-        $dish->save();
-
-        return redirect()->route('hotelImages.index')->with('success','Edit is success!');
+            $image = $request->file('image_path');
+            if ($image->isValid()) {
+                Storage::delete($hotelImage->image_path);
+                $hotelImage->update($request->all());
+                $hotelImage->image_path = $image->store('public/images/hotel');
+                $hotelImage->save();
+            }
+        }
+      return redirect()->route('hotelImages.index')->with('success','Edit is success!');
     }
 
     /**
@@ -97,6 +108,9 @@ class HotelImageController extends Controller
      */
     public function destroy(HotelImage $hotelImage)
     {
+        if($hotelImage->image_path != NULL){
+            Storage::delete($hotelImage->image_path);
+        }
         $hotelImage->delete();
         return 'ok';
     }
