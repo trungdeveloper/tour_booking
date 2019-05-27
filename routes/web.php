@@ -27,6 +27,7 @@ Route::resources([
   'services'              =>  'ServiceController',
   'users'                 =>  'UserController',
   'tours'                 =>  'TourController',
-  'userTypes'             =>  'UserTypeController'
+  'userTypes'             =>  'UserTypeController',
+  'hotelImages'           =>  'HotelImageController'
 ]);
 

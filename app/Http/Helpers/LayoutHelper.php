@@ -11,6 +11,7 @@ function myLayoutHelperSidebarActions() {
     [ "url" => "titles", "label" => "Titles"],
     [ "url" => "tours", "label" => "Tours"],
     [ "url" => "userTypes", "label" => "User categories"],
-    [ "url" => "users", "label" => "Users"]
+    [ "url" => "users", "label" => "Users"],
+    [ "url" => "hotelImages", "label" => "Hotel Images"],
   ];
 }
