@@ -7,6 +7,11 @@ use App\Http\Requests\ServiceRequest;
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed');
+    }
+    
     /**
      * Display a listing of the resource.
      *

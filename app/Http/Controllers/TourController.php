@@ -9,6 +9,11 @@ use App\Http\Requests\DestinationRequest;
 
 class TourController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed', ['except' => ['index']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *

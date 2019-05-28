@@ -47,6 +47,12 @@ function myLayoutHelperSidebarActions() {
     ],
   
     [ 
+      "url"             =>  "tourImages",
+      "label"           =>  "Tour images",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights()
+    ],
+  
+    [ 
       "url"             =>  "userTypes",
       "label"           =>  "User categories",
       "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 

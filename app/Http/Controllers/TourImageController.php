@@ -8,6 +8,11 @@ use App\Http\Requests\TourImageRequest;
 
 class TourImageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed', ['except' => ['index']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
