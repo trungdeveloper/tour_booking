@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->unsignedBigInteger('identification_type_id');
             $table->string('identification_number');
+            $table->string('password');
             $table->timestamps();
 
             $table->foreign('user_type_id')
