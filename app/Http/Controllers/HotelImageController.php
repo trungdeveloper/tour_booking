@@ -47,8 +47,8 @@ class HotelImageController extends Controller
             if ($image->isValid()) {
                 $hotelImage->image_path = $image->store('public/images/hotel');
             }
-        }
-        $hotelImage->save();
+            $hotelImage->save();
+        }   
         return redirect()->route('hotelImages.index')->with('success','Add success!');
     }
 
