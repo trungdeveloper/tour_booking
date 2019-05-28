@@ -41,7 +41,7 @@ aside, main > article { overflow: auto; }
 
 
 img { max-width: 100%; }
-
+#my-img-forbidden { max-height: 100%; }
 .my-website-logo { max-height: 40px; }
 
 @media screen and (min-width: 768px) {
@@ -70,6 +70,11 @@ aside a:active {
 
 .navbar-toggler-icon { background-image: none !important; }
 .navbar-toggler { border: none !important; }
+
+.my-border-top { border-top: 1px solid #111; }
+.my-border-bottom { border-bottom: 1px solid #111; }
+
+aside .my-border-top, aside .my-border-bottom { border-color: #aaa; }
 
 .my-frame {
   border: 1px solid #111;
