@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\IdentificationType;
-use App\Http\Requests\IdentificationTypeRequest;
+use App\TourImage;
+use App\Http\Requests\TourImageRequest;
 
 
-class IdentificationTypeController extends Controller
+class TourImageController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('checkIfAllowed');
+        $this->middleware('checkIfAllowed', ['except' => ['index']]);
     }
     
     /**
@@ -20,8 +20,8 @@ class IdentificationTypeController extends Controller
      */
     public function index()
     {
-      $identificationTypes = IdentificationType::all();
-      return view('identificationType/index', compact('identificationTypes'));
+      $tourImage = TourImage::all();
+      return view('tourImage/index', compact('tourImage'));
     }
 
     /**
@@ -31,8 +31,8 @@ class IdentificationTypeController extends Controller
      */
     public function create()
     {
-      $identificationType = new IdentificationType;
-      return view('identificationType/create', compact('identificationType'));
+      $tourImage = new TourImage;
+      return view('tourImage/create', compact('tourImage'));
     }
 
     /**
@@ -41,10 +41,10 @@ class IdentificationTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(IdentificationTypeRequest $request)
+    public function store(TourImageRequest $request)
     {
-        IdentificationType::create($request->all());
-        return redirect()->route('identificationTypes.index')->with('success','Add success!');
+        TourImage::create($request->all());
+        return redirect()->route('tourImage.index')->with('success','Add success!');
     }
 
     /**
@@ -53,9 +53,9 @@ class IdentificationTypeController extends Controller
      * @param  \App\IdentificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function show(IdentificationType $identificationType)
+    public function show(TourImage $tourImage)
     {
-        return view('identificationType/show',compact('identificationType'));
+        return view('tourImage/show',compact('tourImage'));
     }
 
     /**
@@ -64,9 +64,9 @@ class IdentificationTypeController extends Controller
      * @param  \App\IdentificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function edit(IdentificationType $identificationType)
+    public function edit(TourImage $tourImage)
     {
-        return view('identificationType/edit',compact('identificationType'));
+        return view('tourImage/edit',compact('tourImage'));
     }
 
     /**
@@ -76,10 +76,10 @@ class IdentificationTypeController extends Controller
      * @param  \App\IdentificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function update(IdentificationTypeRequest $request, IdentificationType $identificationType)
+    public function update(TourImageRequest $request, TourImage $tourImage)
     {
-        $identificationType->update($request->all());
-        return redirect()->route('identificationTypes.index')->with('success','Sửa sản phẩm thành công!');
+        $tourImage->update($request->all());
+        return redirect()->route('tourImage.index')->with('success','Sửa sản phẩm thành công!');
     }
 
     /**
@@ -88,9 +88,9 @@ class IdentificationTypeController extends Controller
      * @param  \App\IdentificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IdentificationType $identificationType)
+    public function destroy(TourImage $tourImage)
     {
-        $identificationType->delete();
+        $tourImage->delete();
         return "ok";
     }
 }

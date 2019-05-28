@@ -41,7 +41,8 @@
           id="image_path_name"
           type="file"
           class="form-control"
-          name="image_path"
+          name="image_path[]"
+          multiple="true" 
       >
     </div>
   </div>

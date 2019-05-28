@@ -6,6 +6,7 @@ use App\HotelImage;
 use App\Hotel;
 use App\Http\Requests\HotelImageRequest;
 use Illuminate\Support\Facades\Storage;
+use Validator;
 
 class HotelImageController extends Controller
 {
@@ -42,13 +43,21 @@ class HotelImageController extends Controller
     public function store(HotelImageRequest $request)
     {      
         $hotelImage = new HotelImage($request->all());
-        if ($request->hasFile('image_path')) {
-            $image = $request->file('image_path');        
-            if ($image->isValid()) {
-                $hotelImage->image_path = $image->store('public/images/hotel');
-            }
-            $hotelImage->save();
-        }   
+
+        $image = $request->file('image_path');
+            
+        $validator = Validator::make($request->all(), $hotelImage->rulesStore, $hotelImage->messages);
+            
+        if ($validator->fails()) {
+          return redirect()->route('hotelImages.create')->withErrors($validator)->withInput();
+        }
+            
+        elseif ($image->isValid()) {
+          $hotelImage->image_path = $image->store('public/images/hotel');
+        }
+            
+        
+        $hotelImage->save();
         return redirect()->route('hotelImages.index')->with('success','Add success!');
     }
 
@@ -87,17 +96,27 @@ class HotelImageController extends Controller
         if (!$request->is_main) {
             $request->merge(['is_main' => false]);
         }
-        if ($request->hasFile('image_path')) {
         
+        $hotelImage->update($request->all());
+
+        if ($request->hasFile('image_path')) {
+
             $image = $request->file('image_path');
-            if ($image->isValid()) {
+        
+            $validator = Validator::make($request->all(), $hotelImage->rulesUpdate, $hotelImage->messages);
+        
+            if ($validator->fails()) {
+                return redirect()->route('hotelImages.edit', $hotelImage->id)->withErrors($validator)->withInput();
+            }
+        
+            elseif ($image->isValid()) {
                 Storage::delete($hotelImage->image_path);
-                $hotelImage->update($request->all());
                 $hotelImage->image_path = $image->store('public/images/hotel');
-                $hotelImage->save();
             }
         }
-      return redirect()->route('hotelImages.index')->with('success','Edit is success!');
+
+        $hotelImage->save();
+        return redirect()->route('hotelImages.index')->with('success','Edit is success!');
     }
 
     /**

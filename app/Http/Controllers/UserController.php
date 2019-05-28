@@ -8,9 +8,18 @@ use App\IdentificationType;
 use App\UserType;
 use App\Country;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Validator;
+
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed', ['except' => ['create', 'edit', 'store', 'update']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -47,8 +56,20 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        User::create($request->all());
-        return redirect()->route('users.index')->with('success','Add success!');
+        $user = new User($request->all());
+        
+        $validator = Validator::make($request->all(), $user->rules(), $user->messages);
+
+        if ($validator->fails()) {
+          return redirect()->route('users.create')->withErrors($validator)->withInput();
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return Auth::check() ?
+            redirect()->route('users.index')->with('success','Add success!') :
+            redirect()->route('login')->with('success','Add success!');
     }
 
     /**
@@ -86,8 +107,43 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
+        if (!Auth::check()) {
+
+          return view('forbidden');
+        
+        } elseif (Auth::user()->hasAdminRights()) {
+
+        } elseif (Auth::id() != $user->id) {
+
+          return view('forbidden');
+
+        }
+
+
+        if (strlen($request->password) > 0) {
+        
+          $validator = Validator::make($request->all(), $user->rules(), $user->messages);
+
+          if ($validator->fails()) {
+            return redirect()->route('users.edit', $user->id)->withErrors($validator)->withInput();
+          }
+
+          $request->merge(['password' => Hash::make($request->password)]);
+
+        } else {
+
+          $request->offsetUnset('password');
+
+        }
+
+
         $user->update($request->all());
-        return redirect()->route('users.index')->with('success','Sửa sản phẩm thành công!');
+
+
+        // if user has admin rights and is not editing him/herself
+        return Auth::check() && Auth::user()->hasAdminRights() && Auth::id() != $user->id ?
+            redirect()->route('users.index')->with('success','Successfully updated!') :
+            redirect()->route('home');
     }
 
     /**

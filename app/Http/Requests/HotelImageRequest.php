@@ -24,16 +24,12 @@ class HotelImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'image_path'    => 'image|mimes:jpeg,png,jpg,gif,bmp,svg|max:2048',
             'hotel_id'      => 'required'
         ];
     }
 
     public function messages(){
         return [
-            'image_path.image'      =>  'Only .jpeg, .jpg, .png, .gif, .bmp and .svg files are allowed',
-            'image_path.mimes'      =>  'Only .jpeg, .jpg, .png, .gif, .bmp and .svg files are allowed',
-            'image_path.max'        =>  'Picture is too big',
             'hotel_id.required'     =>  'Hotel id is requiered',
         ];
     }

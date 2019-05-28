@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed', ['except' => ['create', 'edit']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
