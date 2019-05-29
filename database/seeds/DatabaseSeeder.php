@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         DestinationsTableSeeder::class,
         IdentificationTypesTableSeeder::class,
         TitlesTableSeeder::class,
-        UserTypesTableSeeder::class
+        UserTypesTableSeeder::class,
+        UsersTableSeeder::class
       ]);
     }
 }

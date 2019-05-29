@@ -6,7 +6,8 @@ function resizeIconsAndLabels(elementLeft, elementRight){
   $elementLeft.css('width', 'auto');
   $elementRight.css('width', 'auto');
 
-  var widthElementLeft, widthElementRight = 0;
+  var widthElementLeft = 0;
+  var widthElementRight = 0;
 
   $elementLeft.each(function(){
     if (parseFloat($(this).css('width')) > widthElementLeft) {

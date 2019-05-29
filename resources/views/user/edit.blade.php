@@ -5,14 +5,18 @@
   @include(
     '_layouts.header',
     [
-      'title' => "Edit "
-          .$user["title"]["label"]
-          .' '
-          .$user["first_name"]
-          .' '
-          .$user["last_name"]
-          .' '
-          .$user["middle_name"]
+      'title' => Auth::check() && Auth::id() == $user->id ?
+
+          "Edit your account" :
+
+          "Edit "
+            .$user["title"]["label"]
+            .' '
+            .$user["first_name"]
+            .' '
+            .$user["middle_name"]
+            .' '
+            .$user["last_name"]
     ]
   )
 

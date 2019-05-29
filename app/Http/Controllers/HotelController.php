@@ -7,8 +7,13 @@ use App\Destination;
 use App\Http\Requests\HotelRequest;
 use App\Http\Requests\DestinationRequest;
 
-class hotelController extends Controller
+class HotelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed', ['except' => ['index', 'show']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *

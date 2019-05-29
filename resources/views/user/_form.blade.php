@@ -92,6 +92,59 @@
     </div>
   </div>
 
+
+  {{-- if user has admin rights and is not editing him/herself --}}
+  {{-- else, register as customer --}}
+  @if (!Auth::check())
+
+    <input type="hidden" name="user_type_id" value="1">
+
+
+  @elseif (Auth::id() == $user->id)
+
+    <input
+      type="hidden"
+      name="user_type_id"
+      value="{!! old ('user_type_id',isset($user)?$user['user_type_id']:1) !!}"
+    >
+
+  
+  @elseif (Auth::user()->hasAdminRights())
+
+    <div class="row my-padding-bottom-19">
+      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+        <label for="user_type_id">User category:<label>
+      </div>
+      
+      <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+        <select name="user_type_id" class="form-control" id="user_type_id">
+          
+          @foreach ($userTypes as $userType)
+            <option
+              value="{!! $userType['id'] !!}"
+              {!!
+                  old (
+                    'user_type_id',
+                    isset($user) && $user['user_type_id'] == $userType['id'] ? 'selected' : NULL )
+              !!}
+            >
+              {!! $userType['label'] !!}
+            </option>
+          @endforeach
+
+        </select>
+      </div>
+    </div>
+
+
+  @else
+
+    <input type="hidden" name="user_type_id" value="1">
+
+
+  @endif
+
+
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
       <label for="date_of_birth">Date of birth:<label>
@@ -159,7 +212,7 @@
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="country_id">Country:<label>
+      <label for="country_id">Nationality:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -182,30 +235,6 @@
     </div>
   </div>
 
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="user_type_id">User category:<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <select name="user_type_id" class="form-control" id="user_type_id">
-        
-        @foreach ($userTypes as $userType)
-          <option
-            value="{!! $userType['id'] !!}"
-            {!!
-                old (
-                  'user_type_id',
-                  isset($user) && $user['user_type_id'] == $userType['id'] ? 'selected' : NULL )
-            !!}
-          >
-            {!! $userType['label'] !!}
-          </option>
-        @endforeach
-
-      </select>
-    </div>
-  </div>
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
@@ -244,6 +273,39 @@
         class="form-control"
         name="identification_number"
         value="{!! old ('identification_number',isset($user)?$user['identification_number']:NULL) !!}"
+      >
+    </div>
+  </div>
+
+
+  <!-- password -->
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="password">Password:<label>
+    </div>
+  
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input
+        id="password"
+        type="password"
+        class="form-control"
+        name="password"
+      >
+    </div>
+  </div>
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="password">Password confirmation:<label>
+    </div>
+  
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input
+        id="password-confirmation"
+        type="password"
+        class="form-control"
+        name="password_confirmation"
       >
     </div>
   </div>

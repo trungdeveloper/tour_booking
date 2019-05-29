@@ -13,7 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
 
 Route::resources([
   'titles'                =>  'TitleController',   
@@ -22,12 +23,22 @@ Route::resources([
   'destinations'          =>  'DestinationController',
   'hotels'                =>  'HotelController',
   'identificationTypes'   =>  'IdentificationTypeController',
-  'images'                =>  'ImageController',
   'reviews'               =>  'ReviewController',
   'services'              =>  'ServiceController',
   'users'                 =>  'UserController',
   'tours'                 =>  'TourController',
   'userTypes'             =>  'UserTypeController',
+  'hotelImages'           =>  'HotelImageController',
   'tourImages'            =>  'TourImageController'
 ]);
+
+
+Route::get('login', 'LoginController@login')->name('login');
+Route::post('login', 'LoginController@authenticate')->name('login.authenticate');
+Route::get('logout', 'LoginController@logout')->name('login.logout');
+
+Route::get('/forbidden', function () {
+  return view('forbidden');
+})->name('forbidden');
+
 

@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.showHeader',
-    ['title' => "Add a new user"]
+    ['title' => Auth::check() ? "Add a new user" : "Register"]
   )
 
 @endsection

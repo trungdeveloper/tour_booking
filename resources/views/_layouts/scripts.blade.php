@@ -16,4 +16,5 @@
 <script src="{{URL::asset('js/entities/tour.js')}}"></script>
 <script src="{{URL::asset('js/entities/user.js')}}"></script>
 <script src="{{URL::asset('js/entities/hotel.js')}}"></script>
+<script src="{{URL::asset('js/entities/hotelImage.js')}}"></script>
 
