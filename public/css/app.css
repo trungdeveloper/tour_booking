@@ -163,3 +163,6 @@ aside .my-border-top, aside .my-border-bottom { border-color: #aaa; }
 .my-padding-right-40 { padding-right: 40px; }
 .my-padding-bottom-40 { padding-bottom: 40px; }
 .my-padding-left-40 { padding-left: 40px; }
+
+
+.my-word-break { word-break: break-all; }
