@@ -5,7 +5,7 @@ $(function(){
 
     $tourImageDelete = $(this);
     $tourImage = $tourImageDelete.closest('.my-tour-image');
-    tourImageLabel = $tourImage.find('.my-filter-target').text();
+    $label = $tourImageDelete.closest('.my-tour');
 
 
     $.ajax({
@@ -25,9 +25,13 @@ $(function(){
           $('#my-entity-delete-status')
             .addClass('my-entity-delete-status-ok')
             .removeClass('d-none')
-            .html(`<i>"${tourImageLabel}"</i> has successfully been deleted`);
+            .html(`image has successfully been deleted`);
 
+          
           $tourImage.remove();
+          if ($label.children('.row').children().length == 0) {
+            $label.remove();
+          }  
 
         } 
 
@@ -51,6 +55,10 @@ $(function(){
           .removeClass('d-none')
           .text(error);
       
+      },
+
+      complete: function () {
+        resizeLayout();
       }
 
     });

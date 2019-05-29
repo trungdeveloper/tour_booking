@@ -16,7 +16,7 @@
 
     @if (count($tour->tourImages) > 0)
 
-      <div class="my-tour-image">
+      <div class="my-tour">
 
         <h4 class="my-margin-bottom-19 my-margin-top-40 my-border-bottom">
           <strong>
@@ -29,14 +29,18 @@
         
           @foreach($tour->tourImages as $tourImage)
 
-            <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-dish">
+            <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-tour-image">
               <div class="my-frame">
                 <div class="my-padding-bottom-12 my-filter-target">
                   {!! $tourImage["id"] !!}
                 </div>
                 
                 <div class="d-flex flex-wrap">
-
+                @isset($tourImage['image_path'])    
+                  <div class="my-padding-bottom-12 my-tour-image">
+                    <img src="{!! Storage::url($tourImage->image_path) !!}">
+                  </div>
+                 @endisset
                   <div class="my-padding-right-8 my-padding-bottom-8">
                     <a href="{!! route('tourImages.show', $tourImage['id']) !!}" class="btn btn-sm btn-outline-dark">
                       <i class="fas fa-eye my-margin-right-12"></i>

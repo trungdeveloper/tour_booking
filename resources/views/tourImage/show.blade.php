@@ -12,13 +12,17 @@
 
 @section('content')
 
-  <div class="d-none my-margin-bottom-19" id="my-tourImage-discard-picture-status"></div>
+  <div class="d-none my-margin-bottom-19" id="my-tour-image-discard-picture-status"></div>
 
   <div class="my-frame">
     <div class="my-padding-bottom-12">
       Id: {!! $tourImage["id"] !!}
     </div>
-    
+
+    <div class="my-padding-bottom-12">
+      Is_main: {!! $tourImage["is_main"] !!}
+    </div>
+
     <div class="my-padding-bottom-12">
       Tour: {!! $tourImage->tour->name !!}
     </div>

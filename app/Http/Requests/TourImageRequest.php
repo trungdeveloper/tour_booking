@@ -24,9 +24,9 @@ class TourImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'image_path'                 =>     'required|unique:tour_images,image_path,'.$this->get('id'),
-            'tour_id'                    =>     'required',
-            'is_main'                    =>     'required|numeric',
+            
+            'tour_id'                    =>     'required'
+
         ];
     }
 
@@ -38,11 +38,9 @@ class TourImageRequest extends FormRequest
     public function messages()
     {
         return [
-          'image_path.required'   => 'The image path label is required',
-          'image_path.unique'     => 'This image path label has already been taken',
+          
           'tour_id.required'    => 'The tour id is required',
-          'is_main.required'    => 'The is main is required',
-          'is_main.numeric'     => 'The is main must be numeric'
+          
         ];
     }
 }

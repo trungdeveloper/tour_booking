@@ -46,16 +46,16 @@
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <select name="tour_id" class="form-control" id="tour_id">
         
-        @foreach ($tour as $tours)
+        @foreach ($tours as $tour)
           <option
-            value="{!! $tours['id'] !!}"
+            value="{!! $tour['id'] !!}"
             {!!
                 old (
                   'tour_id',
-                  isset($tourImage) && $tourImage['tour_id'] == $tours['id'] ? 'selected' : NULL )
+                  isset($tourImage) && $tourImage['tour_id'] == $tour['id'] ? 'selected' : NULL )
             !!}
           >
-            {!! $tours['name'] !!}
+            {!! $tour['name'] !!}
           </option>
         @endforeach
 
@@ -65,18 +65,22 @@
   
 
   <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="tourImage">Is Main:<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-        <input type="checkbox" value="">
+      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+        <label for="tourImage">Is Main:<label>
+      </div>
+      
+      <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input 
+              id="image_is_main"
+              type="checkbox"
+              name="is_main"
+              @if(isset($tourImage)&& $tourImage->is_main)
+                checked="checked"
+              @endif
+              value="1" >
+      </div>
     </div>
   </div>
-  
-
-  
-
 
   <!-- button Save -->
   <div class="row">
