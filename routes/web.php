@@ -28,11 +28,11 @@ Route::resources([
   'users'                 =>  'UserController',
   'tours'                 =>  'TourController',
   'userTypes'             =>  'UserTypeController',
-  'hotelImages'           =>  'HotelImageController',
   'tourImages'            =>  'TourImageController'
 ]);
 
 
+Route::resource('hotelImages', 'HotelImageController')->only(['edit', 'update', 'destroy']);
 Route::resource('customerMessages', 'CustomerMessageController')->only(['index', 'store', 'destroy']);
 
 Route::get('login', 'LoginController@login')->name('login');

@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.header',
-    ['title' => "Edit {$hotelImage['label']}"]
+    ['title' => "Edit picture"]
   )
 
 @endsection
@@ -18,8 +18,7 @@
     [
       'errors'              =>  $errors,
       'action'              =>  URL::action('HotelImageController@update', $hotelImage->id),
-      'hotelImage'          =>  $hotelImage,
-      'hotels'              =>  $hotels
+      'hotelImage'          =>  $hotelImage
     ]
   )
 

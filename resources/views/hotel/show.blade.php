@@ -12,6 +12,8 @@
 
 @section('content')
 
+  <div class="d-none my-margin-bottom-19" id="my-entity-delete-status"></div>
+  
   <div class="my-frame">
 
     <div class="row">
@@ -130,7 +132,7 @@
     </div>
 
 
-    <div class="text-right my-padding-bottom-12">VNĐ {!! $hotel->price !!} per night</div>
+    <div class="text-right">VNĐ {!! $hotel->price !!} per night</div>
     
   </div>
 
@@ -164,7 +166,7 @@
 
                 <div class="my-padding-bottom-8">
                   <button
-                    class="btn btn-sm btn-danger my-dish-delete"
+                    class="btn btn-sm btn-danger my-hotel-image-delete"
                     data-token="{!! csrf_token() !!}"
                     data-url="{!! route('hotelImages.destroy', $hotelImage['id']) !!}"
                   >
@@ -190,7 +192,7 @@
   @endif
 
     
-  <div class="d-flex flex-wrap">
+  <div class="d-flex flex-wrap my-margin-top-19">
     <div class="my-padding-right-8 my-padding-bottom-8">
       <a href="{!! route('hotels.index') !!}" class="btn btn-sm btn-outline-dark">
         <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
