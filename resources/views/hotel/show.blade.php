@@ -145,14 +145,65 @@
             <img src="{!! Storage::url($hotelImage['image_path']) !!}">
 
             @if (Auth::check() && Auth::user()->hasAdminRights())
+
+              <div class='text-center'>
+
+                <button
+                  class="
+                      btn
+                      btn-sm
+                      btn-warning
+                      my-hotel-image-is-main
+                      {!! $hotelImage->is_main ? '' : 'd-none' !!}
+                    "
+                >
+                  <div class="d-flex align-items-center">
+                    <div class="my-margin-right-12 my-action-button-icon">
+                      <i class="far fa-dot-circle"></i>
+                    </div>
+
+                    <div class="text-left">
+                      MAIN
+                    </div>
+                  </div>
+                </button>
+
+
+                <button
+                  class="
+                      btn
+                      btn-sm
+                      btn-outline-warning
+                      bg-dark
+                      my-hotel-image-set-as-main
+                      {!! $hotelImage->is_main ? 'd-none' : '' !!}
+                    "
+
+                  data-token="{!! csrf_token() !!}"
+                  data-url="{!! route('hotelImages.setAsMain', $hotelImage['id']) !!}"
+                >
+                  <div class="d-flex align-items-center text-warning">
+                    <div class="my-margin-right-12 my-action-button-icon">
+                      <i class="far fa-dot-circle"></i>
+                    </div>
+
+                    <div class="text-left">
+                      Set as main
+                    </div>
+                  </div>
+                </button>
+
+              </div>
+
+
               <figcaption class="d-flex flex-wrap justify-content-center my-margin-top-8">
 
                 <div class="my-padding-right-8 my-padding-bottom-8">
                   <a
                     href="{!! route('hotelImages.edit', $hotelImage["id"]) !!}"
-                    class="btn btn-sm btn-primary"
+                    class="btn btn-sm btn-outline-primary bg-dark"
                   >
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center text-light">
                       <div class="my-margin-right-12 my-action-button-icon">
                         <i class="far fa-edit"></i>
                       </div>
@@ -200,12 +251,14 @@
       </a>
     </div>
     
-    <div class="my-padding-bottom-8">
-      <a href="{!! route('hotels.edit', $hotel->id) !!}" class="btn btn-sm btn-outline-primary">
-        <i class="far fa-edit my-margin-right-12"></i>
-        <span>Edit</span>
-      </a>
-    </div>
+    @if (Auth::check() && Auth::user()->hasAdminRights())
+      <div class="my-padding-bottom-8">
+        <a href="{!! route('hotels.edit', $hotel->id) !!}" class="btn btn-sm btn-outline-primary">
+          <i class="far fa-edit my-margin-right-12"></i>
+          <span>Edit</span>
+        </a>
+      </div>
+    @endif
   </div>
 
 @endsection

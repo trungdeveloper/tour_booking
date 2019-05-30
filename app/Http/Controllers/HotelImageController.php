@@ -6,7 +6,6 @@ use App\HotelImage;
 use App\Hotel;
 use App\Http\Requests\HotelImageRequest;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
 use Validator;
 
 class HotelImageController extends Controller
@@ -50,6 +49,28 @@ class HotelImageController extends Controller
         }
 
         return redirect()->route('hotels.show', $hotelImage->hotel_id)->with('success','Edit is success!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\HotelImage  $hotelImage
+     * @return \Illuminate\Http\Response
+     */
+    public function setAsMain(HotelImage $hotelImage)
+    {
+      $mainImages = HotelImage::where('hotel_id', $hotelImage->hotel_id)
+          ->where('is_main', true)
+          ->get();
+
+      foreach ($mainImages as $mainImage) {
+        $mainImage->is_main = false;
+        $mainImage->save();
+      }
+
+      $hotelImage->is_main = true;
+      $hotelImage->save();
+      return 'ok';
     }
 
     /**

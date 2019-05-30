@@ -32,8 +32,13 @@ Route::resources([
 ]);
 
 
+
+
 Route::resource('hotelImages', 'HotelImageController')->only(['edit', 'update', 'destroy']);
 Route::resource('customerMessages', 'CustomerMessageController')->only(['index', 'store', 'destroy']);
+
+Route::patch('hotelImages/{hotelImage}/set_as_main', 'HotelImageController@setAsMain')
+  ->name('hotelImages.setAsMain');
 
 Route::get('login', 'LoginController@login')->name('login');
 Route::post('login', 'LoginController@authenticate')->name('login.authenticate');
