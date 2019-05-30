@@ -66,7 +66,7 @@ class HotelController extends Controller
                 $validator = Validator::make($request->all(), $hotelImage->rulesStore, $hotelImage->messages);
 
                 if ($validator->fails()) {
-                  return redirect()->route('hotel.create')->withErrors($validator)->withInput();
+                  return redirect()->route('hotels.create')->withErrors($validator)->withInput();
                 }
 
                 elseif ($image->isValid()) {
@@ -128,6 +128,38 @@ class HotelController extends Controller
     public function update(HotelRequest $request, hotel $hotel)
     {
         $hotel->update($request->all());
+
+        if ($images = $request->file('image_path')) {
+
+            $hasMainImage = DB::table('hotel_images')
+                    ->where('hotel_id', $hotel->id)
+                    ->where('is_main', true)
+                    ->count() > 0;
+
+            foreach ($images as $index=>$image) {
+
+                $hotelImage = new HotelImage;
+
+                $validator = Validator::make($request->all(), $hotelImage->rulesStore, $hotelImage->messages);
+
+                if ($validator->fails()) {
+                  return redirect()->route('hotels.edit', $hotel->id)->withErrors($validator)->withInput();
+                }
+
+                elseif ($image->isValid()) {
+                  $hotelImage->hotel_id = $hotel->id;
+                  $hotelImage->image_path = $image->store('public/images/hotel');
+
+                  if(!$hasMainImage && $index < 1){
+                    $hotelImage->is_main = true;                    
+                  }
+
+                  $hotelImage->save();
+                }            
+                  
+                
+            }
+        }
 
         return redirect()->route('hotels.index')->with('success','Update success');
     }
