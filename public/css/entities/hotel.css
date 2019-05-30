@@ -1,3 +1,10 @@
 #hotel_rating {
   font-family: 'Font Awesome 5 Free';
 }
+
+.my-hotel-figure {
+  background-image: url("../../images/wood-texture.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
