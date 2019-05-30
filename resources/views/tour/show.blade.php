@@ -34,6 +34,20 @@
     <div class="my_padding-bootom-12">
       Destination: {!! $tour->destination->label !!}
     </div>
+
+    @if(count($tour->tourImages) > 0)
+      <div class="row">
+        @foreach($tour->tourImages as $tourImage)
+          <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-tour-image">
+            <div class="my-frame">
+              <div class="my-padding-bottom-12">
+                <img src="{!! Storage::url($tourImage['image_path']) !!}">
+              </div>
+            </div>
+          </div>
+        @endforeach
+      </div>
+    @endif
     
     <div class="d-flex flex-wrap">
 

@@ -23,12 +23,6 @@ function myLayoutHelperSidebarActions() {
     ],
     
     [ 
-      "url"             =>  "hotelImages",
-      "label"           =>  "Hotel images",
-      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights()
-    ],
-  
-    [ 
       "url"             =>  "identificationTypes",
       "label"           =>  "Identification types",
       "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 

@@ -195,6 +195,23 @@
   </div>
 
 
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="image_path_name">Image Path:</label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input 
+          id="image_path_name"
+          type="file"
+          class="form-control"
+          name="image_path[]"
+          multiple="true" 
+      >
+    </div>
+  </div>
+    
+  
   <div class="row">
     <div class="col-md-3 col-lg-4"></div>
 

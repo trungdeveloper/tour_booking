@@ -42,23 +42,26 @@ class TourImageController extends Controller
      */
     public function store(TourImageRequest $request)
     {
-        
-        $tourImage = new tourImage($request->all());
-        
-            $image = $request->file('image_path');
-                
-            $validator = Validator::make($request->all(), $tourImage->rulesStore, $tourImage->messages);
-                
-            if ($validator->fails()) {
-            return redirect()->route('tourImages.create')->withErrors($validator)->withInput();
+        if ($images = $request->file('image_path')) {
+            foreach ($images as $image) {
+
+                $tourImage = new TourImage($request->all());
+
+                $validator = Validator::make($request->all(), $tourImage->rulesStore, $tourImage->messages);
+
+                if ($validator->fails()) {
+                  return redirect()->route('tourImages.create')->withErrors($validator)->withInput();
+                }
+
+                elseif ($image->isValid()) {
+                  $tourImage->image_path = $image->store('public/images/tour');
+
+                  $tourImage->save();
+
+                  
+                }            
             }
-                
-            elseif ($image->isValid()) {
-            $tourImage->image_path = $image->store('public/images/tourImage');
-            }
-        
-        
-        $tourImage->save();
+        }
         return redirect()->route('tourImages.index')->with('success','Add success!');
     }
 

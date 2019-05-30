@@ -31,8 +31,9 @@
         id="image_path"
         type="file"
         class="form-control"
-        name="image_path"
+        name="image_path[]"
         value="{!! old ('image_path',isset($tourImage)?$tourImage['image_path']:NULL) !!}"
+        multiple="true"
       >
     </div>
   </div>
