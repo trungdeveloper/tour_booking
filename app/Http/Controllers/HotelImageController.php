@@ -32,12 +32,6 @@ class HotelImageController extends Controller
      */
     public function update(HotelImageRequest $request, HotelImage $hotelImage)
     {
-        if (!$request->is_main) {
-            $request->merge(['is_main' => false]);
-        }
-        
-        $hotelImage->update($request->all());
-
         if ($request->hasFile('image_path')) {
 
             $image = $request->file('image_path');
@@ -51,11 +45,11 @@ class HotelImageController extends Controller
             elseif ($image->isValid()) {
                 Storage::delete($hotelImage->image_path);
                 $hotelImage->image_path = $image->store('public/images/hotel');
+                $hotelImage->save();
             }
         }
 
-        $hotelImage->save();
-        return redirect()->route('hotelImages.index')->with('success','Edit is success!');
+        return redirect()->route('hotels.show', $hotelImage->hotel_id)->with('success','Edit is success!');
     }
 
     /**
