@@ -123,7 +123,6 @@ class HotelController extends Controller
     {
         $destinations = Destination::orderBy('label')->get();
         return view('hotel/edit', compact('hotel', 'destinations'));
-
     }
 
     /**

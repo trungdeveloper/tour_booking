@@ -10,6 +10,11 @@ use Validator;
 
 class HotelImageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed');
+    }
+    
     /**
      * Show the form for editing the specified resource.
      *

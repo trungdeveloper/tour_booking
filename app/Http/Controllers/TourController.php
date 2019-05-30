@@ -24,9 +24,24 @@ class TourController extends Controller
      */
     public function index()
     {
-      $tours = Tour::all();
-      $destinations = Destination::all();
-      return view('tour/index', compact('tours', 'destinations'));
+      $destinations = Destination::with(
+      
+        [
+          'tours' => function ($tour) {
+              $tour->with([
+
+                'tourImages' => function ($tourImage) {
+                    $tourImage->where('is_main', true);
+                  }
+
+              ])->orderBy('name');
+            }
+        ]
+      
+      )->orderBy('label')
+        ->get();
+
+      return view('tour/index', compact('destinations'));
     }
 
     /**
@@ -106,16 +121,8 @@ class TourController extends Controller
      */
     public function edit(Tour $tour)
     {
-        $destinations = Destination::get();
-        return view('tour/edit', compact('tour', 'destinations'));
-
-        $tour = new Tour;
-        $destination = new Destination;
-        return view('tour/edit', compact('tour', 'destination'));
-
         $destinations = Destination::orderBy('label')->get();
         return view('tour/edit', compact('tour', 'destinations'));
-
     }
 
     /**
