@@ -124,6 +124,26 @@ function resizeSimpleImages() {
 }
 
 
+function resizeImages($element) {
+
+  var subElements = [
+      $element.find(".my-entity-images-landscape"),
+      $element.find(".my-entity-images-portrait")
+    ];
+  
+
+  $.when(deferredImageReorganize($element)).done(function() {
+
+    $.each(subElements, function(index, $subElement) {
+      resizeImagePart($subElement);
+      resizeParts($subElement);
+    });
+
+  });
+
+}
+
+
 var getScrollBarWidth = function () {
 
   var $outer = $('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body');
@@ -188,7 +208,7 @@ var resizeImagePart = function($element) {
 
 var resizeParts = function($element) {
 
-  var parts = ['.my-entity-name', '.my-entity-description', '.my-entity-price'];
+  var parts = ['.my-entity-name', '.my-entity-rating', '.my-entity-price'];
 
   $.each(parts, function(index, part){
 
@@ -212,6 +232,61 @@ var resizeParts = function($element) {
 
     }
 
+  });
+
+};
+
+
+var deferredImageReorganize = function($element) {
+
+  var deferred = $.Deferred();
+  var deferredReorganize = $.Deferred();
+
+  var quantityOfImages = $element.find('.my-entity-images-all-formats .my-entity').length;
+  var iterator = 0;
+
+  if (quantityOfImages < 1) {
+    deferredReorganize.resolve();
+  }
+
+  
+  $element.find('.my-entity-images-all-formats .my-entity').each(function() {
+
+    var $entity = $(this);
+    var $entityImage = $entity.find('.my-entity-image');
+
+    var width = $entityImage.length ? parseFloat($entityImage.css('width')) : null;
+    var height = $entityImage.length ? parseFloat($entityImage.css('height')) : null;
+
+    
+
+    switch (true) {
+
+      case (!width):
+      case (!height):
+        break;
+      
+      case (width >= height):
+        $element.find('.my-entity-images-landscape').append($entity);
+        break;
+      
+      case (width < height):
+        $element.find('.my-entity-images-portrait').append($entity);
+
+    }
+  
+
+    iterator++;
+  
+    if (iterator >= quantityOfImages) {
+      return deferredReorganize.resolve();
+    }
+  
+  });
+
+
+  return $.when(deferredReorganize).done(function() {
+    return deferred.resolve();
   });
 
 };

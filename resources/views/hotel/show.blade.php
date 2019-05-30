@@ -38,19 +38,6 @@
     </div>
 
 
-    <div class="d-flex align-items-start my-padding-bottom-12">
-
-      <div class="my-padding-right-19 my-hotel-icon">
-        <i class="fas fa-hotel"></i>
-      </div>
-
-      <div>
-        {!! $hotel->name !!} 
-      </div>
-
-    </div>
-
-
     <div class="row">
       <div class="col-sm-6">
 
@@ -103,15 +90,17 @@
 
 
       <div class="col-sm-6">
-        <div class="d-flex align-items-start my-padding-bottom-12">
-          <div class="my-padding-right-19 my-hotel-icon">
-            <i class="fas fa-map-signs"></i>
-          </div>
+        <a href="http://maps.google.com/maps?q={!! str_replace("\n", ", ", $hotel->address) !!}" target="_blank">
+          <div class="d-flex align-items-start my-padding-bottom-12">
+            <div class="my-padding-right-19 my-hotel-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
 
-          <div class="my-hotel-label">
-            <i>{!! str_replace("\n","<br>", $hotel->address) !!}</i>
+            <div class="my-hotel-label">
+              <i>{!! str_replace("\n","<br>", $hotel->address) !!}</i>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
 
 
@@ -142,7 +131,7 @@
       @foreach($hotel->hotelImages as $hotelImage)
         <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-entity-image my-hotel-image">
           <figure class="my-padding-bottom-12 text-center my-entity-figure my-hotel-figure">
-            <img src="{!! Storage::url($hotelImage['image_path']) !!}">
+            <img src="{!! Storage::url($hotelImage['image_path']) !!}" class="my-margin-bottom-12">
 
             @if (Auth::check() && Auth::user()->hasAdminRights())
 

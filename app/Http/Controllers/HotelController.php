@@ -24,9 +24,24 @@ class HotelController extends Controller
      */
     public function index()
     {
-      $hotels = Hotel::all();
-      $destinations = Destination::all();
-      return view('hotel/index', compact('hotels', 'destinations'));
+      $destinations = Destination::with(
+      
+        [
+          'hotels' => function ($hotel) {
+              $hotel->with([
+
+                'hotelImages' => function ($hotelImage) {
+                    $hotelImage->where('is_main', true);
+                  }
+
+              ])->orderBy('name');
+            }
+        ]
+      
+      )->orderBy('label')
+        ->get();
+
+      return view('hotel/index', compact('destinations'));
     }
 
     /**

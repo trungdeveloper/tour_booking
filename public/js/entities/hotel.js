@@ -1,5 +1,9 @@
 $(window).on('load resize', function(){
   resizeIconsAndLabels('my-hotel-icon', 'my-hotel-label');
+
+  $('.my-destination').each(function(){
+    resizeImages($(this));
+  });
 });
 
 
