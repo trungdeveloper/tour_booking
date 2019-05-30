@@ -42,22 +42,26 @@ class HotelImageController extends Controller
      */
     public function store(HotelImageRequest $request)
     {      
-        $hotelImage = new HotelImage($request->all());
 
-        $image = $request->file('image_path');
-            
-        $validator = Validator::make($request->all(), $hotelImage->rulesStore, $hotelImage->messages);
-            
-        if ($validator->fails()) {
-          return redirect()->route('hotelImages.create')->withErrors($validator)->withInput();
+        if ($images = $request->file('image_path')) {
+            foreach ($images as $image) {
+
+                $hotelImage = new HotelImage($request->all());
+
+                $validator = Validator::make($request->all(), $hotelImage->rulesStore, $hotelImage->messages);
+
+                if ($validator->fails()) {
+                  return redirect()->route('hotelImages.create')->withErrors($validator)->withInput();
+                }
+
+                elseif ($image->isValid()) {
+                  $hotelImage->image_path = $image->store('public/images/hotel');
+                  $hotelImage->save();
+                }            
+                  
+                
+            }
         }
-            
-        elseif ($image->isValid()) {
-          $hotelImage->image_path = $image->store('public/images/hotel');
-        }
-            
-        
-        $hotelImage->save();
         return redirect()->route('hotelImages.index')->with('success','Add success!');
     }
 
@@ -134,3 +138,4 @@ class HotelImageController extends Controller
         return 'ok';
     }
 }
+  

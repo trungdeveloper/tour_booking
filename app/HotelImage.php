@@ -13,7 +13,7 @@ class HotelImage extends Model
     public $timestamps  = true;
     
     public $rulesStore = [
-        'image_path' => 'required|image|mimes:jpeg,png,jpg,gif,bmp,svg|max:2048'
+        'image_path.*' => 'required|image|mimes:jpeg,png,jpg,gif,bmp,svg|max:2048'
     ];
     
     public $rulesUpdate = [
