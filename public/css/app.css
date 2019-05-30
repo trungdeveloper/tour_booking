@@ -1,0 +1,168 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+
+@font-face {
+  font-family: "my-font";
+  src: url("../fonts/Sriracha-Regular.ttf");
+}
+
+body {
+  margin: 0 15px 0 15px;
+  font-family: "my-font";
+  background-image: url("../images/wallpaper.jpg");
+}
+
+aside {
+  padding-top: 15px; 
+  padding-bottom: 15px; 
+  background-image: url("../images/wood-oil-bk.jpg");
+}
+
+body > header {
+  margin: 0 -15px 0 -15px;
+  padding: 19px;
+  background-image: url("../images/wood-texture.jpg");
+  position: fixed;
+  width: 100%;
+  color: #ccc;
+}
+
+body, body > header, aside {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+main > header { padding-top: 15px; }
+main > article { padding-bottom: 15px; }
+main > header, main > article { padding-right: 15px; }
+
+aside, main > header, main > article { position: fixed; }
+aside, main > article { overflow: auto; }
+
+
+img { max-width: 100%; }
+#my-img-forbidden { max-height: 100%; }
+.my-website-logo { max-height: 40px; }
+
+@media screen and (min-width: 768px) {
+  .my-website-logo { max-height: 77px; }
+}
+
+
+form label { font-weight: bold; }
+
+
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+
+aside a,
+aside a:visited,
+aside a:hover,
+aside a:active {
+  color: #aaa;
+}
+
+
+.navbar-toggler-icon { background-image: none !important; }
+.navbar-toggler { border: none !important; }
+
+.my-border-top { border-top: 1px solid #111; }
+.my-border-bottom { border-bottom: 1px solid #111; }
+
+aside .my-border-top, aside .my-border-bottom { border-color: #aaa; }
+
+.my-frame {
+  border: 1px solid #111;
+  border-radius: 4px;
+  padding: 19px;
+}
+
+.my-entity-delete-status-ok {
+  border: 1px solid #28a745;
+  color: #28a745;
+}
+
+.my-entity-delete-status-ko {
+  border: 3px solid #dc3545; 
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.my-entity-delete-status-ok,
+.my-entity-delete-status-ko {
+  padding: 19px;
+}
+
+
+/*  MARGINS   */
+
+.my-margin-top-4 { margin-top: 4px; }
+.my-margin-right-4 { margin-right: 4px; }
+.my-margin-bottom-4 { margin-bottom: 4px; }
+.my-margin-left-4 { margin-left: 4px; }
+
+.my-margin-top-8 { margin-top: 8px; }
+.my-margin-right-8 { margin-right: 8px; }
+.my-margin-bottom-8 { margin-bottom: 8px; }
+.my-margin-left-8 { margin-left: 8px; }
+
+.my-margin-top-12 { margin-top: 12px; }
+.my-margin-right-12 { margin-right: 12px; }
+.my-margin-bottom-12 { margin-bottom: 12px; }
+.my-margin-left-12 { margin-left: 12px; }
+
+.my-margin-top-19 { margin-top: 19px; }
+.my-margin-right-19 { margin-right: 19px; }
+.my-margin-bottom-19 { margin-bottom: 19px; }
+.my-margin-left-19 { margin-left: 19px; }
+
+.my-margin-top-28 { margin-top: 28px; }
+.my-margin-right-28 { margin-right: 28px; }
+.my-margin-bottom-28 { margin-bottom: 28px; }
+.my-margin-left-28 { margin-left: 28px; }
+
+.my-margin-top-40 { margin-top: 40px; }
+.my-margin-right-40 { margin-right: 40px; }
+.my-margin-bottom-40 { margin-bottom: 40px; }
+.my-margin-left-40 { margin-left: 40px; }
+
+
+/*  PADDINGS   */
+
+.my-padding-top-4 { padding-top: 4px; }
+.my-padding-right-4 { padding-right: 4px; }
+.my-padding-bottom-4 { padding-bottom: 4px; }
+.my-padding-left-4 { padding-left: 4px; }
+
+.my-padding-top-8 { padding-top: 8px; }
+.my-padding-right-8 { padding-right: 8px; }
+.my-padding-bottom-8 { padding-bottom: 8px; }
+.my-padding-left-8 { padding-left: 8px; }
+
+.my-padding-top-12 { padding-top: 12px; }
+.my-padding-right-12 { padding-right: 12px; }
+.my-padding-bottom-12 { padding-bottom: 12px; }
+.my-padding-left-12 { padding-left: 12px; }
+
+.my-padding-top-19 { padding-top: 19px; }
+.my-padding-right-19 { padding-right: 19px; }
+.my-padding-bottom-19 { padding-bottom: 19px; }
+.my-padding-left-19 { padding-left: 19px; }
+
+.my-padding-top-28 { padding-top: 28px; }
+.my-padding-right-28 { padding-right: 28px; }
+.my-padding-bottom-28 { padding-bottom: 28px; }
+.my-padding-left-28 { padding-left: 28px; }
+
+.my-padding-top-40 { padding-top: 40px; }
+.my-padding-right-40 { padding-right: 40px; }
+.my-padding-bottom-40 { padding-bottom: 40px; }
+.my-padding-left-40 { padding-left: 40px; }
+
+
+.my-word-break { word-break: break-all; }

@@ -42,7 +42,8 @@
         ],
         
         "files": [
-          "app/Http/Helpers/LayoutHelper.php"
+          "app/Http/Helpers/LayoutHelper.php",
+          "app/Http/Helpers/SlideHelper.php"
         ]
     },
     "autoload-dev": {
