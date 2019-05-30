@@ -82,6 +82,10 @@ aside .my-border-top, aside .my-border-bottom { border-color: #aaa; }
   padding: 19px;
 }
 
+.welcomeImage {
+  padding-bottom: -30px;
+}
+
 .my-entity-delete-status-ok {
   border: 1px solid #28a745;
   color: #28a745;
