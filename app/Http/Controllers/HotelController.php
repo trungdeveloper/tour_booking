@@ -7,6 +7,7 @@ use App\HotelImage;
 use App\Destination;
 use App\Http\Requests\HotelRequest;
 use App\Http\Requests\DestinationRequest;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class HotelController extends Controller
@@ -52,7 +53,13 @@ class HotelController extends Controller
         $hotel->save();
 
         if ($images = $request->file('image_path')) {
-            foreach ($images as $image) {
+
+            $hasMainImage = DB::table('hotel_images')
+                    ->where('hotel_id', $hotel->id)
+                    ->where('is_main', true)
+                    ->count() > 0;
+
+            foreach ($images as $index=>$image) {
 
                 $hotelImage = new HotelImage;
 
@@ -65,6 +72,11 @@ class HotelController extends Controller
                 elseif ($image->isValid()) {
                   $hotelImage->hotel_id = $hotel->id;
                   $hotelImage->image_path = $image->store('public/images/hotel');
+
+                  if(!$hasMainImage && $index < 1){
+                    $hotelImage->is_main = true;                    
+                  }
+
                   $hotelImage->save();
                 }            
                   
