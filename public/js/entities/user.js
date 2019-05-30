@@ -1,3 +1,8 @@
+$(window).on('load resize', function(){
+  resizeIconsAndLabels('my-user-icon', 'my-user-label');
+});
+
+
 $(function(){
 
   $('.my-user-delete').on('click', function(e) {

@@ -68,6 +68,12 @@ function myLayoutHelperSidebarActions() {
       "url"             =>  "users",
       "label"           =>  "Users",
       "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+  
+    [ 
+      "url"             =>  "customerMessages",
+      "label"           =>  "Customer messages",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
     ]
     
   ];

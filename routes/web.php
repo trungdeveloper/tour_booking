@@ -33,6 +33,8 @@ Route::resources([
 ]);
 
 
+Route::resource('customerMessages', 'CustomerMessageController')->only(['index', 'store', 'destroy']);
+
 Route::get('login', 'LoginController@login')->name('login');
 Route::post('login', 'LoginController@authenticate')->name('login.authenticate');
 Route::get('logout', 'LoginController@logout')->name('login.logout');
