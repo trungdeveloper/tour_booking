@@ -73,47 +73,125 @@
     </a>
   </div><!-- end carousel -->
 
+
   <!-- Address and form send message -->
-  <div class="row">
-    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 ">
+  <div class="d-flex flex-wrap align-items-center flex-fill justify-content-between">
 
-      <div class="col">
-        <i class="fas fa-envelope-open-text"> &emsp; tourInfor@gmail.com</i>
+    <a href="mailto:tour-info@gmail.com">
+      <div class="d-flex align-items-start my-padding-bottom-12 my-padding-right-40">
+        <div class="my-padding-right-19">
+          <i class="fas fa-envelope-open-text"></i>
+        </div>
+        
+        <div>
+          <em>tour-info@gmail.com</em>
+        </div>
       </div>
-      <div class="col">
-        <i class="fas fa-phone-square">&emsp; +84 396 875 521</i>
+    </a>
+
+
+    <div class="d-flex align-items-start my-padding-bottom-12 my-padding-right-40">
+      <div class="my-padding-right-19">
+        <i class="fas fa-phone-square"></i>
       </div>
-      <div class="col">
-        <i class="fas fa-map-signs">&emsp; 99 To Hien Thanh, Da Nang City</i>
+      
+      <div>
+        <em>+84 236 3940 678</em>
       </div>
-      <!-- <div class="col">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.110336097427!2d108.24146331400803!3d16.059763193959313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142177f2ced6d8b%3A0xeac35f2960ca74a4!2zOTkgVMO0IEhp4bq_biBUaMOgbmgsIFBoxrDhu5tjIE3hu7ksIFPGoW4gVHLDoCwgxJDDoCBO4bq1bmcgNTUwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1559196383908!5m2!1svi!2s" width="350" height="330" frameborder="0" style="border:0" allowfullscreen></iframe>
-      </div> -->
     </div>
 
-    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-      <h1>Contact Us</h1>
-        <hr>
-        <form action="" method="POST">
-            {{ csrf_field() }}
-            <div class="form-group">
-                <label name="email">Email:</label>
-                <input id="email" name="email" class="form-control" placeholder="Email">
-            </div>
 
-            <div class="form-group">
-                <label name="subject">Subject:</label>
-                <input id="subject" name="subject" class="form-control" placeholder="Subject">
-            </div>
+    <a
+      href="http://maps.google.com/maps?q=99 Tô Hiến Thành, Phước Mỹ, Sơn Trà, Đà Nẵng 550000"
+      target="_blank"
+    >
+      <div class="d-flex align-items-start my-padding-bottom-12 my-padding-right-40">
+        <div class="my-padding-right-19">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        
+        <div>
+          <em>99 Tô Hiến Thành, Phước Mỹ, Sơn Trà, Đà Nẵng 550000</em>
+        </div>
+      </div>
+    </a>
 
-            <div class="form-group">
-                <label name="message">Message:</label>
-                <textarea id="message" name="message" class="form-control" placeholder="Type your message here..."></textarea>
-            </div>
+  </div>
 
-            <input type="submit" value="Send Message" class="btn btn-success">
-        </form>
-    </div>
+
+  <div class="my-margin-top-19 my-padding-top-19 my-border-top">
+    
+    <h3>Contact Us</h3>
+    <hr>
+    
+
+    <form action="{!! url('/customerMessages') !!}" method="POST">
+
+      {{ csrf_field() }}
+
+      <div class="row my-padding-bottom-19">
+        <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+          <label for="name">Name:<label>
+        </div>
+        
+        <div class="col my-padding-bottom-8">
+          <input id="name" name="name" class="form-control" placeholder="Your name...">
+        </div>
+      </div>
+
+
+      <div class="row my-padding-bottom-19">
+        <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+          <label for="email">Email:<label>
+        </div>
+        
+        <div class="col my-padding-bottom-8">
+          <input id="email" name="email" class="form-control" placeholder="Your e-mail address...">
+        </div>
+      </div>
+
+
+      <div class="row my-padding-bottom-19">
+        <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+          <label for="subject">Subject:</label>
+        </div>
+        
+        <div class="col my-padding-bottom-8">
+          <input id="subject" name="subject" class="form-control" placeholder="Subject...">
+        </div>
+      </div>
+
+
+      <div class="row my-padding-bottom-19">
+        <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+          <label for="message">Message:</label>
+        </div>
+        
+        <div class="col my-padding-bottom-8">
+          <textarea
+            rows="4"
+            id="message"
+            name="message"
+            class="form-control"
+            placeholder="Your message..."
+          ></textarea>
+        </div>
+      </div>
+
+
+      <div class="row my-padding-bottom-19">
+        <div class="col-md-3 col-lg-4 my-padding-bottom-8"></div>
+        
+        <div class="col my-padding-bottom-8">
+          <button type="submit" class="btn btn-success btn-sm">
+            <i class="far fa-share-square my-margin-right-19"></i>
+            <span>Send your message</span>
+          </button>
+        </div>
+      </div>
+
+    </form>
+
   </div>
 
 @endsection
