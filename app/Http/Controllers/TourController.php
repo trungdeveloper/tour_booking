@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Tour;
+use App\tourImage;
 use App\Destination;
 use App\Http\Requests\TourRequest;
 use App\Http\Requests\DestinationRequest;
+use Illuminate\Support\Facades\DB;
+use Validator;
 
 class TourController extends Controller
 {
@@ -46,7 +49,40 @@ class TourController extends Controller
      */
     public function store(TourRequest $request)
     {
-        Tour::create($request->all());
+        $tour = new Tour($request->all());
+        $tour->save();
+
+        if ($images = $request->file('image_path')) {
+
+            $hasMainImage = DB::table('tour_images')
+                    ->where('tour_id', $tour->id)
+                    ->where('is_main', true)
+                    ->count() > 0;
+
+            foreach ($images as $index=>$image) {
+
+                $tourImage = new TourImage;
+
+                $validator = Validator::make($request->all(), $tourImage->rulesStore, $tourImage->messages);
+
+                if ($validator->fails()) {
+                  return redirect()->route('tours.create')->withErrors($validator)->withInput();
+                }
+
+                elseif ($image->isValid()) {
+                  $tourImage->tour_id = $tour->id;
+                  $tourImage->image_path = $image->store('public/images/tour');
+
+                  if(!$hasMainImage && $index < 1){
+                    $tourImage->is_main = true;                    
+                  }
+
+                  $tourImage->save();
+                }            
+                  
+                
+            }
+        }
 
         return redirect()->route('tours.index')->with('success','Add success!');
     }
@@ -92,6 +128,38 @@ class TourController extends Controller
     public function update(TourRequest $request, Tour $tour)
     {
         $tour->update($request->all());
+
+        if ($images = $request->file('image_path')) {
+
+            $hasMainImage = DB::table('tour_images')
+                    ->where('tour_id', $tour->id)
+                    ->where('is_main', true)
+                    ->count() > 0;
+
+            foreach ($images as $index=>$image) {
+
+                $tourImage = new TourImage;
+
+                $validator = Validator::make($request->all(), $tourImage->rulesStore, $tourImage->messages);
+
+                if ($validator->fails()) {
+                  return redirect()->route('tours.edit', $tour->id)->withErrors($validator)->withInput();
+                }
+
+                elseif ($image->isValid()) {
+                  $tourImage->tour_id = $tour->id;
+                  $tourImage->image_path = $image->store('public/images/tour');
+
+                  if(!$hasMainImage && $index < 1){
+                    $tourImage->is_main = true;                    
+                  }
+
+                  $tourImage->save();
+                }            
+                  
+                
+            }
+        }
 
         return redirect()->route('tours.index')->with('success','Update success');
     }

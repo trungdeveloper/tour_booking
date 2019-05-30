@@ -106,13 +106,6 @@ class HotelController extends Controller
      */
     public function edit(Hotel $hotel)
     {
-        $destinations = Destination::get();
-        return view('hotel/edit', compact('hotel', 'destinations'));
-
-        $hotel = new Hotel;
-        $destination = new Destination;
-        return view('hotel/edit', compact('hotel', 'destination'));
-
         $destinations = Destination::orderBy('label')->get();
         return view('hotel/edit', compact('hotel', 'destinations'));
 
