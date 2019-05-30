@@ -75,6 +75,36 @@ function resizeLayout(){
 }
 
 
+function resizeWelcomeSlides(){
+
+  $('#my-welcome-slides-hidden').removeClass('d-none');
+
+  var iterator = 0;
+  var sumHeight = 0;
+
+  $('#my-welcome-slides-hidden img').css('height', 'auto');
+
+  $('#my-welcome-slides-hidden img').each(function(){
+    sumHeight += parseFloat($(this).css('height'));
+    iterator++;
+  });
+
+
+  newHeight = sumHeight / iterator
+
+  if (iterator > 0) {
+    $('#my-welcome-slides img').each(function(){
+      $(this).css('height', newHeight);
+      // $(this).css('width', parseFloat($(this).css('width')) * newHeight / parseFloat($(this).css('height')));
+    });
+  }
+
+
+  $('#my-welcome-slides-hidden').addClass('d-none');
+
+}
+
+
 function getScrollBarWidth() {
 
   var $outer = $('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body');

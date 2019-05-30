@@ -2,20 +2,26 @@
 
 @section('content')
 
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div id="my-welcome-slides-hidden" class="d-none">
+    @foreach(mySlideHelperWelcomePage() as $slide)
+      <img class="w-100" src="{!! $slide['url'] !!}">
+    @endforeach
+  </div>
+
+  <div id="my-welcome-slides" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       @foreach(mySlideHelperWelcomePage() as $slide)
         
         @if($loop->first)
           <li 
-            data-target="#carouselExampleIndicators"
+            data-target="#my-welcome-slides"
             data-slide-to="{!! $loop->index !!}"
             class="active"
           ></li>
         
         @else
           <li 
-            data-target="#carouselExampleIndicators"
+            data-target="#my-welcome-slides"
             data-slide-to="{!! $loop->index !!}"
           ></li>
         
@@ -28,36 +34,40 @@
       @foreach(mySlideHelperWelcomePage() as $slide)
         
         @if($loop->first)
-          <div class="carousel-item active">
-            <img class="d-block w-100" style="height: 550px" src="{!! $slide['url'] !!}">
+
+          <figure class="carousel-item active">
+            <img class="d-block w-100" src="{!! $slide['url'] !!}">
             
-            <div class="carousel-caption d-none d-md-block bg-white text-dark">
+            <figcaption class="carousel-caption d-none d-md-block bg-white text-dark">
               <h5 class="font-weight-bold">{!! strtoupper($slide['title']) !!}</h5>
-              <p class="font-italic">{!! $slide['text'] !!}</p>
-            </div>
-          </div>
+              <span class="font-italic">{!! $slide['text'] !!}</span>
+            </figcaption>
+          </figure>
         
+
         @else
-          <div class="carousel-item">
-            <img class="d-block w-100" style="height: 550px" src="{!! $slide['url'] !!}">
-            
-            <div class="carousel-caption d-none d-md-block bg-white text-dark">
-              <h5 class="font-weight-bold">{!! strtoupper($slide['title']) !!}</h5>
-              <p class="font-italic">{!! $slide['text'] !!}</p>
-            </div>
-          </div>
         
+          <figure class="carousel-item">
+            <img class="d-block w-100" src="{!! $slide['url'] !!}">
+            
+            <figcaption class="carousel-caption d-none d-md-block bg-white text-dark">
+              <h5 class="font-weight-bold">{!! strtoupper($slide['title']) !!}</h5>
+              <span class="font-italic">{!! $slide['text'] !!}</span>
+            </figcaption>
+          </figure>
+        
+
         @endif
 
       @endforeach
     </div>
     
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#my-welcome-slides" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
     
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#my-welcome-slides" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
@@ -68,7 +78,7 @@
     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 ">
 
       <div class="col">
-        <i class="fas fa-envelope-open-text"> &emsp; tourInfor@gmai.com</i>
+        <i class="fas fa-envelope-open-text"> &emsp; tourInfor@gmail.com</i>
       </div>
       <div class="col">
         <i class="fas fa-phone-square">&emsp; +84 396 875 521</i>

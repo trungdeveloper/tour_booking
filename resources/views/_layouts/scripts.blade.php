@@ -2,6 +2,7 @@
 <script src="{{URL::asset('jquery-ui/jquery-ui.min.js')}}"></script>
 <script src="{{URL::asset('bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{URL::asset('js/modernizr.mq.min.js')}}"></script>
+<script src="{{URL::asset('js/carousel.js')}}"></script>
 <script src="{{URL::asset('js/datepicker.js')}}"></script>
 <script src="{{URL::asset('js/filter.js')}}"></script>
 <script src="{{URL::asset('js/resizings.js')}}"></script>
