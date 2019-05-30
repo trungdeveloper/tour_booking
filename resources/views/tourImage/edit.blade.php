@@ -3,8 +3,8 @@
 @section('header')
 
   @include(
-    '_layouts.showHeader',
-    ['title' => "Edit {$tourImage['id']}"]
+    '_layouts.header',
+    ['title' => "Edit picture"]
   )
 
 @endsection
@@ -14,11 +14,11 @@
 
   @include(
     'tourImage/_form',
+    
     [
       'errors'            =>  $errors,
       'action'            =>  URL::action('TourImageController@update', $tourImage->id),
-      'tourImage'         =>  $tourImage,
-      'tour'              =>  $tours
+      'tourImage'         =>  $tourImage
     ]
   )
 

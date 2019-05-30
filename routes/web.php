@@ -31,7 +31,7 @@ Route::resources([
 ]);
 
 Route::resource('hotelImages', 'HotelImageController')->only(['edit', 'update', 'destroy']);
-Route::resource('tourImages', 'tourImageController')->only(['edit', 'update', 'destroy']);
+Route::resource('tourImages', 'TourImageController')->only(['edit', 'update', 'destroy']);
 
 Route::resource('customerMessages', 'CustomerMessageController')->only(['index', 'store', 'destroy']);
 

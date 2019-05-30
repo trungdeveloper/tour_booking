@@ -92,7 +92,7 @@ class TourImageController extends Controller
 
         if($tourImage->is_main){
 
-          $firstMainImage = tourImage::where('tour_id', $tourImage->tour_id)
+          $firstMainImage = TourImage::where('tour_id', $tourImage->tour_id)
               ->where('is_main', false)
               ->first();
 

@@ -58,7 +58,7 @@ $(function(){
         $('#my-entity-delete-status')
         .addClass('my-entity-delete-status-ko')
         .removeClass('d-none')
-        .text(error);
+        .text(error.responseJSON.message);
         
       },
 

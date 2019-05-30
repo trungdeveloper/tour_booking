@@ -15,7 +15,7 @@
 >
   @csrf
 
-  @if($ Image['id'] != NULL)
+  @if($tourImage['id'] != NULL)
     @method('PATCH')
     <input type="hidden" name="id" value="{!! $tourImage['id'] !!}">
     <input type="hidden" name="tour_id" value="{!! $tourImage['tour_id'] !!}">

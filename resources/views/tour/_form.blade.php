@@ -34,6 +34,7 @@
     </div>
   </div>
     
+
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
       <label for="destination_id">Destination:<label>
@@ -56,7 +57,9 @@
 
       </select>
     </div>
+
   </div>
+
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">

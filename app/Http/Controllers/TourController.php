@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tour;
-use App\tourImage;
+use App\TourImage;
 use App\Destination;
 use App\Http\Requests\TourRequest;
 use App\Http\Requests\DestinationRequest;

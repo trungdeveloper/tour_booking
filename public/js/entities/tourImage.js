@@ -1,3 +1,8 @@
+$(window).on('load resize', function(){
+  resizeSimpleImages();
+});
+
+
 $(function(){
 
   $('.my-tour-image-delete').on('click', function(e) {
@@ -45,10 +50,14 @@ $(function(){
 
       error: function (error) {
 
+        console.log(error);
+        console.log(error.responseJSON);
+        console.log(error.responseJSON.message);
+
         $('#my-entity-delete-status')
           .addClass('my-entity-delete-status-ko')
           .removeClass('d-none')
-          .text(error);
+          .text(error.responseJSON.message);
         
       },
 
@@ -113,13 +122,14 @@ $(function(){
         $('#my-entity-delete-status')
           .addClass('my-entity-delete-status-ko')
           .removeClass('d-none')
-          .text(error);
+          .text(error.responseJSON.message);
         
       },
 
 
       complete: function () {
         resizeLayout();
+        resizeSimpleImages();
       }
 
     });

@@ -15,7 +15,7 @@ $(function(){
     $hotelDelete = $(this);
     $hotel = $hotelDelete.closest('.my-hotel');
     $destination = $hotel.closest('.my-destination');
-    $hotelLabel = $hotel.find('.my-filter-target').text();
+    hotelLabel = $hotel.find('.my-filter-target').text();
 
 
     $.ajax({
@@ -41,7 +41,7 @@ $(function(){
           $('#my-entity-delete-status')
             .addClass('my-entity-delete-status-ok')
             .removeClass('d-none')
-            .html(`<i>"${$hotelLabel}"</i> has successfully been deleted`);
+            .html(`<i>"${hotelLabel}"</i> has successfully been deleted`);
 
         } 
 
@@ -51,7 +51,7 @@ $(function(){
           $('#my-entity-delete-status')
             .addClass('my-entity-delete-status-ko')
             .removeClass('d-none')
-            .html(`Something went wrong when attempting to delete <i>"${$hotelLabel}"</i>`);
+            .html(`Something went wrong when attempting to delete <i>"${hotelLabel}"</i>`);
 
         }
 
@@ -63,7 +63,7 @@ $(function(){
         $('#my-entity-delete-status')
           .addClass('my-entity-delete-status-ko')
           .removeClass('d-none')
-          .text(error);
+          .text(error.responseJSON.message);
       
       },
 

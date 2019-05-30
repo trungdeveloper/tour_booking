@@ -48,7 +48,7 @@
             {!!
                 old (
                   'destination_id',
-                isset($hotel) && $hotel['destination_id'] == $destination['id'] ? 'selected' : NULL )
+                  isset($hotel) && $hotel['destination_id'] == $destination['id'] ? 'selected' : NULL )
             !!}
           >
             {!! $destination['label'] !!}
