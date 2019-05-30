@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.showHeader',
-    ['title' => $user["title"]["label"].' '.$user["first_name"].' '.$user["middle_name"].' '.$user["last_name"]]
+    ['title' => $user->fullName()]
   )
 
 @endsection

@@ -32,7 +32,7 @@
             <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-user">
               <div class="my-frame">
                 <div class="my-padding-bottom-12 my-filter-target">
-                  {!! $user["title"]["label"].' '.$user["first_name"].' '.$user["middle_name"].' '.$user["last_name"] !!}
+                  {!! $user->fullName() !!}
                 </div>
                 
                 <div class="d-flex flex-wrap">

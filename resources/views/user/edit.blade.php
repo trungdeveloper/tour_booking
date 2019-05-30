@@ -6,17 +6,8 @@
     '_layouts.header',
     [
       'title' => Auth::check() && Auth::id() == $user->id ?
-
           "Edit your account" :
-
-          "Edit "
-            .$user["title"]["label"]
-            .' '
-            .$user["first_name"]
-            .' '
-            .$user["middle_name"]
-            .' '
-            .$user["last_name"]
+          "Edit ".$user->fullName()
     ]
   )
 

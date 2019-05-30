@@ -129,26 +129,42 @@
 
       {{ csrf_field() }}
 
-      <div class="row my-padding-bottom-19">
-        <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-          <label for="name">Name:<label>
-        </div>
+      @auth
+      
+        <input
+          type="hidden"
+          name="name"
+          value="{!! Auth::user()->fullName() !!}"
+        >
         
-        <div class="col my-padding-bottom-8">
-          <input id="name" name="name" class="form-control" placeholder="Your name...">
+        <input type="hidden" name="email" value="{!! Auth::user()->email !!}">
+      
+
+      @else
+
+        <div class="row my-padding-bottom-19">
+          <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+            <label for="name">Name:<label>
+          </div>
+          
+          <div class="col my-padding-bottom-8">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Your name...">
+          </div>
         </div>
-      </div>
 
 
-      <div class="row my-padding-bottom-19">
-        <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-          <label for="email">Email:<label>
+        <div class="row my-padding-bottom-19">
+          <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+            <label for="email">Email:<label>
+          </div>
+          
+          <div class="col my-padding-bottom-8">
+            <input type="text" id="email" name="email" class="form-control" placeholder="Your e-mail address...">
+          </div>
         </div>
-        
-        <div class="col my-padding-bottom-8">
-          <input id="email" name="email" class="form-control" placeholder="Your e-mail address...">
-        </div>
-      </div>
+
+
+      @endauth
 
 
       <div class="row my-padding-bottom-19">
@@ -157,7 +173,7 @@
         </div>
         
         <div class="col my-padding-bottom-8">
-          <input id="subject" name="subject" class="form-control" placeholder="Subject...">
+          <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject...">
         </div>
       </div>
 
