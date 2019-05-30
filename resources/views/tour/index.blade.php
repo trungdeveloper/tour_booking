@@ -44,23 +44,25 @@
                     </a>
                   </div>
                   
-                  <div class="my-padding-right-8 my-padding-bottom-8">
-                    <a href="{!! route('tours.edit', $tour["id"]) !!}" class="btn btn-sm btn-outline-primary">
-                      <i class="far fa-edit my-margin-right-12"></i>
-                      <span>Edit</span>
-                    </a>
-                  </div>
+                  @if (Auth::check() && Auth::user()->hasAdminRights())
+                    <div class="my-padding-right-8 my-padding-bottom-8">
+                      <a href="{!! route('tours.edit', $tour["id"]) !!}" class="btn btn-sm btn-outline-primary">
+                        <i class="far fa-edit my-margin-right-12"></i>
+                        <span>Edit</span>
+                      </a>
+                    </div>
 
-                  <div class="my-padding-bottom-8">
-                    <button
-                      class="btn btn-sm btn-danger my-tour-delete"
-                      data-token="{!! csrf_token() !!}"
-                      data-url="{!! route('tours.destroy', $tour['id']) !!}"
-                    >
-                      <i class="far fa-trash-alt my-margin-right-12"></i>
-                      <span>Delete</span>
-                    </button>
-                  </div>
+                    <div class="my-padding-bottom-8">
+                      <button
+                        class="btn btn-sm btn-danger my-tour-delete"
+                        data-token="{!! csrf_token() !!}"
+                        data-url="{!! route('tours.destroy', $tour['id']) !!}"
+                      >
+                        <i class="far fa-trash-alt my-margin-right-12"></i>
+                        <span>Delete</span>
+                      </button>
+                    </div>
+                  @endif
 
                 </div>
               </div>

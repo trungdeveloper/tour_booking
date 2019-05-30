@@ -71,10 +71,20 @@ class TourImageController extends Controller
      * @param  \App\IdentificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function show(TourImage $tourImage)
+    public function setAsMain(TourImage $tourImage)
     {
-        $tours = Tour::all();
-        return view('tourImage/show',compact('tourImage','tours'));
+      $mainImages = TourImage::where('tour_id', $tourImage->tour_id)
+          ->where('is_main', true)
+          ->get();
+
+      foreach ($mainImages as $mainImage) {
+        $mainImage->is_main = false;
+        $mainImage->save();
+      }
+
+      $tourImage->is_main = true;
+      $tourImage->save();
+      return 'ok';
     }
 
     /**

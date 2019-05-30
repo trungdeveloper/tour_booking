@@ -22,14 +22,14 @@
     <input type="hidden" name="is_main" value="{!! $hotelImage['is_main'] !!}">
 
     <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="image_path_name">Current image:</label>
+      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+        <label for="image_path_name">Current image:</label>
+      </div>
+      
+      <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+        <img src="{!! Storage::url($hotelImage['image_path']) !!}">
+      </div>
     </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <img src="{!! Storage::url($hotelImage['image_path']) !!}">
-    </div>
-  </div>
 
   @endif 
 

@@ -1,4 +1,3 @@
-   
 @if($errors->any())
   <div class="alert alert-danger">
     @foreach ($errors->all() as $error)
@@ -16,81 +15,49 @@
 >
   @csrf
 
-  @if($tourImage['id'] != NULL)
+  @if($ Image['id'] != NULL)
     @method('PATCH')
     <input type="hidden" name="id" value="{!! $tourImage['id'] !!}">
+    <input type="hidden" name="tour_id" value="{!! $tourImage['tour_id'] !!}">
+    <input type="hidden" name="is_main" value="{!! $tourImage['is_main'] !!}">
+
+    <div class="row my-padding-bottom-19">
+      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+        <label for="image_path_name">Current image:</label>
+      </div>
+      
+      <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+        <img src="{!! Storage::url($tourImage['image_path']) !!}">
+      </div>
+    </div>
+
   @endif 
-  
+
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="image_path">Image: <label>
+      <label for="image_path_name">Image Path:</label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <input
-        id="image_path"
-        type="file"
-        class="form-control"
-        name="image_path[]"
-        value="{!! old ('image_path',isset($tourImage)?$tourImage['image_path']:NULL) !!}"
-        multiple="true"
+      <input 
+          id="image_path_name"
+          type="file"
+          class="form-control"
+          name="image_path"
       >
     </div>
   </div>
 
-
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="tourImage">Tour:<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <select name="tour_id" class="form-control" id="tour_id">
-        
-        @foreach ($tours as $tour)
-          <option
-            value="{!! $tour['id'] !!}"
-            {!!
-                old (
-                  'tour_id',
-                  isset($tourImage) && $tourImage['tour_id'] == $tour['id'] ? 'selected' : NULL )
-            !!}
-          >
-            {!! $tour['name'] !!}
-          </option>
-        @endforeach
-
-      </select>
-    </div>
-  </div>
-  
-
-  <div class="row my-padding-bottom-19">
-      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-        <label for="tourImage">Is Main:<label>
-      </div>
-      
-      <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <input 
-              id="image_is_main"
-              type="checkbox"
-              name="is_main"
-              @if(isset($tourImage)&& $tourImage->is_main)
-                checked="checked"
-              @endif
-              value="1" >
-      </div>
-    </div>
-  </div>
-
-  <!-- button Save -->
   <div class="row">
     <div class="col-md-3 col-lg-4"></div>
 
     <div class="col-md-9 col-lg-8">
-      <a href="{!! route('tourImages.index') !!}" class="btn btn-sm btn-outline-dark my-padding-right-8">
+      <a
+        href="{!! route('tours.show', $tourImage->tour_id) !!}"
+        class="btn btn-sm btn-outline-dark my-padding-right-8"
+      >
         <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
-        <span>Back to list of tours</span>
+        <span>Back to <strong>{!! $tourImage->tour->name !!}</strong></span>
       </a>
 
       <button type="submit" class="btn btn-sm btn-success">
