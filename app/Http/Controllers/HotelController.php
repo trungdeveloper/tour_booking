@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Hotel;
+use App\HotelImage;
 use App\Destination;
 use App\Http\Requests\HotelRequest;
 use App\Http\Requests\DestinationRequest;
+use Validator;
 
 class HotelController extends Controller
 {
@@ -46,7 +48,29 @@ class HotelController extends Controller
      */
     public function store(HotelRequest $request)
     {
-        Hotel::create($request->all());
+        $hotel = new Hotel($request->all());
+        $hotel->save();
+
+        if ($images = $request->file('image_path')) {
+            foreach ($images as $image) {
+
+                $hotelImage = new HotelImage;
+
+                $validator = Validator::make($request->all(), $hotelImage->rulesStore, $hotelImage->messages);
+
+                if ($validator->fails()) {
+                  return redirect()->route('hotel.create')->withErrors($validator)->withInput();
+                }
+
+                elseif ($image->isValid()) {
+                  $hotelImage->hotel_id = $hotel->id;
+                  $hotelImage->image_path = $image->store('public/images/hotel');
+                  $hotelImage->save();
+                }            
+                  
+                
+            }
+        }
 
         return redirect()->route('hotels.index')->with('success','Add success!');
     }

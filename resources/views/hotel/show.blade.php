@@ -25,6 +25,22 @@
       Description: {!! $hotel["description"] !!}<br>
       Destination: {!! $hotel->destination->label !!}
     </div>
+
+
+    @if(count($hotel->hotelImages) > 0)
+      <div class="row">
+        @foreach($hotel->hotelImages as $hotelImage)
+          <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-hotel-image">
+            <div class="my-frame">
+              <div class="my-padding-bottom-12">
+                <img src="{!! Storage::url($hotelImage['image_path']) !!}">
+              </div>
+            </div>
+          </div>
+        @endforeach
+      </div>
+    @endif
+
     
     <div class="d-flex flex-wrap">
 
