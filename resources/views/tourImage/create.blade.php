@@ -18,7 +18,7 @@
       'errors'            =>    $errors,
       'action'            =>    URL::action('TourImageController@store'),
       'tourImage'         =>    $tourImage,
-      'tour'             =>    $tours
+      'tour'              =>    $tours
     ]
   )
 

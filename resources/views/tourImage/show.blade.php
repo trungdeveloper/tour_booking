@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.showHeader',
-    ['title' => $tourImage["tour_id"]]
+    ['title' =>  $tourImage->tour->name]
   )
 
 @endsection
