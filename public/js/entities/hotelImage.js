@@ -1,3 +1,8 @@
+$(window).on('load resize', function(){
+  resizeSimpleImages();
+});
+
+
 $(function(){
 
   $('.my-hotel-image-delete').on('click', function(e) {
@@ -120,6 +125,7 @@ $(function(){
 
       complete: function () {
         resizeLayout();
+        resizeSimpleImages();
       }
 
     });

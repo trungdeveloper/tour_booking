@@ -105,7 +105,26 @@ function resizeWelcomeSlides(){
 }
 
 
-function getScrollBarWidth() {
+function resizeSimpleImages() {
+
+  var subElements = [
+      $("#my-entity-images-landscape"),
+      $("#my-entity-images-portrait")
+    ];
+  
+
+  $.when(deferredSimpleImageReorganize()).done(function() {
+
+    $.each(subElements, function(index, $subElement) {
+      resizeImagePart($subElement);
+    });
+
+  });
+
+}
+
+
+var getScrollBarWidth = function () {
 
   var $outer = $('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body');
   var widthWithScroll = $('<div>').css({width: '100%'}).appendTo($outer).outerWidth();
@@ -114,3 +133,140 @@ function getScrollBarWidth() {
   return 100 - widthWithScroll;
 
 }
+
+
+var resizeImagePart = function($element) {
+
+  $element.find(".my-entity-image img").css('height', 'auto');
+
+  if (Modernizr.mq('(min-width: 576px)')) {
+
+    var quantityOfImages = $element.find(".my-entity-image img").length;
+
+    if (quantityOfImages < 1) {
+      return;
+    }
+
+    var quantityOfLandscapeImage = 0;
+    var idxImage = 0;
+    var sumHeight = 0;
+    
+    $element.find(".my-entity-image img").each(function() {
+      if (parseFloat($(this).css('width')) > parseFloat($(this).css('height'))) {
+        return quantityOfLandscapeImage++;
+      }
+    });
+
+    
+    $element.find(".my-entity-image img").each(function() {
+      
+      var width = parseFloat($(this).css('width'));
+      var height = parseFloat($(this).css('height'));
+      
+      switch (true) {
+    
+        case quantityOfLandscapeImage === 0:
+        case (quantityOfLandscapeImage > 0 && width > height):
+          idxImage++;
+          sumHeight += height;
+    
+      }
+
+    });
+
+
+    var newHeight = sumHeight / idxImage;
+
+    $element.find(".my-entity-image img").each(function() {
+      $(this).css('height', newHeight);
+    });
+
+  }
+
+};
+
+
+var resizeParts = function($element) {
+
+  var parts = ['.my-entity-name', '.my-entity-description', '.my-entity-price'];
+
+  $.each(parts, function(index, part){
+
+    $element.find(part).css('height', 'auto');
+
+    if (Modernizr.mq('(min-width: 576px)')) {
+
+      var partHeight = 0;
+
+      $element.find(part).each(function() {
+        
+        var height = parseFloat($(this).css('height'));
+
+        if (height > partHeight) {
+          partHeight = height;
+        }
+      
+      });
+
+      $element.find(part).css('height', partHeight);
+
+    }
+
+  });
+
+};
+
+
+var deferredSimpleImageReorganize = function($element) {
+
+  var deferred = $.Deferred();
+  var deferredReorganize = $.Deferred();
+
+  var quantityOfImages = $('#my-entity-images-all-formats .my-entity-image').length;
+  var iterator = 0;
+
+  if (quantityOfImages < 1) {
+    deferredReorganize.resolve();
+  }
+
+
+  $('#my-entity-images-all-formats .my-entity-image').each(function() {
+
+    var $entityImage = $(this);
+    var $image = $entityImage.find('img');
+
+    var width = $image.length ? parseFloat($image.css('width')) : null;
+    var height = $image.length ? parseFloat($image.css('height')) : null;
+
+    
+
+    switch (true) {
+
+      case (!width):
+      case (!height):
+        break;
+      
+      case (width >= height):
+        $('#my-entity-images-landscape').append($entityImage);
+        break;
+      
+      case (width < height):
+        $('#my-entity-images-portrait').append($entityImage);
+
+    }
+  
+
+    iterator++;
+  
+    if (iterator >= quantityOfImages) {
+      return deferredReorganize.resolve();
+    }
+  
+  });
+
+
+  return $.when(deferredReorganize).done(function() {
+    return deferred.resolve();
+  });
+
+};

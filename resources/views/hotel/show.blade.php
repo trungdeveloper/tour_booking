@@ -138,10 +138,10 @@
 
 
   @if(count($hotel->hotelImages) > 0)
-    <div class="row my-margin-top-19">
+    <div class="row my-margin-top-19" id="my-entity-images-all-formats">
       @foreach($hotel->hotelImages as $hotelImage)
-        <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-hotel-image">
-          <figure class="my-padding-bottom-12 text-center my-hotel-figure">
+        <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-entity-image my-hotel-image">
+          <figure class="my-padding-bottom-12 text-center my-entity-figure my-hotel-figure">
             <img src="{!! Storage::url($hotelImage['image_path']) !!}">
 
             @if (Auth::check() && Auth::user()->hasAdminRights())
@@ -239,6 +239,12 @@
           </figure>
         </div>
       @endforeach
+    </div>
+
+    <div class="row" id="my-entity-images-landscape">
+    </div>
+
+    <div class="row" id="my-entity-images-portrait">
     </div>
   @endif
 
