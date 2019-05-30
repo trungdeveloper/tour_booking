@@ -21,6 +21,12 @@ function myLayoutHelperSidebarActions() {
       "label"           =>  "Hotels",
       "mayBeDisplayed"  =>  true
     ],
+    
+    [ 
+      "url"             =>  "hotelImages",
+      "label"           =>  "Hotel images",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights()
+    ],
   
     [ 
       "url"             =>  "identificationTypes",
@@ -61,6 +67,12 @@ function myLayoutHelperSidebarActions() {
     [ 
       "url"             =>  "users",
       "label"           =>  "Users",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+  
+    [ 
+      "url"             =>  "customerMessages",
+      "label"           =>  "Customer messages",
       "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
     ]
     

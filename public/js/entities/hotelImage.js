@@ -1,26 +1,21 @@
-$(window).on('load resize', function(){
-  resizeIconsAndLabels('my-user-icon', 'my-user-label');
-});
-
-
 $(function(){
 
-  $('.my-user-delete').on('click', function(e) {
+  $('.my-hotelImage-delete').on('click', function(e) {
     e.preventDefault();
 
-    $userDelete = $(this);
-    $user = $userDelete.closest('.my-user');
-    $label = $userDelete.closest('.my-user-type');
-    userLabel = $user.find('.my-filter-target').text();
+    $hotelImageDelete = $(this);
+    $hotelImage = $hotelImageDelete.closest('.my-hotelImage');
+    $label = $hotelImageDelete.closest('.my-hotel');
+    // hotelImageLabel = $hotelImage.find('.my-filter-target').text();
 
 
     $.ajax({
 
-      url: $userDelete.attr('data-url'),
+      url: $hotelImageDelete.attr('data-url'),
       method: 'delete',
 
       data: {
-        _token: $userDelete.attr('data-token')
+        _token: $hotelImageDelete.attr('data-token')
       },
 
 
@@ -31,9 +26,9 @@ $(function(){
           $('#my-entity-delete-status')
           .addClass('my-entity-delete-status-ok')
           .removeClass('d-none')
-          .html(`<i>"${userLabel}"</i> has successfully been deleted`);
+          .html(`Image has successfully been deleted`);
 
-          $user.remove();
+          $hotelImage.remove();
           if ($label.children('.row').children().length == 0) {
             $label.remove();
           }  
@@ -46,7 +41,7 @@ $(function(){
           $('#my-entity-delete-status')
           .addClass('my-entity-delete-status-ko')
           .removeClass('d-none')
-          .html(`Something went wrong when attempting to delete <i>"${userLabel}"</i>`);
+          .html(`Something went wrong when attempting to delete `);
 
         }
 

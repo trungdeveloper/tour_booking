@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-dark py-2">
 
-  <div class="d-md-none d-flex align-items-center justify-content-between flex-fill">
+  <div class="d-md-none d-flex align-items-start justify-content-between flex-fill">
 
-    <div class="d-flex flex-wrap align-items-center">
+    <div class="d-flex flex-wrap align-items-start">
 
       <a href="{!! url('/') !!}" class="my-padding-bottom-8 my-padding-right-40">
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-start">
           <div class="my-margin-right-19 text-center my-sidebar-action-icon">
             <i class="fas fa-home my-padding-left-4 my-padding-right-4"></i>
           </div>
@@ -22,7 +22,7 @@
       @auth
         
         <a href="{!! url('/logout') !!}" class="my-padding-bottom-8 my-padding-right-40">
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-start">
             <div class="my-margin-right-19 text-center my-sidebar-action-icon bg-danger">
               <i class="fas fa-user-slash text-light my-padding-left-4 my-padding-right-4"></i>
             </div>
@@ -34,7 +34,7 @@
         </a>
 
         <a href="{!! route('users.edit', Auth::id()) !!}" class="my-padding-bottom-8 my-padding-right-40">
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-start">
             <div class="my-margin-right-19 text-center my-sidebar-action-icon bg-primary">
               <i class="fas fa-user-edit text-light my-padding-left-4 my-padding-right-4"></i>
             </div>
@@ -49,7 +49,7 @@
       @else
         
         <a href="{!! url('/login') !!}" class="my-padding-bottom-8 my-padding-right-40">
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-start">
             <div class="my-margin-right-19 text-center my-sidebar-action-icon bg-info">
               <i class="far fa-user-circle text-light my-padding-left-4 my-padding-right-4"></i>
             </div>
@@ -61,7 +61,7 @@
         </a>
 
         <a href="{!! route('users.create') !!}" class="my-padding-bottom-8 my-padding-right-40">
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-start">
             <div class="my-margin-right-19 text-center my-sidebar-action-icon bg-success">
               <i class="fas fa-user-plus text-light my-padding-left-4 my-padding-right-4"></i>
             </div>
@@ -101,7 +101,7 @@
       
       <li class="d-none d-md-block">
         <a href="{!! url('/') !!}">
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-start">
             <div class="my-margin-right-19 text-center my-sidebar-action-icon">
               <i class="fas fa-home my-padding-left-4 my-padding-right-4"></i>
             </div>
@@ -120,7 +120,7 @@
       
         <li class="d-none d-md-block my-margin-top-8">
           <a href="{!! url('/logout') !!}">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-start">
               <div class="my-margin-right-19 text-center bg-danger my-sidebar-action-icon">
                 <i class="fas fa-user-slash my-padding-left-4 my-padding-right-4 text-light"></i>
               </div>
@@ -134,7 +134,7 @@
 
         <li class="d-none d-md-block my-margin-top-8">
           <a href="{!! route('users.edit', Auth::id()) !!}">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-start">
               <div class="my-margin-right-19 text-center bg-primary my-sidebar-action-icon">
                 <i class="fas fa-user-edit my-padding-left-4 my-padding-right-4 text-light"></i>
               </div>
@@ -151,7 +151,7 @@
       
         <li class="d-none d-md-block my-margin-top-8">
           <a href="{!! url('/login') !!}">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-start">
               <div class="my-margin-right-19 text-center bg-info my-sidebar-action-icon">
                 <i class="far fa-user-circle my-padding-left-4 my-padding-right-4 text-light"></i>
               </div>
@@ -165,7 +165,7 @@
 
         <li class="d-none d-md-block my-margin-top-8">
           <a href="{!! route('users.create') !!}">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-start">
               <div class="my-margin-right-19 text-center bg-success my-sidebar-action-icon">
                 <i class="fas fa-user-plus my-padding-left-4 my-padding-right-4 text-light"></i>
               </div>
@@ -188,7 +188,7 @@
           @if($action['mayBeDisplayed'])
             <li class="my-margin-top-8">
               <a href="{!! url($action['url']) !!}">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-start">
                   <div class="my-margin-right-19 text-center my-sidebar-action-icon">
                     <i class="fas fa-sitemap my-padding-left-4 my-padding-right-4"></i>
                   </div>

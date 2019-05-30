@@ -3,16 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\TourImage;
+use App\Tour;
 use App\Http\Requests\TourImageRequest;
-
+use Illuminate\Support\Facades\Storage;
+use Validator;
 
 class TourImageController extends Controller
-{
-    public function __construct()
-    {
-        $this->middleware('checkIfAllowed', ['except' => ['index']]);
-    }
-    
+{   
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +18,8 @@ class TourImageController extends Controller
     public function index()
     {
       $tourImage = TourImage::all();
-      return view('tourImage/index', compact('tourImage'));
+      $tours = Tour::all();
+      return view('tourImage/index', compact('tourImage','tours'));
     }
 
     /**
@@ -32,7 +30,8 @@ class TourImageController extends Controller
     public function create()
     {
       $tourImage = new TourImage;
-      return view('tourImage/create', compact('tourImage'));
+      $tours = Tour::orderBy('id')->get();
+      return view('tourImage/create', compact('tourImage','tours'));
     }
 
     /**
@@ -43,8 +42,24 @@ class TourImageController extends Controller
      */
     public function store(TourImageRequest $request)
     {
-        TourImage::create($request->all());
-        return redirect()->route('tourImage.index')->with('success','Add success!');
+        
+        $tourImage = new tourImage($request->all());
+        
+            $image = $request->file('image_path');
+                
+            $validator = Validator::make($request->all(), $tourImage->rulesStore, $tourImage->messages);
+                
+            if ($validator->fails()) {
+            return redirect()->route('tourImages.create')->withErrors($validator)->withInput();
+            }
+                
+            elseif ($image->isValid()) {
+            $tourImage->image_path = $image->store('public/images/tourImage');
+            }
+        
+        
+        $tourImage->save();
+        return redirect()->route('tourImages.index')->with('success','Add success!');
     }
 
     /**
@@ -55,7 +70,8 @@ class TourImageController extends Controller
      */
     public function show(TourImage $tourImage)
     {
-        return view('tourImage/show',compact('tourImage'));
+        $tours = Tour::all();
+        return view('tourImage/show',compact('tourImage','tours'));
     }
 
     /**
@@ -66,7 +82,8 @@ class TourImageController extends Controller
      */
     public function edit(TourImage $tourImage)
     {
-        return view('tourImage/edit',compact('tourImage'));
+        $tours = Tour::all();
+        return view('tourImage/edit',compact('tourImage','tours'));
     }
 
     /**
@@ -78,8 +95,30 @@ class TourImageController extends Controller
      */
     public function update(TourImageRequest $request, TourImage $tourImage)
     {
+        if (!$request->is_main) {
+            $request->merge(['is_main' => false]);
+        }
+        
         $tourImage->update($request->all());
-        return redirect()->route('tourImage.index')->with('success','Sửa sản phẩm thành công!');
+
+        if ($request->hasFile('image_path')) {
+
+            $image = $request->file('image_path');
+        
+            $validator = Validator::make($request->all(), $tourImage->rulesUpdate, $tourImage->messages);
+        
+            if ($validator->fails()) {
+                return redirect()->route('tourImages.edit', $tourImage->id)->withErrors($validator)->withInput();
+            }
+        
+            elseif ($image->isValid()) {
+                Storage::delete($tourImage->image_path);
+                $tourImage->image_path = $image->store('public/images/tourImage');
+            }
+        }
+
+        $tourImage->save();
+        return redirect()->route('tourImages.index')->with('success','Sửa sản phẩm thành công!');
     }
 
     /**
@@ -90,6 +129,9 @@ class TourImageController extends Controller
      */
     public function destroy(TourImage $tourImage)
     {
+        if($tourImage->image_path != NULL){
+            Storage::delete($tourImage->image_path);
+        }
         $tourImage->delete();
         return "ok";
     }

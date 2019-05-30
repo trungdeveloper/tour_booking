@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TourImageRequest extends FormRequest
+class HotelImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,23 +24,13 @@ class TourImageRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'tour_id'                    =>     'required'
-
+            'hotel_id'      => 'required'
         ];
     }
 
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages()
-    {
+    public function messages(){
         return [
-          
-          'tour_id.required'    => 'The tour id is required',
-          
+            'hotel_id.required'     =>  'Hotel id is requiered',
         ];
     }
 }

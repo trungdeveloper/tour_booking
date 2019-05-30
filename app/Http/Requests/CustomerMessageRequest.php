@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TourImageRequest extends FormRequest
+class CustomerMessageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,23 +24,18 @@ class TourImageRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'tour_id'                    =>     'required'
-
+          'name'      =>  'required',
+          'email'     =>  'required',
+          'message'   =>  'required'
         ];
     }
 
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
     public function messages()
     {
         return [
-          
-          'tour_id.required'    => 'The tour id is required',
-          
+          'name.required'     =>  'Your name is required',
+          'email.required'    =>  'Your e-mail address is required',
+          'message.required'  =>  'Your message is required'
         ];
     }
 }

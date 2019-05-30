@@ -28,9 +28,12 @@ Route::resources([
   'users'                 =>  'UserController',
   'tours'                 =>  'TourController',
   'userTypes'             =>  'UserTypeController',
+  'hotelImages'           =>  'HotelImageController',
   'tourImages'            =>  'TourImageController'
 ]);
 
+
+Route::resource('customerMessages', 'CustomerMessageController')->only(['index', 'store', 'destroy']);
 
 Route::get('login', 'LoginController@login')->name('login');
 Route::post('login', 'LoginController@authenticate')->name('login.authenticate');

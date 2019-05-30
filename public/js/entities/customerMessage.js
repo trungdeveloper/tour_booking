@@ -1,20 +1,24 @@
+$(window).on('load resize', function(){
+  resizeIconsAndLabels('my-customer-message-icon', 'my-customer-message-label');
+});
+
+
 $(function(){
 
-  $('.my-tour-image-delete').on('click', function(e) {
+  $('.my-customer-message-delete').on('click', function(e) {
     e.preventDefault();
 
-    $tourImageDelete = $(this);
-    $tourImage = $tourImageDelete.closest('.my-tour-image');
-    $label = $tourImageDelete.closest('.my-tour');
+    $customerMessageDelete = $(this);
+    $customerMessage = $customerMessageDelete.closest('.my-customer-message');
 
 
     $.ajax({
       
-      url: $tourImageDelete.attr('data-url'),
+      url: $customerMessageDelete.attr('data-url'),
       method: 'delete',
       
       data: {
-        _token: $tourImageDelete.attr('data-token')
+        _token: $customerMessageDelete.attr('data-token')
       },
       
 
@@ -25,13 +29,9 @@ $(function(){
           $('#my-entity-delete-status')
             .addClass('my-entity-delete-status-ok')
             .removeClass('d-none')
-            .html(`image has successfully been deleted`);
+            .html(`Message has successfully been deleted`);
 
-          
-          $tourImage.remove();
-          if ($label.children('.row').children().length == 0) {
-            $label.remove();
-          }  
+          $customerMessage.remove();
 
         } 
 
@@ -41,7 +41,7 @@ $(function(){
           $('#my-entity-delete-status')
             .addClass('my-entity-delete-status-ko')
             .removeClass('d-none')
-            .html(`Something went wrong when attempting to delete <i>"${tourImageLabel}"</i>`);
+            .html(`Something went wrong when attempting to delete message`);
 
         }
 
@@ -56,6 +56,7 @@ $(function(){
           .text(error);
       
       },
+
 
       complete: function () {
         resizeLayout();
